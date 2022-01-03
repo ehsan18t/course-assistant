@@ -1,0 +1,30 @@
+Team Member:
+1. 011201122-Md. Ahasan Khan;
+2. 011201129-Asif Uddin Ahmed; 
+3. 011201084-Sunny Sutradhar
+
+
+Our project will have 2 main parts. Result tracking and university's educational content sharing within own university.
+In the tracking part, it will analyze and predict result based on given data also can visually represent data and 
+analysis results. Based on results it will give tips to improve. Another part of our project will be content sharing.
+In this part, each student can share their course materials and their own written notes, blogs etc. to help newcomers.
+Others can view, search these as they want. 
+Content will be suggested on the home page based on their department and results. There will also be an option to request 
+a specific course. However all sharing and caring will only stay inside own university for privacy reasons. 
+A registration restriction will be applied where a student can register only by using official university mail.
+
+List features --------------------------
+ - Closed to only own university students.
+ - Open contribution system to own university.
+ - Content suggestions based on department.
+ - Option to request course content.
+ - Filter process in search.
+ - Analysis and prediction of course results, semester results, total result and visualization with graph.
+ - Tips to improve or continue current result pace.
+ - Suggest content based on results and activity.
+
+List of Technologies Will be used:
+  - HTML
+  - CSS/Bootstrap/TailWind
+  - PHP
+  - My Sql
