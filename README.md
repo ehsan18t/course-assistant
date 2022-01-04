@@ -91,7 +91,7 @@
 
 &nbsp;
 ## 🖼️ **Screenshots**
-<strong><a href="https://magicxmod.github.io/screenshots" target="_blank" rel="noopener">Click Here to View All Screenshots</a></strong>
+<strong><a href="https://google.com" target="_blank" rel="noopener">Click Here to View All Screenshots</a></strong>
 
 &nbsp;
 ## ⁉️ **FAQ**
@@ -106,5 +106,5 @@
 ## 🔆 **Need Help?**
 **Email (Ahasan):** [makhan201122@bscse.uiu.ac.bd](mailto:makhan201122@bscse.uiu.ac.bd)\
 **Email (Asif):** [aahmed201129@bscse.uiu.ac.bd](mailto:aahmed201129@bscse.uiu.ac.bd)\
-**Email (Sunny:** [ssuttradhar201084@bscse.uiu.ac.bd](mailto:ssuttradhar201084@bscse.uiu.ac.bd)
+**Email (Sunny):** [ssuttradhar201084@bscse.uiu.ac.bd](mailto:ssuttradhar201084@bscse.uiu.ac.bd)
 
