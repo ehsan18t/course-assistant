@@ -1,15 +1,74 @@
 <?php
 session_start();
-	require_once './config/config.php';
-	require_once './config/pages.php';
-require_once INC_CONNECTION;
-require_once INC_FUNCTION;
+include("connection.php");
+include("function.php");
 //if user is already login then this index page will be shown in browser
 $user_data = check_login($con);
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS User Profile Card</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="left">
+        <img src="image\demo_images.png" 
+        alt="user" width="100">
+        <h4><?php echo $user_data['f_name']." ".$user_data['l_name'];?></h4>
+    </div>
+    <div class="right">
+        <div class="info">
+            <h3>Information</h3>
+            <div class="info_data">
+                 <div class="data">
+                    <h4>Email : </h4>
+                    <p><?php echo $user_data['user_name'];?></p>
+                    <br>
+                    <h4>Phone</h4>
+                    <p><?php echo "NOT GIVEN";?></p>
+                 </div>
+                
+            </div>
+        </div>
+      
+      <div class="projects">
+            <h3>University</h3>
+            <div class="projects_data">
+                 <div class="data">
+                    <h4>Name : </h4>
+                    <p><?php echo $user_data['u_name'];?></p>
+                 </div>
+                 <div class="data">
+                   <h4>Department</h4>
+                    <p><?php echo $user_data['d_name'];?></p>
+              </div>
+            </div>
+        </div>
+      
+        <div class="social_media">
+            <ul>
+              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+      </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+<!-- <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +77,7 @@ $user_data = check_login($con);
 </head>
 <body>
     Hello <?php 
-    echo ", ".$user_data['f_name'];
+      // echo ", ".$user_data['f_name'];
     ?>
 </body>
-</html>
+</html> -->
