@@ -32,7 +32,7 @@
           <a class="nav-link active" aria-current="page" href="profile.php">PROFILE</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">COURSE PLANE</a>
+          <a class="nav-link active" aria-current="page" href="#">COURSE PLAN</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">SETTINGS</a>
