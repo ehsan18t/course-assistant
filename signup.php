@@ -1,32 +1,34 @@
 <?php
- session_start();
-  include("connection.php");
-  include("function.php");
+	session_start();
+	require_once '/config/config.php';
+	require_once '/config/pages.php';
+	require_once INC_CONNECTION;
+	require_once INC_FUNCTION;
 
-  if($_SERVER['REQUEST_METHOD'] == "POST"){
+	if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     //Here we are insert in the database 
     //we take inputs from user and push them in the table 
-      $f_name = $_POST['f_name'];
-	  $l_name = $_POST['l_name'];
-	  $u_name = $_POST['u_name'];
-	  $d_name = $_POST['d_name'];
-	  $user_name = $_POST['user_name'];
-      $password = $_POST['password'];
-	  $domain = find_domain($user_name);
-      if(!empty($user_name) && !empty(password)){
+	$f_name = $_POST['f_name'];
+	$l_name = $_POST['l_name'];
+	$u_name = $_POST['u_name'];
+	$d_name = $_POST['d_name'];
+	$user_name = $_POST['user_name'];
+	$password = $_POST['password'];
+	$domain = find_domain($user_name);
+	if(!empty($user_name) && !empty(password)){
         //$user_id = random_num(20);    
         $query = "insert into users(f_name,l_name,u_name,d_name,user_name,password,domain) 
-		           values('$f_name','$l_name','$u_name','$d_name','$user_name','$password','$domain')";
-          mysqli_query($con,$query);
+				values('$f_name','$l_name','$u_name','$d_name','$user_name','$password','$domain')";
+		mysqli_query($con,$query);
 
-          header("Location: login.php");
-          die;
-      }
-      else{
-          echo "user name or password is wrong";
-      }
-  }
+		header("Location: login.php");
+		die;
+	}
+	else{
+		echo "user name or password is wrong";
+	}
+}
 
 ?>
 

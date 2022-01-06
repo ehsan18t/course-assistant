@@ -1,10 +1,6 @@
 <?php
+require_once '/config/config.php';
 
-$dbhost ="localhost";
-$dbuser ="root";
-$dbpass ="";
-$dbname ="course_assistant";
-
-if(!$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname)){
+if(!$con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)){
     die("failed to connect!");
 }
