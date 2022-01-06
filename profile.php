@@ -18,7 +18,7 @@ $user_data = check_login($con);
 </head>
 <body>
     Hello <?php 
-       echo ", ".$user_data['f_name'];
+    echo ", ".$user_data['f_name'];
     ?>
 </body>
 </html>

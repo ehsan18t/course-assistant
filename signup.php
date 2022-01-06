@@ -76,7 +76,7 @@
 			<input id="text" type="text" placeholder="Enter Your First Name" name="f_name"><br><br>
 			<input id="text" type="text" placeholder="Enter Your Last Name" name="l_name"><br><br>
 			<input id="text" type="text" placeholder="Enter Your University Name" name="u_name"><br><br>
-			<input id="text" type="text" placeholder="Enter Your Departemt Name" name="d_name"><br><br>
+			<input id="text" type="text" placeholder="Enter Your Department Name" name="d_name"><br><br>
 			<input id="text" type="email" placeholder="Enter Your University email" name="user_name"><br><br>
 			<input id="text" type="password" placeholder="Enter Your Password" name="password"><br><br>
 			<input id="button" type="submit" value="Signup"><br><br>
