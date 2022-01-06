@@ -1,12 +1,14 @@
 <?php
+	session_start();
+	require_once '../config/pages.php';
 
-session_start();
+	if(isset($_SESSION['user_id']))
+	{
+		unset($_SESSION['user_id']);
+	}
 
-if(isset($_SESSION['user_id']))
-{
-	unset($_SESSION['user_id']);
-
-}
-
-header("Location: login.php");
-die;
+    ob_start();
+	header('Location: .'.LOGIN_PAGE);
+    ob_end_flush();
+    die();
+?>
