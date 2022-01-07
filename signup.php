@@ -15,7 +15,7 @@
         $user_name = $_POST['email'];
         $password = $_POST['password'];
         $domain = find_domain($user_name);
-        if(!empty($user_name) && !empty(password))
+        if(!empty($user_name) && !empty($password))
         {
             //$user_id = random_num(20);    
             $query = "insert into users(f_name,l_name,u_name,d_name,user_name,password,domain) 
