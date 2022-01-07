@@ -1,0 +1,19 @@
+{
+  "name": "TailWind",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:tailwind": "tailwind build src/styles.css -o styles.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.0.11"
+  },
+  "dependencies": {
+    "postcss": "^8.4.5",
+    "postcss-import": "^14.0.2"
+  }
+}
