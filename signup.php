@@ -1,49 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
 <?php
-	session_start();
-	require_once './config/config.php';
-	require_once './config/pages.php';
-	require_once INC_CONNECTION;
-	require_once INC_FUNCTION;
+    require_once 'header.php';
 
-	if($_SERVER['REQUEST_METHOD'] == "POST"){
+	if($_SERVER['REQUEST_METHOD'] == "POST")
+    {
+        //Here we are insert in the database 
+        //we take inputs from user and push them in the table 
+        $f_name = $_POST['firstName'];
+        $l_name = $_POST['lastName'];
+        $u_name = $_POST['universityName'];
+        $d_name = $_POST['department'];
+        $user_name = $_POST['email'];
+        $password = $_POST['password'];
+        $domain = find_domain($user_name);
+        if(!empty($user_name) && !empty(password))
+        {
+            //$user_id = random_num(20);    
+            $query = "insert into users(f_name,l_name,u_name,d_name,user_name,password,domain) 
+                    values('$f_name','$l_name','$u_name','$d_name','$user_name','$password','$domain')";
+            mysqli_query($con,$query);
 
-    //Here we are insert in the database 
-    //we take inputs from user and push them in the table 
-	$f_name = $_POST['firstName'];
-	$l_name = $_POST['lastName'];
-	$u_name = $_POST['universityName'];
-	$d_name = $_POST['department'];
-	$user_name = $_POST['email'];
-	$password = $_POST['password'];
-	$domain = find_domain($user_name);
-	if(!empty($user_name) && !empty(password)){
-        //$user_id = random_num(20);    
-        $query = "insert into users(f_name,l_name,u_name,d_name,user_name,password,domain) 
-				values('$f_name','$l_name','$u_name','$d_name','$user_name','$password','$domain')";
-		mysqli_query($con,$query);
-
-		header("Location: login.php");
-		die;
-	}
-	else{
-		echo "user name or password is wrong";
-	}
-}
-
+            header("Location: login.php");
+            die;
+        }
+        else
+        {
+            echo "user name or password is wrong";
+        }
+    }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Sign Up</title>
+<title>Sign Up</title>
 </head>
 
 <body>
+    <?php require_once 'template/nav-main.php'; ?>
+    <?php require_once 'template/nav-menu-for-non-logged-user.php'; ?>
     <div class="container">
         <div class="content">
             <div class="icon-center">

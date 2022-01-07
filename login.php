@@ -1,58 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
 <?php
-	session_start();
-	require_once './config/config.php';
-	require_once './config/pages.php';
-	require_once INC_CONNECTION;
-	require_once INC_FUNCTION;
+    require_once 'header.php';
 
+    if($_SERVER['REQUEST_METHOD'] == "POST")
+    {
+        $user_name = $_POST['email'];
+        $password = $_POST['password'];
 
-if($_SERVER['REQUEST_METHOD'] == "POST")
-{
-	$user_name = $_POST['email'];
-	$password = $_POST['password'];
+        if(!empty($user_name) && !empty($password) )
+        {
+            //here we read from database and verify the username and password
+            $query = "select * from users where user_name = '$user_name' limit 1";
+            $result = mysqli_query($con, $query);
 
-	if(!empty($user_name) && !empty($password) )
-	{
-		//here we read from database and verify the username and password
-		$query = "select * from users where user_name = '$user_name' limit 1";
-		$result = mysqli_query($con, $query);
-
-		if($result)
-		{
-			if($result && mysqli_num_rows($result) > 0)
-			{
-				$user_data = mysqli_fetch_assoc($result);
-				
-				if($user_data['password'] === $password)
-				{
-					$_SESSION['user_name'] = $user_data['user_name'];
-					header("Location: index.php");
-					die;
-				}
-			}
-		}
-		
-		echo "wrong username or password!";
-	}
-	else
-	{
-		echo "Email or password cannot be empty!";
-	}
-}
+            if($result)
+            {
+                if($result && mysqli_num_rows($result) > 0)
+                {
+                    $user_data = mysqli_fetch_assoc($result);
+                    
+                    if($user_data['password'] === $password)
+                    {
+                        $_SESSION['user_name'] = $user_data['user_name'];
+                        header("Location: index.php");
+                        die;
+                    }
+                }
+            }
+            
+            echo "wrong username or password!";
+        }
+        else
+        {
+            echo "Email or password cannot be empty!";
+        }
+    }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Login</title>
+<title>Sign In</title>
 </head>
 
 <body>
+    <?php require_once 'template/nav-main.php'; ?>
+    <?php require_once 'template/nav-menu-for-non-logged-user.php'; ?>
     <div class="container">
         <div class="content">
             <div class="icon-center">

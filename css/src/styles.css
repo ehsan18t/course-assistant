@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "tailwindcss/utilities";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+/* create a classes */
+.container {
+  @apply flex items-center justify-center min-h-screen bg-gray-300;
+}
+
+.content {
+  @apply px-8 py-6 mt-4 text-left bg-white shadow-lg rounded-2xl;
+}
+
+.icon-center {
+  @apply flex justify-center;
+}
+
+.icon-color {
+  @apply w-24 h-24 text-blue-600;
+}
+
+.title-login-bar {
+  @apply text-2xl font-bold text-center;
+}
+
+.input-login {
+  @apply h-16 w-full px-4 py-2 mt-2 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600;
+}
+
+.btn-login {
+  @apply h-14 w-24 px-6 py-2 mt-8 text-white font-sans font-bold bg-blue-600 rounded-lg hover:bg-blue-900;
+}
+
+.login-container {
+  @apply flex items-baseline justify-between;
+}
+
+.empty-email {
+  @apply text-sm tracking-wide text-red-600;
+}
+
+.forgot-password {
+  @apply text-lg font-sans font-semibold text-blue-600 hover:underline;
+}
+
+.block-label {
+  @apply block text-xl font-sans tracking-wider text-gray-600;
+}
+
+.margin-top-1-rem {
+  @apply mt-4;
+}
+
+.btn-new-acc {
+  @apply mt-8 w-full h-14 text-lg tracking-wider flex sm:inline-flex justify-center items-center bg-gradient-to-tr from-pink-500 to-red-400 hover:from-pink-600 hover:to-red-500 active:from-pink-700 active:to-red-600 focus-visible:ring ring-pink-300 text-white font-semibold text-center rounded-md outline-none transition duration-100 px-5 py-2;
+}
+
+/* Registration classes */
+.btn-register {
+  @apply h-14 w-1/3 mt-8 text-white font-sans font-bold bg-blue-600 rounded-lg hover:bg-blue-900;
+}
+
+/* .input-login-half {
+    @apply h-16 appearance-none block w-full leading-tight px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600;
+} */
+
+.content-block {
+  @apply mt-4 flex flex-wrap -mx-3 mb-6;
+}
+
+.first-of-two {
+  @apply w-full md:w-1/2 px-3 mb-6 md:mb-0;
+}
+
+.second-of-two {
+  @apply w-full md:w-1/2 px-3;
+}
+
+.one-of-three {
+  @apply w-full md:w-1/3 px-3 mb-6 md:mb-0;
+}
+
+.two-of-three {
+  @apply w-full md:w-2/3 px-3 mb-6 md:mb-0;
+}
+
+.option-block _ {
+  @apply relative;
+}
+
+.option-class {
+  @apply block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500;
+}
+
+.down-arrow {
+  @apply pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700;
+}
+
+.arrow-size {
+  @apply fill-current h-4 w-4;
+}
+
+.sm-text {
+  @apply px-2 text-gray-600 text-sm italic;
+}
+
+/* Header */
+.nav {
+  @apply flex items-center justify-between flex-wrap bg-blue-500 p-6;
+}
+
+.nav-logo {
+  @apply flex items-center flex-shrink-0 text-white mr-6;
+}
+
+.nav-logo-size {
+  @apply fill-current h-8 w-8 mr-2;
+}
+
+.nav-logo-text {
+  @apply font-semibold text-xl tracking-tight;
+}
+
+.nav-menu-icon-container {
+  @apply block lg:hidden;
+}
+
+.nav-menu-icon {
+  @apply flex items-center px-3 py-2 border rounded text-blue-200 border-blue-400 hover:text-white hover:border-white;
+}
+
+.nav-menu-icon-size {
+  @apply fill-current h-3 w-3;
+}
+
+.nav-menu-container {
+  @apply ml-6 w-full block flex-grow lg:flex lg:items-center lg:w-auto;
+}
+
+.nav-menu-container-right {
+  @apply float-right ml-6 w-full block flex-grow lg:flex lg:items-center lg:w-auto;
+}
+
+.nav-menu-wrapper {
+  @apply text-lg font-semibold lg:flex-grow;
+}
+
+.nav-menu-item {
+  @apply block mt-4 lg:inline-block lg:mt-0 text-blue-100 hover:text-white;
+}
+
+.mr-4c {
+  @apply mr-4;
+}
+
+.nav-menu-btn {
+  @apply text-lg px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0;
+}
+
+/* Search bar */
+.search-bar {
+  @apply flex justify-center items-center px-4 sm:px-6 lg:px-8;
+}
+
+.search-bar-container {
+  @apply relative sm:mr-10 lg:mr-32;
+}
+
+.search-bar-input {
+  @apply h-10 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none;
+}
+
+.search-btn-size {
+  @apply absolute top-2 right-3;
+}
+
+.search-btn-icon {
+  @apply text-gray-400 z-20 hover:text-gray-500;
+}
