@@ -1,11 +1,11 @@
 <?php
-session_start();
+    session_start();
 	require_once './config/config.php';
 	require_once './config/pages.php';
-require_once INC_CONNECTION;
-require_once INC_FUNCTION;
-//if user is already login then this index page will be shown in browser
-$user_data = check_login($con);
+    require_once INC_CONNECTION;
+    require_once INC_FUNCTION;
+    //if user is already login then this index page will be shown in browser
+    $user_data = check_login($con);
 ?>
 
 
@@ -21,7 +21,7 @@ $user_data = check_login($con);
 
 <div class="wrapper">
     <div class="left">
-        <img src="image\demo_images.png" 
+        <img src="img\avatar.png"
         alt="user" width="100">
         <h4><?php echo $user_data['f_name']." ".$user_data['l_name'];?></h4>
     </div>
