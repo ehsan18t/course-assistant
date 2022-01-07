@@ -77,10 +77,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                             <input type="password" placeholder="Password" class="input-login" name="password">
                 </div>
                 <div class="login-container">
-                    <button class="btn-login">Login</button>
+                    <button type="submit" class="btn-login">Login</button>
                     <a href="#" class="forgot-password">Forgot password?</a>
                 </div>
-                <button type="submit" class="btn-new-acc">Create new account</button>
+                <a href="<?php echo SIGNUP_PAGE; ?>">
+                    <div class="btn-new-acc">Create new account</div>
+                </a>
         </div>
         </form>
     </div>
