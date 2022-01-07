@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	session_destroy();
 	require_once '../config/pages.php';
 
 	if(isset($_SESSION['user_id']))
