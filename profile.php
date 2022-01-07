@@ -1,7 +1,9 @@
 <?php
 session_start();
-include("connection.php");
-include("function.php");
+	require_once './config/config.php';
+	require_once './config/pages.php';
+require_once INC_CONNECTION;
+require_once INC_FUNCTION;
 //if user is already login then this index page will be shown in browser
 $user_data = check_login($con);
 ?>
