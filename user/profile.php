@@ -8,7 +8,7 @@ $user_data = check_login($con);
 ?>
 
     <title>Home Page</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/styles.css">
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 </head>
