@@ -12,7 +12,7 @@
         if(!empty($user_name) && !empty($password) )
         {
             //here we read from database and verify the username and password
-            $query = "select * from users where user_name = '$user_name' limit 1";
+            $query = "SELECT * FROM users WHERE user_name = '$user_name' LIMIT 1";
             $result = mysqli_query($con, $query);
 
             if($result)

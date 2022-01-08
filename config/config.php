@@ -1,7 +1,6 @@
 <?php
-    define("DB_HOST", "localhost");
-    define("DB_USER", "root");
-    define("DB_PASS", "");
-    define("DB_NAME", "course_assistant");
-    define('DOMAIN', 'localhost/course-assistant');
-?>
+    const DB_HOST = "localhost";
+    const DB_USER = "root";
+    const DB_PASS = "";
+    const DB_NAME = "course_assistant";
+    const DOMAIN = 'localhost/course-assistant';

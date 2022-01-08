@@ -12,4 +12,3 @@
 	header('Location: .'.LOGIN_PAGE);
     ob_end_flush();
     die();
-?>

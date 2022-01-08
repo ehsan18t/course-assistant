@@ -6,7 +6,7 @@
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
     {
-        //Here we are insert in the database 
+        //Here we are inserted in the database
         //we take inputs from user and push them in the table 
         $f_name = $_POST['firstName'];
         $l_name = $_POST['lastName'];

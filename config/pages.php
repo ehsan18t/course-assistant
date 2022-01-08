@@ -1,10 +1,9 @@
 <?php
-    define('HOME_PAGE', './index.php');
-    define('LOGIN_PAGE', './login.php');
-    define('SIGNUP_PAGE', './signup.php');
-    define('PROFILE_PAGE', './profile.php');
-    // define('CHANGE_PASSWORD_PAGE', '/change_password.php'); // not used
-    define('INC_CONNECTION', './include/connection.php');
-    define('INC_FUNCTION', './include/function.php');
-    define('INC_LOGOUT', './include/logout.php');
-?>
+    const HOME_PAGE = './index.php';
+    const LOGIN_PAGE = './login.php';
+    const SIGNUP_PAGE = './signup.php';
+    const PROFILE_PAGE = './profile.php';
+    //const CHANGE_PASSWORD_PAGE = '/change_password.php'; // not used
+    const INC_CONNECTION = './include/connection.php';
+    const INC_FUNCTION = './include/function.php';
+    const INC_LOGOUT = './include/logout.php';

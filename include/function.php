@@ -1,50 +1,40 @@
 <?php
+    function check_login($con)
+    {
+        if (isset($_SESSION['user_name'])) {
+            $id = $_SESSION['user_name'];
+            $query = "SELECT * FROM users WHERE user_name = '$id' LIMIT 1";
 
+            $result = mysqli_query($con, $query);
+            if ($result && mysqli_num_rows($result) > 0)
+                return mysqli_fetch_assoc($result);
+        }
 
-function check_login($con)
-{
+        header("Location: login.php");
+        die;
+    }
 
-	if(isset($_SESSION['user_name']))
-	{
+    function random_num($length): string
+    {
+        //this is for user_id
+        $text = "";
+        if ($length < 5) {
+            $length = 5;
+        }
 
-		$id = $_SESSION['user_name'];
-		$query = "select * from users where user_name = '$id' limit 1";
+        $len = rand(4, $length);
 
-		$result = mysqli_query($con,$query);
-		if($result && mysqli_num_rows($result) > 0)
-		{
+        for ($i = 0; $i < $len; $i++) {
+            $text .= rand(0, 9);
+        }
 
-			$user_data = mysqli_fetch_assoc($result);
-			return $user_data;
-		}
-	}
+        return $text;
+    }
 
-	header("Location: login.php");
-	die;
-
-}
-
-function random_num($length)
-{
-   //this is for user_id
-	$text = "";
-	if($length < 5)
-	{
-		$length = 5;
-	}
-
-	$len = rand(4,$length);
-
-	for ($i=0; $i < $len; $i++) { 
-		$text .= rand(0,9);
-	}
-
-	return $text;
-}
-
-function find_domain($user_name){
-	$start = strripos($user_name,"@");
-    $length = strlen($user_name);
-    $domain = substr($user_name,$start+1,$length);
-    return $domain;
-}
+    function find_domain($user_name)
+    {
+        $start = strripos($user_name, "@");
+        $length = strlen($user_name);
+        $domain = substr($user_name, $start + 1, $length);
+        return $domain;
+    }
