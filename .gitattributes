@@ -3,4 +3,4 @@
 *.sql=auto
 
 # To avoid php files with only html detect as 'Hack'
-*.php linguist-language=html
+*.php linguist-language=php
