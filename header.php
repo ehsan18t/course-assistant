@@ -1,7 +1,6 @@
 <?php
     session_start();
-    require_once './config/config.php';
-    require_once './config/pages.php';
+    require_once 'config/config.php';
     require_once INC_CONNECTION;
     require_once INC_FUNCTION;
 ?>

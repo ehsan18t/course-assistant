@@ -3,4 +3,6 @@
     const DB_USER = "root";
     const DB_PASS = "";
     const DB_NAME = "course_assistant";
-    const DOMAIN = 'localhost/course-assistant';
+    const LOCAL_DOMAIN = 'http://localhost/course-assistant';
+
+    require_once 'pages.php';
