@@ -58,7 +58,7 @@
                 </svg>
             </div>
             <h3 class="title-login-bar">Login to your account</h3>
-            <form method="post">
+            <form action="<?php echo LOGIN_PAGE; ?>" method="post">
                 <div class="margin-top-1-rem">
                     <label class="block-label" for="email">Email<label>
                             <input type="text" placeholder="Email" class="input-login" name="email">
