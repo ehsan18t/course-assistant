@@ -16,8 +16,8 @@
     const HOME_PAGE = DOMAIN . '/index.php';
     const LOGIN_PAGE = DOMAIN . '/login.php';
     const SIGNUP_PAGE = DOMAIN . '/signup.php';
-    const PROFILE_PAGE = DOMAIN . '/profile/profile.php';
-    const INC_LOGOUT = DOMAIN . '/include/logout.php';
+    const PROFILE_PAGE = DOMAIN . '/user/profile.php';
+    const INC_LOGOUT = DOMAIN . '/user/logout.php';
     //const CHANGE_PASSWORD_PAGE = DOMAIN . '/change_password.php'; // not used
 
     // Includes
