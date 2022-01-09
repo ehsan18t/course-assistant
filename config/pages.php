@@ -9,7 +9,7 @@
         define("DOMAIN", $_SERVER['DOCUMENT_ROOT']);
         define("INC_DOMAIN", $_SERVER['DOCUMENT_ROOT']);
     }
-    
+
     // Link / Pages
     const HOME_PAGE = DOMAIN . '/index.php';
     const LOGIN_PAGE = DOMAIN . '/login.php';

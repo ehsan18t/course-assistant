@@ -4,7 +4,7 @@
 
 /* Custom Classes */
 .container {
-  @apply flex items-center justify-center min-h-screen bg-gray-300;
+  @apply flex items-center justify-center min-h-screen bg-gray-200;
 }
 
 .content {
@@ -106,7 +106,7 @@
 
 /* Header */
 .nav {
-  @apply flex items-center justify-between flex-wrap bg-blue-500 p-6 shadow-xl drop-shadow-xl transition-shadow;
+  @apply flex items-center justify-between flex-wrap bg-blue-500 p-6 shadow-2xl transition-shadow;
 }
 
 .nav-logo {
