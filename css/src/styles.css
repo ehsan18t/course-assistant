@@ -2,11 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "tailwindcss/utilities";
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-
-/* create a classes */
+/* Custom Classes */
 .container {
   @apply flex items-center justify-center min-h-screen bg-gray-300;
 }
@@ -88,7 +84,7 @@
   @apply w-full md:w-2/3 px-3 mb-6 md:mb-0;
 }
 
-.option-block _ {
+.option-block {
   @apply relative;
 }
 
@@ -110,7 +106,7 @@
 
 /* Header */
 .nav {
-  @apply flex items-center justify-between flex-wrap bg-blue-500 p-6;
+  @apply flex items-center justify-between flex-wrap bg-blue-500 p-6 shadow-xl drop-shadow-xl transition-shadow;
 }
 
 .nav-logo {
