@@ -1,17 +1,15 @@
 <?php
     if (DB_HOST == "localhost")
     {
-        define("DOMAIN", LOCAL_DOMAIN);
-        define("INC_DOMAIN", $_SERVER['DOCUMENT_ROOT'] . '/course-assistant');
+        define("DOMAIN", SITE_DOMAIN.SITE_DIR);
+        define("INC_DOMAIN", $_SERVER['DOCUMENT_ROOT'] . SITE_DIR);
     }
     else
     {
         define("DOMAIN", $_SERVER['DOCUMENT_ROOT']);
         define("INC_DOMAIN", $_SERVER['DOCUMENT_ROOT']);
     }
-
-
-
+    
     // Link / Pages
     const HOME_PAGE = DOMAIN . '/index.php';
     const LOGIN_PAGE = DOMAIN . '/login.php';
