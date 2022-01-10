@@ -1,6 +1,7 @@
 CREATE TABLE users (
     f_name varchar(30) NOT NULL,
     l_name varchar(30) NOT NULL,
+    profile_pic_url varchar(300),
     university varchar(100) NOT NULL,
     department varchar(100) NOT NULL,
     email varchar(50) NOT NULL,
