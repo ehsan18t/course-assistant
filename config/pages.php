@@ -35,3 +35,11 @@
     const IMG = array(
         'avatar' =>  DOMAIN . '/img/avatar.png'
     );
+
+    const DIR = array(
+        'uploads' => DOMAIN . '/uploads/'
+    );
+
+    const INC_DIR = array(
+        'uploads' => INC_DOMAIN . '/uploads/'
+    );

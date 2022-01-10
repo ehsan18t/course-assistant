@@ -18,7 +18,7 @@ $user_data = check_login($conn);
 
     <div class="wrapper">
         <div class="left">
-            <img src="<?php echo IMG['avatar']; ?>" alt="user" width="100">
+            <img src="<?php echo $user_data['profile_pic_url']; ?>" alt="user" width="100px" height="100px">
             <h4><?php echo $user_data['f_name']." ".$user_data['l_name'];?></h4>
         </div>
         <div class="right">
