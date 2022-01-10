@@ -1,11 +1,11 @@
 <?php
-    function check_login($con)
+    function check_login($conn)
     {
-        if (isset($_SESSION['user_name'])) {
-            $id = $_SESSION['user_name'];
-            $query = "SELECT * FROM users WHERE user_name = '$id' LIMIT 1";
+        if (isset($_SESSION['email'])) {
+            $id = $_SESSION['email'];
+            $query = "SELECT * FROM users WHERE email = '$id'";
 
-            $result = mysqli_query($con, $query);
+            $result = $conn -> query($query);
             if ($result && mysqli_num_rows($result) > 0)
                 return mysqli_fetch_assoc($result);
         }
