@@ -1,5 +1,6 @@
 <?php
 include_once '../header.php';
+$user_data = check_login($conn);
 
 if (isset($_POST['submit'])) {
     $file = $_FILES['file'];
@@ -18,13 +19,13 @@ if (isset($_POST['submit'])) {
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
             if ($fileSize < 100000000) {
-                unlink($_SESSION['profile_pic_url']);
 
                 $fileNameNew = uniqid('', true).".".$fileActualExt;
                 $fileDestination = INC_DIR['uploads'].$fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
                 $conn->query("UPDATE users SET profile_pic_url = '". DIR['uploads'].$fileNameNew . "' WHERE email = '". $_SESSION['email'] ."'");
                 header("Location: " . PROFILE_PAGE);
+                unlink(INC_DIR['uploads'] . str_replace(DIR['uploads'], "", $user_data['profile_pic_url']));
             } else {
                 echo "Your file is too big!";
             }
