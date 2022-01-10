@@ -14,27 +14,9 @@
         die;
     }
 
-    function random_num($length): string
+    function find_domain($email)
     {
-        //this is for user_id
-        $text = "";
-        if ($length < 5) {
-            $length = 5;
-        }
-
-        $len = rand(4, $length);
-
-        for ($i = 0; $i < $len; $i++) {
-            $text .= rand(0, 9);
-        }
-
-        return $text;
-    }
-
-    function find_domain($user_name)
-    {
-        $start = strripos($user_name, "@");
-        $length = strlen($user_name);
-        $domain = substr($user_name, $start + 1, $length);
-        return $domain;
+        $start = strripos($email, "@") + 1;
+        $length = strlen($email);
+        return substr($email, $start, $length);
     }
