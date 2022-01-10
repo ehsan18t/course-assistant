@@ -6,27 +6,22 @@
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
-        $user_name = $_POST['email'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
 
-        if(!empty($user_name) && !empty($password) )
+        if(!empty($email) && !empty($password) )
         {
             //here we read from database and verify the username and password
-            $query = "SELECT * FROM users WHERE user_name = '$user_name' LIMIT 1";
-            $result = mysqli_query($con, $query);
+            $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+            $result = mysqli_query($conn, $query);
 
             if($result)
             {
-                if($result && mysqli_num_rows($result) > 0)
+                if(mysqli_num_rows($result) > 0)
                 {
-                    $user_data = mysqli_fetch_assoc($result);
-                    
-                    if($user_data['password'] === $password)
-                    {
-                        $_SESSION['user_name'] = $user_data['user_name'];
-                        header("Location: index.php");
-                        die;
-                    }
+                    $_SESSION['email'] = $email;
+                    header("Location: index.php");
+                    die;
                 }
             }
             

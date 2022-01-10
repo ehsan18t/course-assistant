@@ -3,33 +3,8 @@
 <html lang="en">
 <?php
     require_once './header.php';
-
-	if($_SERVER['REQUEST_METHOD'] == "POST")
-    {
-        //Here we are inserted in the database
-        //we take inputs from user and push them in the table 
-        $f_name = $_POST['firstName'];
-        $l_name = $_POST['lastName'];
-        $u_name = $_POST['universityName'];
-        $d_name = $_POST['department'];
-        $user_name = $_POST['email'];
-        $password = $_POST['password'];
-        $domain = find_domain($user_name);
-        if(!empty($user_name) && !empty($password))
-        {
-            //$user_id = random_num(20);    
-            $query = "insert into users(f_name,l_name,u_name,d_name,user_name,password,domain) 
-                    values('$f_name','$l_name','$u_name','$d_name','$user_name','$password','$domain')";
-            mysqli_query($con,$query);
-
-            header("Location: login.php");
-            die;
-        }
-        else
-        {
-            echo "user name or password is wrong";
-        }
-    }
+    require_once INC_SIGNUP_FUNCTION;
+    register($conn, $_POST);
 ?>
 
 <title>Sign Up</title>
@@ -67,29 +42,29 @@
                 <div class="content-block">
                     <div class="two-of-three">
                         <label class="block-label" for="university">University<label>
-                                <div class="option-block">
-                                    <select class="option-class input-login" id="university" name="universityName">
-                                        <option>United International University</option>
-                                        <option>Test 2</option>
-                                        <option>Test 3</option>
-                                    </select>
-                                </div>
+                            <div class="option-block">
+                                <select class="option-class input-login" id="university" name="university">
+                                    <option>United International University</option>
+                                    <option>Test 2</option>
+                                    <option>Test 3</option>
+                                </select>
+                            </div>
                     </div>
                     <div class="one-of-three">
-                        <label class="block-label" name="department" for="department">Department<label>
-                                <div class="option-block">
-                                    <select class="option-class input-login" id="department" name="department">
-                                        <option>CSE</option>
-                                        <option>EEE</option>
-                                        <option>BBA</option>
-                                    </select>
-                                    <!-- <div class="down-arrow">
-                                        <svg class="arrow-size" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                            <path
-                                                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                        </svg>
-                                    </div> -->
-                                </div>
+                        <label class="block-label" for="department">Department<label>
+                            <div class="option-block">
+                                <select class="option-class input-login" id="department" name="department">
+                                    <option>CSE</option>
+                                    <option>EEE</option>
+                                    <option>BBA</option>
+                                </select>
+                                <!-- <div class="down-arrow">
+                                    <svg class="arrow-size" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    </svg>
+                                </div> -->
+                            </div>
                     </div>
                 </div>
                 <!-- Email -->
@@ -103,7 +78,7 @@
                             <input type="password" name="password" placeholder="Password" class="input-login">
                             <p class="sm-text">Make it as long and as crazy as you'd like</p>
                 </div>
-                <div class="login-container"><button type="submit" class="btn-register">Sign Up</button>
+                <div class="login-container"><button type="submit" name="signup" class="btn-register">Sign Up</button>
                     <a href="<?php echo LOGIN_PAGE; ?>" class="forgot-password">Already have an account?</a>
                 </div>
         </div>
