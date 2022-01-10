@@ -11,15 +11,6 @@ CREATE TABLE users (
     CONSTRAINT pk_users PRIMARY KEY(email)
 );
 
---  Relational Table -- (users - trimesters)
-CREATE TABLE users_creates_trimesters (
-    email varchar(50),
-    t_id INT,
-    CONSTRAINT fk_users FOREIGN KEY (email) REFERENCES users(email),
-    CONSTRAINT fk_trimesters FOREIGN KEY (t_id) REFERENCES trimesters(t_id)
-);
-
-
 CREATE TABLE trimesters (
     t_id INT NOT NULL,
     t_name varchar(20) NOT NULL,
@@ -43,16 +34,6 @@ CREATE TABLE courses (
     CONSTRAINT pk_courses PRIMARY KEY (c_id)
 );
 
---  Relational Table -- (trimester - courses)
-CREATE TABLE trimesters_has_courses (
-    email varchar(50),
-    c_id INT,
-    t_id INT,
-    CONSTRAINT fk_users FOREIGN KEY (email) REFERENCES users(email),
-    CONSTRAINT fk_trimesters FOREIGN KEY (t_id) REFERENCES trimesters(t_id),
-    CONSTRAINT fk_courses FOREIGN KEY (c_id) REFERENCES courses(c_id)
-);
-
 CREATE TABLE assessments (
     assess_id INT NOT NULL,
     expected_marks decimal(5, 2),
@@ -62,4 +43,35 @@ CREATE TABLE assessments (
     -- how many asses will happen
     count INT,
     CONSTRAINT pk_assessment PRIMARY KEY (assess_id)
+);
+
+
+
+--  Relational/Junction Table -- (trimester - courses)
+CREATE TABLE trimesters_has_courses (
+    u_id INT NOT NULL,
+    c_id INT NOT NULL,
+    t_id INT NOT NULL,
+    CONSTRAINT pk_trimesters_has_courses PRIMARY KEY (
+            u_id,
+            c_id,
+            t_id
+        ),
+    CONSTRAINT fk_t_c_uid FOREIGN KEY (u_id) REFERENCES users(u_id),
+    CONSTRAINT fk_t_c_tid FOREIGN KEY (t_id) REFERENCES trimesters(t_id),
+    CONSTRAINT fk_t_c_cid FOREIGN KEY (c_id) REFERENCES courses(c_id)
+);
+
+--  Relational/Junction Table -- (courses - assessments)
+CREATE TABLE courses_has_assessments (
+    c_id INT NOT NULL,
+    u_id INT NOT NULL,
+    assess_id INT NOT NULL,
+    CONSTRAINT pk_trimesters_has_courses PRIMARY KEY (
+            assess_id,
+            c_id
+        ),
+    CONSTRAINT fk_c_a_cid FOREIGN KEY (c_id) REFERENCES courses(c_id),
+    CONSTRAINT fk_c_a_uid FOREIGN KEY (u_id) REFERENCES users(u_id),
+    CONSTRAINT fk_c_a_assess_id FOREIGN KEY (assess_id) REFERENCES assessments(assess_id)
 );
