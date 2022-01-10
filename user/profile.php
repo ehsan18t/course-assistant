@@ -8,9 +8,8 @@ $user_data = check_login($conn);
 ?>
 
     <title>Home Page</title>
-    <link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/styles.css">
-<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="<?php echo CSS['style.css'] ?>">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 </head>
 
 <body>
@@ -19,7 +18,7 @@ $user_data = check_login($conn);
 
     <div class="wrapper">
         <div class="left">
-            <img src="../img/avatar.png" alt="user" width="100">
+            <img src="<?php echo IMG['avatar']; ?>" alt="user" width="100">
             <h4><?php echo $user_data['f_name']." ".$user_data['l_name'];?></h4>
         </div>
         <div class="right">
@@ -28,12 +27,11 @@ $user_data = check_login($conn);
                 <div class="info_data">
                     <div class="data">
                         <h4>Email : </h4>
-                        <p><?php echo $user_data['user_name'];?></p>
+                        <p><?php echo $user_data['email'];?></p>
                         <br>
                         <h4>Phone</h4>
                         <p><?php echo "NOT GIVEN";?></p>
                     </div>
-
                 </div>
             </div>
 
@@ -42,11 +40,11 @@ $user_data = check_login($conn);
                 <div class="projects_data">
                     <div class="data">
                         <h4>Name : </h4>
-                        <p><?php echo $user_data['u_name'];?></p>
+                        <p><?php echo $user_data['university'];?></p>
                     </div>
                     <div class="data">
                         <h4>Department</h4>
-                        <p><?php echo $user_data['d_name'];?></p>
+                        <p><?php echo $user_data['department'];?></p>
                     </div>
                 </div>
             </div>
@@ -64,20 +62,3 @@ $user_data = check_login($conn);
 </body>
 
 </html>
-
-
-
-
-<!-- <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Hello <?php 
-      // echo ", ".$user_data['f_name'];
-    ?>
-</body>
-</html> -->

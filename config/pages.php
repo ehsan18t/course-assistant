@@ -25,3 +25,13 @@
     const TEM_NAV_MAIN = INC_DOMAIN . '/template/nav-main.php';
     const TEM_NAV_LOGGED = INC_DOMAIN . '/template/nav-menu-for-logged-user.php';
     const TEM_NAV_NON_LOGGED = INC_DOMAIN . '/template/nav-menu-for-non-logged-user.php';
+
+    // Resources
+    const CSS = array(
+        'styles.css' => DOMAIN . '/css/styles.css',
+        'style.css' => DOMAIN . '/css/style.css'
+    );
+
+    const IMG = array(
+        'avatar' =>  DOMAIN . '/img/avatar.png'
+    );
