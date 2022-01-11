@@ -42,6 +42,7 @@
        'connection' => INC_DOMAIN . '/include/connection.php',
         'main-function' => INC_DOMAIN . '/include/function.php',
         'signup-function' => INC_DOMAIN . '/include/signup_function.php',
+        'edit-profile-function' => INC_DOMAIN . '/include/edit-profile-function.php',
         'logout' => DOMAIN . '/user/logout.php',
         'nav-main' => INC_DOMAIN . '/template/nav-main.php',
         'nav-logged' => INC_DOMAIN . '/template/nav-menu-for-logged-user.php',
