@@ -20,7 +20,7 @@
                 if(mysqli_num_rows($result) > 0)
                 {
                     $_SESSION['email'] = $email;
-                    header("Location: index.php");
+                    header("Location: ". PAGES['home']);
                     die;
                 }
             }
@@ -38,8 +38,8 @@
 </head>
 
 <body>
-    <?php require_once TEM_NAV_MAIN; ?>
-    <?php require_once TEM_NAV_NON_LOGGED; ?>
+    <?php require_once INCLUDES['nav-main-template']; ?>
+    <?php require_once INCLUDES['nav-non-logged-template']; ?>
     <div class="container">
         <div class="content">
             <div class="icon-center">
@@ -53,7 +53,7 @@
                 </svg>
             </div>
             <h3 class="title-login-bar">Login to your account</h3>
-            <form action="<?php echo LOGIN_PAGE; ?>" method="post">
+            <form action="<?php echo PAGES['login']; ?>" method="post">
                 <div class="margin-top-1-rem">
                     <label class="block-label" for="email">Email<label>
                             <input type="text" placeholder="Email" class="input-login" name="email">
@@ -67,7 +67,7 @@
                     <button type="submit" class="btn-login">Login</button>
                     <a href="#" class="forgot-password">Forgot password?</a>
                 </div>
-                <a href="<?php echo SIGNUP_PAGE; ?>">
+                <a href="<?php echo PAGES['signup']; ?>">
                     <div class="btn-new-acc">Create new account</div>
                 </a>
         </div>

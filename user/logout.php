@@ -9,6 +9,6 @@
 	}
 
     ob_start();
-	header('Location: ' . LOGIN_PAGE);
+	header('Location: ' . PAGES['login']);
     ob_end_flush();
     die();

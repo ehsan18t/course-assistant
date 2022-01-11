@@ -10,7 +10,7 @@
                 return mysqli_fetch_assoc($result);
         }
 
-        header("Location:" . LOGIN_PAGE);
+        header("Location:" . PAGES['login']);
         die;
     }
 

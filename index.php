@@ -11,8 +11,8 @@
 </head>
 
 <body>
-    <?php require_once TEM_NAV_MAIN; ?>
-    <?php require_once TEM_NAV_LOGGED; ?>
+<?php require_once INCLUDES['nav-main-template']; ?>
+<?php require_once INCLUDES['nav-logged-template']; ?>
 </body>
 
 </html>

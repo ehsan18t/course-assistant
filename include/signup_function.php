@@ -18,7 +18,7 @@ function register($conn, $POST)
             $query = "INSERT INTO users(f_name, l_name, university, department, email, password, domain, profile_pic_url) 
                 VALUES('$f_name','$l_name','$university','$department','$email','$password','$domain', '$profile_pic_url')";
             $conn -> query($query);
-            header("Location: " . LOGIN_PAGE);
+            header("Location: " . PAGES['login']);
             die();
         } else {
             echo "Signup Failed!";

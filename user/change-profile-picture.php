@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
                 $fileDestination = INC_DIR['uploads'].$fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
                 $conn->query("UPDATE users SET profile_pic_url = '". DIR['uploads'].$fileNameNew . "' WHERE email = '". $_SESSION['email'] ."'");
-                header("Location: " . PROFILE_PAGE);
+                header("Location: " . PAGES['profile']);
                 unlink(INC_DIR['uploads'] . str_replace(DIR['uploads'], "", $user_data['profile_pic_url']));
             } else {
                 echo "Your file is too big!";
@@ -44,8 +44,8 @@ if (isset($_POST['submit'])) {
 
 <body>
     <?php
-        require_once TEM_NAV_MAIN;
-        require_once TEM_NAV_LOGGED;
+        require_once INCLUDES['nav-main-template'];
+        require_once INCLUDES['nav-logged-template'];
     ?>
 
 

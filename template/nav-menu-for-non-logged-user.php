@@ -4,9 +4,9 @@
     <div class="nav-menu-container-right">
         <?php
             if ($page == 'login.php')
-                echo '<a href="' . SIGNUP_PAGE . '" class="nav-menu-btn">Sign Up</a>';
+                echo '<a href="' . PAGES['signup'] . '" class="nav-menu-btn">Sign Up</a>';
             else
-                echo '<a href="' . LOGIN_PAGE . '" class="nav-menu-btn">Sign In</a>';
+                echo '<a href="' . PAGES['login'] . '" class="nav-menu-btn">Sign In</a>';
         ?>
     </div>
 </div>

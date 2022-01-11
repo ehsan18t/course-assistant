@@ -3,7 +3,7 @@
 <html lang="en">
 <?php
     require_once './header.php';
-    require_once INC_SIGNUP_FUNCTION;
+    require_once INCLUDES['signup-function'];
     register($conn, $_POST);
 ?>
 
@@ -11,8 +11,8 @@
 </head>
 
 <body>
-    <?php require_once TEM_NAV_MAIN; ?>
-    <?php require_once TEM_NAV_NON_LOGGED; ?>
+    <?php require_once INCLUDES['nav-main-template']; ?>
+    <?php require_once INCLUDES['nav-non-logged-template']; ?>
     <div class="container">
         <div class="content">
             <div class="icon-center">
@@ -79,7 +79,7 @@
                             <p class="sm-text">Make it as long and as crazy as you'd like</p>
                 </div>
                 <div class="login-container"><button type="submit" name="signup" class="btn-register">Sign Up</button>
-                    <a href="<?php echo LOGIN_PAGE; ?>" class="forgot-password">Already have an account?</a>
+                    <a href="<?php echo PAGES['login']; ?>" class="forgot-password">Already have an account?</a>
                 </div>
         </div>
         </form>
