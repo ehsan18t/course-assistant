@@ -17,6 +17,7 @@
         'signup' => DOMAIN . '/signup.php',
         'profile' => DOMAIN . '/user/profile.php',
         'edit-profile' =>  DOMAIN . '/user/edit-profile.php',
+        'change-profile-pic' =>  DOMAIN . '/user/change-profile-picture.php',
         'logout' => DOMAIN . '/user/logout.php'
     );
 

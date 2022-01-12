@@ -7,7 +7,7 @@
   margin-bottom: 8rem;
   display: flex;
   height: auto;
-  max-width: 56rem;
+  max-width: 72rem;
   flex-wrap: nowrap;
   align-items: center
 }
@@ -43,7 +43,7 @@
   }
 
   .profile-card {
-    width: 60%
+    width: 75%
   }
 
   .profile-card {
@@ -101,7 +101,7 @@
 
 @media (min-width: 1024px) {
   .profile-big-img-container {
-    width: 40%
+    width: 25%
   }
 }
 
