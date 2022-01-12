@@ -11,7 +11,7 @@ function register($conn, $POST)
         $email = $POST['email'];
         $password = $POST['password'];
         $domain = find_domain($email);
-        $profile_pic_url = IMG['avatar'];
+        $profile_pic_url = $POST['avatar'];
         $duplicate = mysqli_num_rows($conn -> query("SELECT email FROM users WHERE email ='$email'")) > 0;
 
         if(!empty($f_name) && !empty($l_name) && !empty($email) && !empty($password) && !$duplicate) {
