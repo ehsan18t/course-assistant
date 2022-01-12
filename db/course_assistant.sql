@@ -78,7 +78,7 @@ CREATE TABLE courses_has_assessments (
 );
 
 
---Primary Massaging Table
+-- Primary Massaging Table
 CREATE TABLE massages(
     msg_id int(11) NOT NULL AUTO_INCREMENT,
     incoming_msg_id int(255) NOT NULL,
