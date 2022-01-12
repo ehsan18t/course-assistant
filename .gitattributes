@@ -1,0 +1,6 @@
+# Auto detect * files and perform LF normalization
+* text=auto
+*.sql=auto
+
+# To avoid php files with only html detect as 'Hack'
+*.php linguist-language=php
