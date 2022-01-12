@@ -16,8 +16,8 @@ CREATE TABLE trimesters (
     t_id INT NOT NULL,
     t_name varchar(20) NOT NULL,
     is_running BOOLEAN NOT NULL,
-    start_date timestamp,
-    end_date timestamp,
+    start_date timestamp NULL Default NULL,
+    end_date timestamp NULL Default NULL,
     fees decimal(8, 2),
     scholarship INT,
     CONSTRAINT pk_trimesters PRIMARY KEY (t_id)
