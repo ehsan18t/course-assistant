@@ -106,7 +106,7 @@
 
 /* Header */
 .nav {
-  @apply flex items-center justify-between flex-wrap bg-blue-500 p-6 shadow-2xl transition-shadow;
+  @apply flex items-center justify-between flex-wrap bg-blue-500 p-6 shadow-xl;
 }
 
 .nav-logo {
