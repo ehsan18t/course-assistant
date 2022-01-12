@@ -70,7 +70,7 @@
 				</tr>
 				<tr>
 					<td>
-						<a class="btn btn-success" href="post/files/<?php echo $post['file_link']; ?>" download>Download</a>
+						<a class="btn btn-success" href="/<?php echo $post['file_link']; ?>" download>Download</a>
                         <a class="btn btn-warning" href="#">Comment</a>
 					</td>
 				</tr>

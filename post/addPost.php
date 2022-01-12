@@ -11,6 +11,13 @@
            $upload_lmsg = add_post($conn, $_POST,$user_data);
        }
        $posts = desplay_my_data($conn,$user_data);
+
+       if(isset($_GET['status'])){
+        if($_GET['status']='delete'){
+            $delete_id = $_GET['id'];
+            $delmsg =  delete_data($conn,$delete_id);
+        }
+    }
    
 ?>
 
@@ -35,8 +42,8 @@
         //} ?>
         <form class="form" action="" method="post" enctype="multipart/form-data">
         <?php if(isset($upload_lmsg)){echo $upload_lmsg;} ?>
-            <input class="form-control mb-2" type="text" name="course_name" placeholder="Enter Course Code" require>
-            <input class="form-control mb-2" type="text" name="course_code" placeholder="Enter Course Name" require>
+            <input class="form-control mb-2" type="text" name="course_code" placeholder="Enter Course Code" require>
+            <input class="form-control mb-2" type="text" name="course_name" placeholder="Enter Course Name" require>
             <input class="form-control mb-2" type="text" name="course_des" placeholder="Description" require>
             <label for="file">Upload Your Files</label>
             <input class="form-control mb-2" type="file" name="course_file" require >
@@ -64,8 +71,8 @@
                     <td><?php echo $post['course_des']; ?></td>
                     <td><?php echo $post['file_link']; ?></td>
                     <td>
-                        <a class="btn btn-success" href="#">Edit</a>
-                        <a class="btn btn-warning" href="#">Delete</a>
+                        <a class="btn btn-success" href="editPost.php?status=edit&&id=<?php echo $post['p_id']; ?>">Edit</a>
+                        <a class="btn btn-warning" href="?status=delete&&id=<?php echo $post['p_id']?>" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a>
                     </td>
                 </tr>
                 <?php } ?>

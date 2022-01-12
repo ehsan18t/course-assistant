@@ -13,8 +13,8 @@ $user_data = check_login($conn);
 </head>
 
 <body>
-<?php //require_once INCLUDES['nav-main-template']; ?>
-<?php //require_once INCLUDES['nav-logged-template']; ?>
+<?php require_once INCLUDES['nav-main-template']; ?>
+<?php require_once INCLUDES['nav-logged-template']; ?>
 
     <div class="wrapper">
         <div class="left">
@@ -51,11 +51,9 @@ $user_data = check_login($conn);
 
             <div class="social_media">
                 <ul>
-                    <li><a href="edit-profile.php"><i class="#">Edit</i></a></li>
-                    <li><a href="change-profile-picture.php"><i class="#"></i>Change Picture</a></li>
-                    <!-- <li><a href="#"><i class="fab fa-instagram"></i></a></li> -->
-                    <!-- <a class="btn btn-success" href="edit-profile.php">Edit</a>
-                    <a class="btn btn-success" href="change-profile-picture.php">Change Picture</a> -->
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                 </ul>
             </div>
         </div>
