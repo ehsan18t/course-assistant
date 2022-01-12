@@ -25,7 +25,7 @@
 <?php while($post=mysqli_fetch_assoc($posts)){ ?>
 <div class="container my-4 p-4 shadow">
 
-   <h2><a style="text-decoration: none;" href="index.php">Course name</a></h2>
+   <h2><a style="text-decoration: none;" href="index.php"></a></h2>
         <table class="table table-responsive">
             <thead>
                 	<tr>
@@ -47,13 +47,22 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><img style="height: 100px;" src="upload/?php echo $student['stg_img']; ?>"></td>  
+                    <?php
+                       $admin_email = $post['post_admin'];
+                       $image_link = admin_image($conn,$admin_email);
+                       $admain = mysqli_fetch_assoc($image_link);
+                    ?>
+                    <td><img style="height: 100px;" src="<?php echo $admain['profile_pic_url']; ?>"></td>  
+                    <!-- -->
                 </tr>
 				<tr>
-					<td><h3>Name : <?php echo $post['course_name']; ?> </h3></td>
+					<td><h3>Admin Name : <?php echo $admain['f_name']; ?> </h3></td>
+				</tr>
+                <tr>
+					<td><h4>Course Name : <?php echo $post['course_name']; ?> </h3></td>
 				</tr>
 				<tr>
-                    <td>Course code : <?php echo $post['course_code']; ?></td>
+                    <td><h4>Course code : <?php echo $post['course_code']; ?></h4></td>
   
                 </tr>
 				<tr>
@@ -61,7 +70,7 @@
 				</tr>
 				<tr>
 					<td>
-						<a class="btn btn-success" href="#">Download</a>
+						<a class="btn btn-success" href="<?php echo $post['file_link']; ?>">Download</a>
                         <a class="btn btn-warning" href="#">Comment</a>
 					</td>
 				</tr>

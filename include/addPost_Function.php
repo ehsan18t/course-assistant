@@ -32,7 +32,6 @@
       }
     }
 
-
     function desplay_my_data($conn,$user_data){
         $post_admin = $user_data['email'];
         $query = "SELECT * FROM posts WHERE post_admin='$post_admin'";
@@ -49,4 +48,12 @@
                 return $returndata;
             }
        }
+    
+    function admin_image($conn,$admin_email){
+        $query = "SELECT * FROM users WHERE email='$admin_email'";
+            if(mysqli_query($conn, $query)){
+                $returndata = mysqli_query($conn, $query);
+                return $returndata;
+            }
+    }
 ?>
