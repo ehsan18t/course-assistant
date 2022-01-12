@@ -1,0 +1,56 @@
+/* Profile */
+.profile-container {
+    @apply max-w-4xl flex items-center h-auto lg:h-screen flex-nowrap mx-auto my-32 lg:my-0;
+}
+
+.profile-card {
+    @apply w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0;
+}
+
+.profile-wrapper {
+    @apply p-4 md:p-12 text-center lg:text-left;
+}
+
+.profile-img {
+    @apply block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center;
+}
+
+.profile-big-img-container {
+    @apply w-full lg:w-2/5;
+}
+
+.profile-big-img {
+    @apply rounded-none lg:rounded-lg shadow-2xl hidden lg:block;
+}
+
+.profile-name-decoration {
+    @apply text-3xl font-bold pt-8 lg:pt-0;
+}
+
+.profile-horizontal-line {
+    @apply mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25;
+}
+
+.profile-work-icon {
+    @apply pt-4 text-base font-bold flex items-center justify-center lg:justify-start;
+}
+
+.profile-work-icon-size {
+    @apply h-4 fill-current text-green-700 pr-4;
+}
+
+.profile-button-container {
+    @apply pt-12 pb-8;
+}
+
+.profile-button {
+    @apply bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full transition duration-300;
+}
+
+.profile-social-icon-container {
+    @apply mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-between;
+}
+
+.profile-social-icon {
+    @apply h-6 fill-current text-gray-600 hover:text-green-700;
+}
