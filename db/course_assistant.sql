@@ -80,16 +80,26 @@ CREATE TABLE courses_has_assessments (
 
 --Primary Massaging Table
 CREATE TABLE massages(
-	c_id INT NOT NULL,
-    u_id INT NOT NULL,
     msg_id int(11) NOT NULL AUTO_INCREMENT,
     incoming_msg_id int(255) NOT NULL,
     outgoing_msg_id int(255) NOT NULL,
     msg varchar(1000) NOT NULL,
-    CONSTRAINT pk_massages PRIMARY KEY (msg_id),
+    CONSTRAINT pk_massages PRIMARY KEY (msg_id)
+);
+
+--  Relational/Junction Table -- (user - massages)
+CREATE TABLE user_has_massages(
+    u_id INT NOT NULL,
+    c_id INT NOT NULL,
+    msg_id int(11) NOT NULL,
+    CONSTRAINT pk_user_has_massages PRIMARY KEY (
+            msg_id,
+            u_id,
+            c_id
+        ),
+
+    CONSTRAINT fk_massages Foreign KEY(msg_id) REFERENCES massages(msg_id),
     CONSTRAINT fk_courses_c_id FOREIGN KEY(c_id) REFERENCES courses(c_id),
     CONSTRAINT fk_users_u_id FOREIGN KEY(u_id) REFERENCES users(u_id)
 );
-
-
 
