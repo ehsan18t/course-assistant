@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<?php
+    require_once './header.php';
+    require_once INCLUDES['addPost-function'];
+    //if user is already login then this index page will be shown in browser
+    $user_data = check_login($conn);
+    $posts = view_post($conn,$user_data);
+?>
+
+<title>Home Page</title>
+</head>
+
+<body>
+<?php require_once INCLUDES['nav-main-template']; ?>
+<?php require_once INCLUDES['nav-logged-template']; ?>
+<?php while($post=mysqli_fetch_assoc($posts)){ ?>
+    <div class="container my-4 p-4 shadow">
+
+        <h2><a style="text-decoration: none;" href="index.php"></a></h2>
+        <table class="table table-responsive">
+            <thead>
+            <tr>
+                <th></th>
+            </tr>
+            <tr>
+                <th></th>
+            </tr>
+            <tr>
+                <th></th>
+            </tr>
+            <tr>
+                <th></th>
+            </tr>
+            <tr>
+                <th></th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr>
+                <?php
+                $admin_email = $post['post_admin'];
+                $image_link = admin_image($conn,$admin_email);
+                $admain = mysqli_fetch_assoc($image_link);
+                ?>
+                <td><img style="height: 100px;" src="<?php echo $admain['profile_pic_url']; ?>"></td>
+                <!-- -->
+            </tr>
+            <tr>
+                <td><h3>Admin Name : <?php echo $admain['f_name']; ?> </h3></td>
+            </tr>
+            <tr>
+                <td><h4>Course Name : <?php echo $post['course_name']; ?> </h3></td>
+            </tr>
+            <tr>
+                <td><h4>Course code : <?php echo $post['course_code']; ?></h4></td>
+
+            </tr>
+            <tr>
+                <td>Description : <?php echo $post['course_des']; ?> </td>
+            </tr>
+            <tr>
+                <td>
+                    <a class="btn btn-success" href="/<?php echo $post['file_link']; ?>" download>Download</a>
+                    <a class="btn btn-warning" href="#">Comment</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <?php echo "<br>" ?>
+
+    </div>
+<?php } ?>
+</body>
+
+</html>
