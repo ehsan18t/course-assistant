@@ -23,31 +23,8 @@ CREATE TABLE posts (
     date timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 );
 
-CREATE TABLE study_group (
-    group_id INT AUTO_INCREMENT,
-    course_id INT NOT NULL,
-    group_name varchar(100),
-    open_date timestamp NOT NULL DEFAULT current_timestamp(),
-    close_date timestamp,
-    CONSTRAINT pk_group PRIMARY KEY (group_id),
-    CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES courses(c_id)
-);
-
-CREATE TABLE massages (
-    msg_id int(11) NOT NULL AUTO_INCREMENT,
-    msg varchar(1000) NOT NULL,
-    sender INT NOT NULL,
-    receiver INT NOT NULL,
-    group_id INT NOT NULL ,
-    CONSTRAINT pk_massages PRIMARY KEY (msg_id),
-    CONSTRAINT fk_group FOREIGN KEY (group_id) REFERENCES study_group(group_id),
-    CONSTRAINT fk_sender FOREIGN KEY (sender) REFERENCES users(u_id),
-    CONSTRAINT fk_receiver FOREIGN KEY (receiver) REFERENCES users(u_id)
-);
-
-
 CREATE TABLE trimesters (
-    t_id INT NOT NULL,
+    t_id INT NOT NULL AUTO_INCREMENT,
     t_name varchar(20) NOT NULL,
     u_id INT NOT NULL,
     is_running BOOLEAN NOT NULL,
@@ -81,6 +58,30 @@ CREATE TABLE assessments (
     count INT,
     CONSTRAINT pk_assessment PRIMARY KEY (assess_id)
 );
+
+CREATE TABLE study_group (
+    group_id INT AUTO_INCREMENT,
+    course_id INT NOT NULL,
+    group_name varchar(100),
+    open_date timestamp NOT NULL DEFAULT current_timestamp(),
+    close_date timestamp NULL Default NULL,
+    CONSTRAINT pk_group PRIMARY KEY (group_id),
+    CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES courses(c_id)
+);
+
+CREATE TABLE massages (
+    msg_id int(11) NOT NULL AUTO_INCREMENT,
+    msg varchar(1000) NOT NULL,
+    sender INT NOT NULL,
+    receiver INT NOT NULL,
+    group_id INT NOT NULL ,
+    time timestamp NOT NULL DEFAULT current_timestamp(),
+    CONSTRAINT pk_massages PRIMARY KEY (msg_id),
+    CONSTRAINT fk_group FOREIGN KEY (group_id) REFERENCES study_group(group_id),
+    CONSTRAINT fk_sender FOREIGN KEY (sender) REFERENCES users(u_id),
+    CONSTRAINT fk_receiver FOREIGN KEY (receiver) REFERENCES users(u_id)
+);
+
 
 
 --  Relational/Junction Table -- (trimester - courses)
@@ -122,8 +123,8 @@ CREATE TABLE user_has_massages(
             group_id,
             user_id
         ),
-    CONSTRAINT fk_massages Foreign KEY(msg_id) REFERENCES massages(msg_id),
-    CONSTRAINT fk_group FOREIGN KEY(group_id) REFERENCES study_group(group_id),
-    CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(u_id)
+    CONSTRAINT fk_relational_massages Foreign KEY(msg_id) REFERENCES massages(msg_id),
+    CONSTRAINT fk_relational_group FOREIGN KEY(group_id) REFERENCES study_group(group_id),
+    CONSTRAINT fk_relational_user FOREIGN KEY(user_id) REFERENCES users(u_id)
 );
 
