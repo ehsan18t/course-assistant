@@ -3,7 +3,7 @@
 }
 
 .post-card {
-    @apply mr-4 ml-4 mt-3 h-full flex bg-white rounded-3xl p-8 md:p-0 shadow-md;
+    @apply mr-8 ml-8 mt-3 h-full flex bg-white rounded-3xl p-8 md:p-0 shadow-md;
 }
 
 .post-img {
