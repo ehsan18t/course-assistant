@@ -18,7 +18,9 @@
         'profile' => DOMAIN . '/user/profile.php',
         'edit-profile' =>  DOMAIN . '/user/edit-profile.php',
         'logout' => DOMAIN . '/user/logout.php',
-        'add_post' => DOMAIN . '/post/addPost.php'
+        'add_post' => DOMAIN . '/post/addPost.php',
+        'edit-profile' =>  DOMAIN . '/user/edit-profile.php',
+        'change-profile-pic' =>  DOMAIN . '/user/change-profile-picture.php'
     );
 
     // Includes
@@ -37,7 +39,8 @@
     // Resources
     const CSS = array(
         'styles.css' => DOMAIN . '/css/styles.css',
-        'style.css' => DOMAIN . '/css/style.css'
+        'style.css' => DOMAIN . '/css/style.css',
+        'profile.css' => DOMAIN . '/css/profile.css',
     );
 
     const IMG = array(
