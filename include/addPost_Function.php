@@ -36,32 +36,28 @@
         $post_admin = $user_data['email'];
         $query = "SELECT * FROM posts WHERE post_admin='$post_admin'";
             if(mysqli_query($conn, $query)){
-                $returndata = mysqli_query($conn, $query);
-                return $returndata;
+                return mysqli_query($conn, $query);
             }
     }
     function view_post($conn , $user_data){
         $post_domain = $user_data['domain'];
         $query = "SELECT * FROM posts WHERE domain='$post_domain'";
             if(mysqli_query($conn, $query)){
-                $returndata = mysqli_query($conn, $query);
-                return $returndata;
+                return mysqli_query($conn, $query);
             }
        }
     
     function admin_image($conn,$admin_email){
         $query = "SELECT * FROM users WHERE email='$admin_email'";
             if(mysqli_query($conn, $query)){
-                $returndata = mysqli_query($conn, $query);
-                return $returndata;
+                return mysqli_query($conn, $query);
             }
     }
 
      function display_data_by_id($conn,$id){
         $query = "SELECT * FROM posts WHERE p_id=$id";
         if(mysqli_query($conn, $query)){
-            $returndata = mysqli_query($conn, $query);
-            return $returndata;
+            return mysqli_query($conn, $query);
         }
     }
     
