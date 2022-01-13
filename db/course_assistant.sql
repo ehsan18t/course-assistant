@@ -12,6 +12,13 @@ CREATE TABLE users (
     CONSTRAINT pk_users PRIMARY KEY(email)
 );
 
+-- Primary Massaging Table
+CREATE TABLE massages(
+    msg_id int(11) NOT NULL AUTO_INCREMENT,
+    msg varchar(1000) NOT NULL,
+    CONSTRAINT pk_massages PRIMARY KEY (msg_id)
+);
+
 CREATE TABLE trimesters (
     t_id INT NOT NULL,
     t_name varchar(20) NOT NULL,
@@ -47,7 +54,6 @@ CREATE TABLE assessments (
 );
 
 
-
 --  Relational/Junction Table -- (trimester - courses)
 CREATE TABLE trimesters_has_courses (
     u_id INT NOT NULL,
@@ -75,14 +81,6 @@ CREATE TABLE courses_has_assessments (
     CONSTRAINT fk_c_a_cid FOREIGN KEY (c_id) REFERENCES courses(c_id),
     CONSTRAINT fk_c_a_uid FOREIGN KEY (u_id) REFERENCES users(u_id),
     CONSTRAINT fk_c_a_assess_id FOREIGN KEY (assess_id) REFERENCES assessments(assess_id)
-);
-
-
--- Primary Massaging Table
-CREATE TABLE massages(
-    msg_id int(11) NOT NULL AUTO_INCREMENT,
-    msg varchar(1000) NOT NULL,
-    CONSTRAINT pk_massages PRIMARY KEY (msg_id)
 );
 
 --  Relational/Junction Table -- (user - massages)
