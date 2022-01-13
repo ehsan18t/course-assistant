@@ -21,11 +21,11 @@ if (isset($_POST['submit'])) {
             if ($fileSize < 100000000) {
 
                 $fileNameNew = uniqid('', true).".".$fileActualExt;
-                $fileDestination = INC_DIR['uploads'].$fileNameNew;
+                $fileDestination = INC_DIR['picture'].$fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
-                $conn->query("UPDATE users SET profile_pic_url = '". DIR['uploads'].$fileNameNew . "' WHERE email = '". $_SESSION['email'] ."'");
+                $conn->query("UPDATE users SET profile_pic_url = '" . $fileNameNew . "' WHERE email = '". $_SESSION['email'] ."'");
                 header("Location: " . PAGES['profile']);
-                unlink(INC_DIR['uploads'] . str_replace(DIR['uploads'], "", $user_data['profile_pic_url']));
+                unlink(INC_DIR['picture'] . $user_data['profile_pic_url']);
             } else {
                 echo "Your file is too big!";
             }

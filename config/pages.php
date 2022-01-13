@@ -44,9 +44,11 @@
     );
 
     const DIR = array(
-        'uploads' => DOMAIN . '/uploads/'
+        'uploads' => DOMAIN . '/uploads/',
+        'picture' => DOMAIN . '/uploads/picture/'
     );
 
     const INC_DIR = array(
-        'uploads' => INC_DOMAIN . '/uploads/'
+        'uploads' => INC_DOMAIN . '/uploads/',
+        'picture' => INC_DOMAIN . '/uploads/picture/'
     );

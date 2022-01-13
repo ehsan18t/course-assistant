@@ -45,7 +45,7 @@ $user_data = check_login($conn);
     <div class="h-32 mb-4">
         <div class="wrapper flex-column items-center">
             <div class="h-16 w-16 rounded-full bg-white mx-auto">
-                <img src="<?php echo $user_data['profile_pic_url'] ?>" class="rounded-full" alt="">
+                <img src="<?php echo ($user_data['profile_pic_url'] == NULL ? IMG['avatar'] : DIR['picture'].$user_data['profile_pic_url']) ?>" class="rounded-full" alt="">
             </div>
             <div class="text-white font-semibold text-2xl mt-1 content-center text-center">
                 <?php echo $user_data['f_name']. ' ' .$user_data['l_name']; ?>
