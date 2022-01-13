@@ -39,7 +39,8 @@
     const CSS = array(
         'styles.css' => DOMAIN . '/css/styles.css',
         'profile.css' => DOMAIN . '/css/profile.css',
-        'style.css' => DOMAIN . '/css/style.css'
+        'style.css' => DOMAIN . '/css/style.css',
+        'post.css' => DOMAIN . '/css/post.css'
     );
 
     const IMG = array(
