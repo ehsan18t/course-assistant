@@ -40,7 +40,7 @@
         </div>
         <div>
             <p class="post-text-style">
-                <?php echo $post['course_des']; ?>”
+                <?php echo $post['course_des']; ?>
             </p>
         </div>
         <div class="post-btn-container">
