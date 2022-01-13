@@ -5,10 +5,13 @@
 require_once '../header.php';
 //if user is already login then this index page will be shown in browser
 $user_data = check_login($conn);
+require_once INCLUDES['view-post-function'];
+require_once INCLUDES['addPost-function'];
+$posts = view_post_by_id($conn, $user_data, $_GET['user_id']);
 ?>
 
     <title>Profile Page</title>
-    <link rel="stylesheet" href="<?php echo CSS['profile.css'] ?>">
+    <link rel="stylesheet" href="<?php echo CSS['profile.css']; ?>">
 <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
@@ -81,13 +84,46 @@ $user_data = check_login($conn);
 <!-- end top section-->
 
 <!-- bottom section -->
-<div class="h-auto w-11/12 bg-white mx-auto pt-12 shadow-2xl">
-    <div class="mx-auto w-11/12 h-32 bg-white shadow-lg" style="top:3em;">
-        <div class="flex border-black pt-4 border-2 h-16 mx-6">
-            <div class="font-extrabold text-gray-800 text-lg">No Posts</div>
+<!--<div class="h-auto w-11/12 bg-white mx-auto pt-12 shadow-2xl">-->
+<!--    <div class="mx-auto w-11/12 h-32 bg-white shadow-lg" style="top:3em;">-->
+
+<?php while($post=mysqli_fetch_assoc($posts)){ ?>
+
+<div class="post-container">
+    <?php
+    $author_email = $post['post_admin'];
+    $image_link = admin_image($conn, $author_email);
+    $author = mysqli_fetch_assoc($image_link);
+    ?>
+    <div class="post-card">
+
+        <img class="post-img" src="<?php echo DIR['picture'].$author['profile_pic_url']; ?>">
+        <div class="post-text-container">
+            <div class="post-title-style">
+                <?php echo $post['course_name']; ?>
+            </div>
+            <span class="post-tag"><?php echo $post['course_code']; ?></span>
+            <div class="post-author">
+                <a href="<?php echo PAGES['profile'].'?user_id='.$user_data['u_id']; ?>">
+                    <?php echo $author['f_name']." ".$author['l_name']; ?>
+                </a>
+            </div>
+            <div>
+                <p class="post-text-style">
+                    <?php echo $post['course_des']; ?>
+                </p>
+            </div>
+            <div class="post-btn-container">
+                <a class="post-dl-btn" href="post/file/<?php echo $post['file_link']; ?>">Download</a>
+                <a class="post-cm-btn" href="#">Comment</a>
+            </div>
         </div>
     </div>
+    <?php } ?>
+
 </div>
+<!--    </div>-->
+<!--</div>-->
 <!-- end bottom section -->
 
 </body>

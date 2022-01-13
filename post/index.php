@@ -3,7 +3,6 @@
 <html lang="en">
 <?php
     require_once '../header.php';
-    //if user is already login then this index page will be shown in browser
     $user_data = check_login($conn);
     require_once INCLUDES['addPost-function'];
     $posts = view_post($conn, $user_data);
@@ -34,7 +33,7 @@
         </div>
         <span class="post-tag"><?php echo $post['course_code']; ?></span>
         <div class="post-author">
-            <a href="<?php echo PAGES['profile'].'?id='.$user_data['u_id']; ?>">
+            <a href="<?php echo PAGES['profile'].'?user_id='.$user_data['u_id']; ?>">
             <?php echo $author['f_name']." ".$author['l_name']; ?>
             </a>
         </div>

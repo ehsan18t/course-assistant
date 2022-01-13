@@ -27,7 +27,7 @@
         'connection' => INC_DOMAIN . '/include/connection.php',
         'main-function' => INC_DOMAIN . '/include/function.php',
         'addPost-function' => INC_DOMAIN . '/include/addPost_Function.php',
-        'view-post-function' => INC_DOMAIN . '/include/view-post-function',
+        'view-post-function' => INC_DOMAIN . '/include/view-post-function.php',
         'signup-function' => INC_DOMAIN . '/include/signup_function.php',
         'edit-profile-function' => INC_DOMAIN . '/include/edit-profile-function.php',
         'nav-main-template' => INC_DOMAIN . '/template/nav-main.php',
