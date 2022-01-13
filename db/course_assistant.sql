@@ -49,17 +49,19 @@ CREATE TABLE massages (
 CREATE TABLE trimesters (
     t_id INT NOT NULL,
     t_name varchar(20) NOT NULL,
+    u_id INT NOT NULL,
     is_running BOOLEAN NOT NULL,
     start_date timestamp NULL Default NULL,
     end_date timestamp NULL Default NULL,
     fees decimal(8, 2),
     scholarship INT,
-    CONSTRAINT pk_trimesters PRIMARY KEY (t_id)
+    CONSTRAINT pk_trimesters PRIMARY KEY (t_id),
+    CONSTRAINT fk_user FOREIGN KEY (u_id) REFERENCES users(u_id)
 );
 
 CREATE TABLE courses (
     c_id INT NOT NULL,
-    c_name varchar(20) NOT NULL,
+    c_name varchar(50) NOT NULL,
     credit INT NOT NULL,
     section varchar(2),
     auto_add_to_group BOOLEAN NOT NULL,
