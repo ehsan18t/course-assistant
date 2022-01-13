@@ -19,7 +19,7 @@
         'edit-profile' =>  DOMAIN . '/user/edit-profile.php',
         'change-profile-pic' =>  DOMAIN . '/user/change-profile-picture.php',
         'logout' => DOMAIN . '/user/logout.php',
-        'add_post' => DOMAIN . '/post/addPost.php'
+        'add-post' => DOMAIN . '/post/addPost.php'
     );
 
     // Includes

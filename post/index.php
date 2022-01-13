@@ -6,7 +6,7 @@
     //if user is already login then this index page will be shown in browser
     $user_data = check_login($conn);
     require_once INCLUDES['addPost-function'];
-    $posts = view_post($conn,$user_data);
+    $posts = view_post($conn, $user_data);
 ?>
 
 <link rel="stylesheet" href="<?php echo CSS['post.css']; ?>">
