@@ -41,7 +41,7 @@
     }
     function view_post($conn , $user_data){
         $post_domain = $user_data['domain'];
-        $query = "SELECT * FROM posts WHERE domain='$post_domain'";
+        $query = "SELECT * FROM posts WHERE domain='$post_domain' ORDER BY date DESC";
             if(mysqli_query($conn, $query)){
                 return mysqli_query($conn, $query);
             }
