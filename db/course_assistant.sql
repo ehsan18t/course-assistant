@@ -12,7 +12,18 @@ CREATE TABLE users (
     CONSTRAINT pk_users PRIMARY KEY(email)
 );
 
--- Primary Massaging Table
+
+CREATE TABLE posts (
+    p_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_code varchar(30) NOT NULL,
+    course_name varchar(30) NOT NULL,
+    course_des varchar(300) DEFAULT NULL,
+    file_link varchar(100) NOT NULL,
+    post_admin varchar(50) NOT NULL,
+    domain varchar(20) NOT NULL,
+    date timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+);
+
 CREATE TABLE massages(
     msg_id int(11) NOT NULL AUTO_INCREMENT,
     msg varchar(1000) NOT NULL,
