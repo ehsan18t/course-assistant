@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:tailwind": "tailwind build src/styles.css -o styles.css --watch",
+    "build:post": "tailwind build src/post.css -o post.css --watch",
     "build:profile": "tailwind build src/profile.css -o profile.css --watch"
   },
   "keywords": [],
