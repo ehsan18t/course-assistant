@@ -81,16 +81,9 @@ CREATE TABLE courses_has_assessments (
 -- Primary Massaging Table
 CREATE TABLE massages(
     msg_id int(11) NOT NULL AUTO_INCREMENT,
-    incoming_msg_id int(255) NOT NULL,
-    outgoing_msg_id int(255) NOT NULL,
     msg varchar(1000) NOT NULL,
     CONSTRAINT pk_massages PRIMARY KEY (msg_id)
 );
-
--- DROP incoming_msg_id and outgoing_msg_id as they are not needed
-ALTER TABLE massages
-DROP COLUMN incoming_msg_id,
-DROP COLUMN outgoing_msg_id
 
 --  Relational/Junction Table -- (user - massages)
 CREATE TABLE user_has_massages(
