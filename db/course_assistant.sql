@@ -12,15 +12,14 @@ CREATE TABLE users (
     CONSTRAINT pk_users PRIMARY KEY(email)
 );
 
-
 CREATE TABLE posts (
     p_id INT PRIMARY KEY AUTO_INCREMENT,
     course_code varchar(30) NOT NULL,
     course_name varchar(30) NOT NULL,
-    course_des varchar(300) DEFAULT NULL,
+    course_des varchar(15000) DEFAULT NOT NULL,
     file_link varchar(100) NOT NULL,
-    post_admin varchar(50) NOT NULL,
-    domain varchar(20) NOT NULL,
+    post_author varchar(50) NOT NULL,
+    department varchar(20) NOT NULL,
     date timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 );
 
