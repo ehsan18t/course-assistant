@@ -16,6 +16,9 @@
         'login' => DOMAIN . '/login.php',
         'signup' => DOMAIN . '/signup.php',
         'profile' => DOMAIN . '/user/profile.php',
+        'stats' => DOMAIN . '/stats/',
+        'trimester' => DOMAIN . '/stats/trimester.php',
+        'course' => DOMAIN . '/stats/course.php',
         'edit-profile' =>  DOMAIN . '/user/edit-profile.php',
         'change-profile-pic' =>  DOMAIN . '/user/change-profile-picture.php',
         'logout' => DOMAIN . '/user/logout.php',
@@ -40,7 +43,12 @@
         'styles.css' => DOMAIN . '/css/styles.css',
         'profile.css' => DOMAIN . '/css/profile.css',
         'style.css' => DOMAIN . '/css/style.css',
-        'post.css' => DOMAIN . '/css/post.css'
+        'post.css' => DOMAIN . '/css/post.css',
+        'modal.css' => DOMAIN . '/css/modal.css'
+    );
+
+    const JS = array(
+        'toggle-visibility.js' => DOMAIN . '/js/toggle-visibility.js'
     );
 
     const IMG = array(

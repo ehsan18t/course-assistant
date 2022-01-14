@@ -28,6 +28,8 @@ CREATE TABLE trimesters (
     t_name varchar(20) NOT NULL,
     u_id INT NOT NULL,
     is_running BOOLEAN NOT NULL,
+    cgpa decimal(3,2),
+    expected_cgpa decimal(3, 2),
     start_date timestamp NULL Default NULL,
     end_date timestamp NULL Default NULL,
     fees decimal(8, 2),
@@ -37,26 +39,31 @@ CREATE TABLE trimesters (
 );
 
 CREATE TABLE courses (
-    c_id INT NOT NULL,
+    c_id INT NOT NULL AUTO_INCREMENT,
+    t_id INT NOT NULL,
     c_name varchar(50) NOT NULL,
+    c_code varchar(10) NOT NULL UNIQUE,
     credit INT NOT NULL,
     section varchar(2),
     auto_add_to_group BOOLEAN NOT NULL,
     expected_marks decimal(5, 2),
     total_marks decimal(5, 2),
     obtained_marks decimal(5, 2),
-    CONSTRAINT pk_courses PRIMARY KEY (c_id)
+    CONSTRAINT pk_courses PRIMARY KEY (c_id),
+    CONSTRAINT fk_trimester FOREIGN KEY (t_id) REFERENCES trimesters(t_id)
 );
 
 CREATE TABLE assessments (
-    assess_id INT NOT NULL,
+    assess_id INT NOT NULL AUTO_INCREMENT,
+    course_id INT NOT NULL,
     expected_marks decimal(5, 2),
     total_marks decimal(5, 2),
     obtained_marks decimal(5, 2),
     type varchar(15) NOT NULL,
     -- how many asses will happen
     count INT,
-    CONSTRAINT pk_assessment PRIMARY KEY (assess_id)
+    CONSTRAINT pk_assessment PRIMARY KEY (assess_id),
+    CONSTRAINT fk_courses FOREIGN KEY (course_id) REFERENCES courses(c_id)
 );
 
 CREATE TABLE study_group (
@@ -81,6 +88,30 @@ CREATE TABLE massages (
     CONSTRAINT fk_sender FOREIGN KEY (sender) REFERENCES users(u_id),
     CONSTRAINT fk_receiver FOREIGN KEY (receiver) REFERENCES users(u_id)
 );
+
+CREATE TABLE study_group (
+    group_id INT AUTO_INCREMENT,
+    course_id INT NOT NULL,
+    group_name varchar(100),
+    open_date timestamp NOT NULL DEFAULT current_timestamp(),
+    close_date timestamp NULL Default NULL,
+    CONSTRAINT pk_group PRIMARY KEY (group_id),
+    CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES courses(c_id)
+);
+
+CREATE TABLE massages (
+    msg_id int(11) NOT NULL AUTO_INCREMENT,
+    msg varchar(1000) NOT NULL,
+    sender INT NOT NULL,
+    receiver INT NOT NULL,
+    group_id INT NOT NULL ,
+    time timestamp NOT NULL DEFAULT current_timestamp(),
+    CONSTRAINT pk_massages PRIMARY KEY (msg_id),
+    CONSTRAINT fk_group FOREIGN KEY (group_id) REFERENCES study_group(group_id),
+    CONSTRAINT fk_sender FOREIGN KEY (sender) REFERENCES users(u_id),
+    CONSTRAINT fk_receiver FOREIGN KEY (receiver) REFERENCES users(u_id)
+);
+
 
 
 

@@ -18,7 +18,7 @@
         <a href="<?php echo PAGES['add-post']; ?>" class="nav-menu-item mr-4c">
             Add Post
         </a>
-        <a href="#" class="nav-menu-item">
+        <a href="<?php echo PAGES['stats']; ?>" class="nav-menu-item">
             Course
         </a>
     </div>
