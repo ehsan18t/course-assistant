@@ -16,6 +16,9 @@
         'login' => DOMAIN . '/login.php',
         'signup' => DOMAIN . '/signup.php',
         'profile' => DOMAIN . '/user/profile.php',
+        'stats' => DOMAIN . '/stats/',
+        'trimester' => DOMAIN . '/stats/trimester.php',
+        'course' => DOMAIN . '/stats/course.php',
         'edit-profile' =>  DOMAIN . '/user/edit-profile.php',
         'change-profile-pic' =>  DOMAIN . '/user/change-profile-picture.php',
         'logout' => DOMAIN . '/user/logout.php'
