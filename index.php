@@ -38,7 +38,7 @@
             </div>
             <span class="post-tag"><?php echo $post['course_code']; ?></span>
             <div class="post-author">
-                <a href="<?php echo PAGES['profile'].'?user_id='.$user_data['u_id']; ?>">
+                <a href="<?php echo PAGES['profile'].'?user_id='.$author['u_id']; ?>">
                     <?php echo $author['f_name']." ".$author['l_name']; ?>
                 </a>
             </div>
