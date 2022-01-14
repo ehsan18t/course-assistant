@@ -46,6 +46,10 @@
   width: 80%;
 }
 
+.modal-content *input[type="text"] {
+  border: 1px solid red;
+}
+
 /* The Close Button */
 
 .close {
