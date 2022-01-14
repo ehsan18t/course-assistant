@@ -2,16 +2,23 @@
 
 <html lang="en">
 <?php
-require_once '../header.php';
-//if user is already login then this index page will be shown in browser
-$user_data = check_login($conn);
-require_once INCLUDES['view-post-function'];
-require_once INCLUDES['addPost-function'];
-$posts = view_post_by_id($conn, $user_data, $_GET['user_id']);
+    require_once '../header.php';
+    $user_data = check_login($conn);
+    require_once INCLUDES['view-post-function'];
+    require_once INCLUDES['addPost-function'];
+    $posts = null;
+
+    if(isset($_GET['user_id'])) {
+        $posts = view_post_by_id($conn, $user_data, $_GET['user_id']);
+        $user_data = get_user($conn, $_GET['user_id']);
+    }
+    else
+        $posts = view_post_by_id($conn, $user_data, $user_data['u_id']);
 ?>
 
     <title>Profile Page</title>
     <link rel="stylesheet" href="<?php echo CSS['profile.css']; ?>">
+    <link rel="stylesheet" href="<?php echo CSS['post.css']; ?>">
 <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
