@@ -18,9 +18,9 @@
 <?php
 $select_all_trimester_query = "SELECT * FROM trimesters WHERE u_id = " . $user_data['u_id'] . " ORDER BY YEAR(start_date) DESC";
 $select_all_trimester_query_result = $conn->query($select_all_trimester_query);
+$select_all_trimester_query_result_copy = $conn->query($select_all_trimester_query);
 $total_trimester = mysqli_num_rows($select_all_trimester_query_result);
 ?>
-
 
 
 <br />
@@ -82,6 +82,105 @@ if(isset($_POST['submit_trimester'])){
 ?>
 
 
+<!-- Chart Start -->
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+    <script>
+
+
+        google.charts.load('current', {packages: ['corechart', 'bar']});
+        google.charts.setOnLoadCallback(drawMultSeries);
+
+        function drawMultSeries() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Trimester');
+            data.addColumn('number', 'Expectation');
+            data.addColumn('number', 'Reality');
+
+            // X exis
+            // v: vertics, f: name, expected, reality
+            data.addRows([
+                <?php
+                if ($total_trimester){
+
+                function getYear($dateTime) {
+                    $datetime = new DateTime($dateTime);
+                    return $datetime->format('y');
+                }
+                $start_y = 0;
+                $x = 0;
+                $count = 0;
+                $prev_year = 0;
+                while($trimester_graph=mysqli_fetch_assoc($select_all_trimester_query_result_copy))
+                {
+
+                if ($trimester_graph['cgpa'] == null || $trimester_graph['expected_cgpa'] == null) continue;
+
+                $_year = (int)getYear($trimester_graph['start_date']);
+
+
+                if ($prev_year > $_year && $prev_year != 0)
+                    $count = 0;
+                else
+                    $count++;
+                $prev_year = $_year;
+                $_year = ($_year * 10) + $count;
+
+                if ($start_y == 0) {
+                    $start_y = $_year - 1;
+                }
+                $_name = $trimester_graph['t_name'];
+                $_expectation = $trimester_graph['expected_cgpa'];
+                $_reality = $trimester_graph['cgpa'];
+                echo "[{v: ".$_year.", f: '".$_name."'}, ".$_expectation.", ".$_reality."],";
+                $x++; }} ?>
+            ]);
+
+            // Y exis
+            var options = {
+                title: 'Result History',
+                trendlines: {
+                    0: {type: 'linear', lineWidth: 5, opacity: .3},
+                    1: {type: 'exponential', lineWidth: 10, opacity: .3}
+                },
+                hAxis: {
+                    title: 'Year',
+                    viewWindow: {
+                        min: [<?php echo $start_y; ?>],
+                        max: [<?php echo ($start_y + 11); ?>]
+                    }
+                },
+                vAxis: {
+                    viewWindow: {
+                        min: [0.00],
+                        max: [4.00]
+                    },
+                    title: 'Results (0 - 4.00)'
+                }
+            };
+
+            var chart = new google.visualization.ColumnChart(
+                document.getElementById('trimester_chart'));
+
+            chart.draw(data, options);
+        }
+
+    </script>
+
+<?php
+echo $start_y." ".($start_y  + 11);
+?>
+
+    <!--     Actual Chart       -->
+    <div id="trimester_chart"></div>
+</div>
+
+
+<!-- Chart End -->
+
 <br />
 <br />
 <div class="all_post">
@@ -94,7 +193,10 @@ if(isset($_POST['submit_trimester'])){
         {
             ?>
             <center>
-                <b> <a href="trimester.php?trimester_id=<?php echo $select_all_trimester['t_id']; ?>"><?php echo $select_all_trimester['t_name']; ?></a></b>
+                <b> <a href="trimester.php?trimester_id=<?php echo $select_all_trimester['t_id']; ?>">
+                        <?php echo $select_all_trimester['t_name']; ?>
+                    </a>
+                </b>
                 <br />
             </center>
         <?php }
@@ -107,5 +209,6 @@ if(isset($_POST['submit_trimester'])){
 </div>
 
 </body>
+
 
 </html>

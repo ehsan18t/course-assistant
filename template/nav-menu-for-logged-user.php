@@ -15,7 +15,7 @@
         <a href="<?php echo PAGES['profile']; ?>" class="nav-menu-item mr-4c">
             Profile
         </a>
-        <a href="#" class="nav-menu-item">
+        <a href="<?php echo PAGES['stats']; ?>" class="nav-menu-item">
             Course
         </a>
     </div>
