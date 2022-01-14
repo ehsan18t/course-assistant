@@ -36,7 +36,12 @@
     const CSS = array(
         'styles.css' => DOMAIN . '/css/styles.css',
         'profile.css' => DOMAIN . '/css/profile.css',
+        'modal.css' => DOMAIN . '/css/modal.css',
         'style.css' => DOMAIN . '/css/style.css'
+    );
+
+    const JS = array(
+        'toggle-visibility.js' => DOMAIN . '/js/toggle-visibility.js'
     );
 
     const IMG = array(
