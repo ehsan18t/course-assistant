@@ -28,6 +28,8 @@ CREATE TABLE trimesters (
     t_name varchar(20) NOT NULL,
     u_id INT NOT NULL,
     is_running BOOLEAN NOT NULL,
+    cgpa decimal(3,2),
+    expected_cgpa decimal(3, 2),
     start_date timestamp NULL Default NULL,
     end_date timestamp NULL Default NULL,
     fees decimal(8, 2),
