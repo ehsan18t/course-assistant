@@ -16,7 +16,7 @@
 <?php require_once INCLUDES['nav-logged-template']; ?>
 
 <?php
-$select_all_trimester_query = "SELECT * FROM trimesters WHERE u_id = " . $user_data['u_id'];
+$select_all_trimester_query = "SELECT * FROM trimesters WHERE u_id = " . $user_data['u_id'] . " ORDER BY YEAR(start_date) DESC";
 $select_all_trimester_query_result = $conn->query($select_all_trimester_query);
 $total_trimester = mysqli_num_rows($select_all_trimester_query_result);
 ?>
