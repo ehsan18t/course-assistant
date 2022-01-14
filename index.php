@@ -2,10 +2,15 @@
 
 <html lang="en">
 <?php
-require_once './header.php';
-$user_data = check_login($conn);
-require_once INCLUDES['addPost-function'];
-$posts = view_post($conn, $user_data);
+    require_once './header.php';
+    $user_data = check_login($conn);
+    require_once INCLUDES['addPost-function'];
+
+    if(isset($_GET['search-text'])) {
+        $key = $_GET['search-text'];
+        $posts = view_post_search($conn, $user_data, $key);
+    } else
+        $posts = view_post($conn,$user_data);
 ?>
 
 <link rel="stylesheet" href="<?php echo CSS['post.css']; ?>">

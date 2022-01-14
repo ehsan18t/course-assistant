@@ -20,3 +20,11 @@
         $length = strlen($email);
         return substr($email, $start, $length);
     }
+
+    function view_post_search($conn , $user_data, $key){
+        $post_domain = $user_data['domain'];
+        $query = "SELECT * FROM posts WHERE domain='$post_domain' AND (course_name LIKE '%$key%' OR course_code LIKE '%$key%' OR course_des LIKE '%$key%')";
+        if(mysqli_query($conn, $query)){
+            return mysqli_query($conn, $query);
+        }
+    }
