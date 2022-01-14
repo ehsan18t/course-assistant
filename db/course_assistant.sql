@@ -40,6 +40,7 @@ CREATE TABLE courses (
     c_id INT NOT NULL AUTO_INCREMENT,
     t_id INT NOT NULL,
     c_name varchar(50) NOT NULL,
+    c_code varchar(10) NOT NULL UNIQUE,
     credit INT NOT NULL,
     section varchar(2),
     auto_add_to_group BOOLEAN NOT NULL,
