@@ -4,6 +4,7 @@
 <?php
     require_once '../header.php';
     $user_data = check_login($conn);
+    $current_uid = $user_data['u_id'];
     require_once INCLUDES['view-post-function'];
     require_once INCLUDES['addPost-function'];
     $posts = null;
@@ -29,22 +30,26 @@
 
 <!-- top section-->
 <div class="w-full bg-white h-64 bg-sky-500 flex-col shadow-2xl flex" style="background-color: rgb(14 165 233);">
-    <!-- top icons section -->
-    <div class="top-icons">
-        <!-- icons wrapper -->
-        <div class="h-4 text-white pr-2">
-            <div class="inline float-right text-xs mt-4">
-                <a href="<?php echo PAGES['edit-profile'] ?>" class="hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
-                    Edit Profile
-                </a>
-                <a href="<?php echo PAGES['change-profile-pic'] ?>" class="hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
-                    Change Profile Picture
-                </a>
-            </div>
-        </div>
-    </div>
-    <!-- end top icons section -->
-
+    <?php if ($current_uid == $user_data['u_id']) {
+    $edit_code = <<<'EOD'
+    <!-- START Edit Profile Options -->
+    <div class="top-icons" >
+        <div class="h-4 text-white pr-2" >
+            <div class="inline float-right text-xs mt-4" >
+                <a href = "<?php echo PAGES['edit-profile'] ?>" class="hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full" >
+        Edit Profile
+        </a >
+                <a href = "<?php echo PAGES['change-profile-pic'] ?>" class="hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full" >
+        Change Profile Picture
+        </a >
+            </div >
+        </div >
+    </div >
+    <!--  END Edit Profile Options  -->
+EOD;
+    echo $edit_code;
+    }
+ ?>
     <!--back button-->
     <div class="h-6 mt-2">
 
@@ -70,8 +75,9 @@
 
     </div>
     <!-- end avatar profile-->
-
-    <!-- middle card-->
+<?php if ($current_uid != $user_data['u_id']) {
+    $contact_code = <<<'EOD'
+    <!-- START PM/Email Me Option -->
     <div class="h-24 mx-auto relative shadow-lg bg-white rounded-lg p-2 flex w-3/12" style="top:1em">
         <div class="w-1/2 ml-2 flex my-auto">
             <a class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full ml-3">
@@ -85,7 +91,11 @@
             </a>
         </div>
     </div>
-    <!-- end middle card-->
+    <!-- END PM/Email Me Option -->
+EOD;
+    echo $contact_code;
+}
+?>
 
 </div>
 <!-- end top section-->
