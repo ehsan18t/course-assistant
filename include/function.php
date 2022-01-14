@@ -28,3 +28,15 @@
             return mysqli_query($conn, $query);
         }
     }
+
+    function get_user($conn, $u_id)
+    {
+        $query = "SELECT * FROM users WHERE u_id = '$u_id'";
+
+        $result = $conn -> query($query);
+        if ($result && mysqli_num_rows($result) > 0)
+            return mysqli_fetch_assoc($result);
+
+        header("Location:" . PAGES['login']);
+        die;
+    }
