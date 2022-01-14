@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <?php
     require_once './header.php';
     $user_data = check_login($conn);
@@ -21,9 +21,11 @@
 <?php require_once INCLUDES['nav-main-template']; ?>
 <?php require_once INCLUDES['nav-logged-template']; ?>
 
+<div class="post-container">
+    <div class="move-center">
+<button type="submit" onclick="window.location.href='<?php echo PAGES['add-post']; ?>'" class="new-post-btn"> Create New Post </button></div>
 <?php while($post=mysqli_fetch_assoc($posts)){ ?>
 
-<div class="post-container">
     <?php
     $author_email = $post['post_admin'];
     $image_link = admin_image($conn, $author_email);
@@ -54,6 +56,7 @@
         </div>
     </div>
     <?php } ?>
+        <br><br>
 
 </div>
 </body>
