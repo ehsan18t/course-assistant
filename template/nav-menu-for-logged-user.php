@@ -15,6 +15,9 @@
         <a href="<?php echo PAGES['profile']; ?>" class="nav-menu-item mr-4c">
             Profile
         </a>
+        <a href="<?php echo PAGES['add-post']; ?>" class="nav-menu-item mr-4c">
+            Add Post
+        </a>
         <a href="#" class="nav-menu-item">
             Course
         </a>
@@ -22,12 +25,14 @@
 
     <div class="search-bar">
         <div class="search-bar-container">
-            <input type="text" class="search-bar-input" placeholder="Search anything...">
-            <div class="search-btn-size">
-                <input type="button">
-                <i class="fa fa-search search-btn-icon"></i>
-                </input>
-            </div>
+            <form action="<?php echo PAGES['home']; ?>" method="get">
+                <input type="text" class="search-bar-input" name="search-text" placeholder="Search anything...">
+                <div class="search-btn-size">
+                    <input type="button" name="search">
+                    <i class="fa fa-search search-btn-icon"></i>
+                    </input>
+                </div>
+            </form>
         </div>
         <div class="nav-menu-container-right">
             <a href="<?php echo PAGES['logout']; ?>" class="nav-menu-btn">Logout</a>
