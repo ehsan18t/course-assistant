@@ -37,7 +37,8 @@ CREATE TABLE trimesters (
 );
 
 CREATE TABLE courses (
-    c_id INT NOT NULL,
+    c_id INT NOT NULL AUTO_INCREMENT,
+    t_id INT NOT NULL,
     c_name varchar(50) NOT NULL,
     credit INT NOT NULL,
     section varchar(2),
@@ -45,18 +46,21 @@ CREATE TABLE courses (
     expected_marks decimal(5, 2),
     total_marks decimal(5, 2),
     obtained_marks decimal(5, 2),
-    CONSTRAINT pk_courses PRIMARY KEY (c_id)
+    CONSTRAINT pk_courses PRIMARY KEY (c_id),
+    CONSTRAINT fk_trimester FOREIGN KEY (t_id) REFERENCES trimesters(t_id)
 );
 
 CREATE TABLE assessments (
-    assess_id INT NOT NULL,
+    assess_id INT NOT NULL AUTO_INCREMENT,
+    course_id INT NOT NULL,
     expected_marks decimal(5, 2),
     total_marks decimal(5, 2),
     obtained_marks decimal(5, 2),
     type varchar(15) NOT NULL,
     -- how many asses will happen
     count INT,
-    CONSTRAINT pk_assessment PRIMARY KEY (assess_id)
+    CONSTRAINT pk_assessment PRIMARY KEY (assess_id),
+    CONSTRAINT fk_courses FOREIGN KEY (course_id) REFERENCES courses(c_id)
 );
 
 CREATE TABLE study_group (
