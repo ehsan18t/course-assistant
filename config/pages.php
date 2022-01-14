@@ -21,13 +21,16 @@
         'course' => DOMAIN . '/stats/course.php',
         'edit-profile' =>  DOMAIN . '/user/edit-profile.php',
         'change-profile-pic' =>  DOMAIN . '/user/change-profile-picture.php',
-        'logout' => DOMAIN . '/user/logout.php'
+        'logout' => DOMAIN . '/user/logout.php',
+        'add-post' => DOMAIN . '/post/addPost.php'
     );
 
     // Includes
     const INCLUDES = array(
         'connection' => INC_DOMAIN . '/include/connection.php',
         'main-function' => INC_DOMAIN . '/include/function.php',
+        'addPost-function' => INC_DOMAIN . '/include/addPost_Function.php',
+        'view-post-function' => INC_DOMAIN . '/include/view-post-function.php',
         'signup-function' => INC_DOMAIN . '/include/signup_function.php',
         'edit-profile-function' => INC_DOMAIN . '/include/edit-profile-function.php',
         'nav-main-template' => INC_DOMAIN . '/template/nav-main.php',
@@ -39,8 +42,9 @@
     const CSS = array(
         'styles.css' => DOMAIN . '/css/styles.css',
         'profile.css' => DOMAIN . '/css/profile.css',
-        'modal.css' => DOMAIN . '/css/modal.css',
-        'style.css' => DOMAIN . '/css/style.css'
+        'style.css' => DOMAIN . '/css/style.css',
+        'post.css' => DOMAIN . '/css/post.css',
+        'modal.css' => DOMAIN . '/css/modal.css'
     );
 
     const JS = array(

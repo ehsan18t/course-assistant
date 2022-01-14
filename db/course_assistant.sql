@@ -89,6 +89,30 @@ CREATE TABLE massages (
     CONSTRAINT fk_receiver FOREIGN KEY (receiver) REFERENCES users(u_id)
 );
 
+CREATE TABLE study_group (
+    group_id INT AUTO_INCREMENT,
+    course_id INT NOT NULL,
+    group_name varchar(100),
+    open_date timestamp NOT NULL DEFAULT current_timestamp(),
+    close_date timestamp NULL Default NULL,
+    CONSTRAINT pk_group PRIMARY KEY (group_id),
+    CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES courses(c_id)
+);
+
+CREATE TABLE massages (
+    msg_id int(11) NOT NULL AUTO_INCREMENT,
+    msg varchar(1000) NOT NULL,
+    sender INT NOT NULL,
+    receiver INT NOT NULL,
+    group_id INT NOT NULL ,
+    time timestamp NOT NULL DEFAULT current_timestamp(),
+    CONSTRAINT pk_massages PRIMARY KEY (msg_id),
+    CONSTRAINT fk_group FOREIGN KEY (group_id) REFERENCES study_group(group_id),
+    CONSTRAINT fk_sender FOREIGN KEY (sender) REFERENCES users(u_id),
+    CONSTRAINT fk_receiver FOREIGN KEY (receiver) REFERENCES users(u_id)
+);
+
+
 
 
 --  Relational/Junction Table -- (trimester - courses)

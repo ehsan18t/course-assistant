@@ -1,0 +1,7 @@
+  Greedy Algorithms
+1. Activity Selection  Problem
+2. Fractional Knapsack
+3. Huffman Coding
+4. Prim's Minimum Spanning Tree
+5. Kruskal's Minimum Spanning Tree
+6. Dijkastra Shortest Path Algorithms
