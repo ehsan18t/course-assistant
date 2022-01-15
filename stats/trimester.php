@@ -8,9 +8,10 @@
     if(!isset($_GET['trimester_id']))
         header('location:'.PAGES['stats']);
 ?>
-<title>Course Page</title>
+<title>Trimester Details</title>
 
-<link rel="stylesheet" href="<?php echo CSS['modal.css'] ?>">
+<link rel="stylesheet" href="<?php echo CSS['modal.css']; ?>">
+<link rel="stylesheet" href="<?php echo CSS['stats.css']; ?>">
 <script type="text/javascript" src="<?php echo JS['toggle-visibility.js']; ?>"></script>
 </head>
 
@@ -24,19 +25,14 @@
 	$select_course_query="SELECT * FROM courses WHERE t_id = $trimester_id";
 	$select_course_query_result = $conn->query($select_course_query);
     $total_course = mysqli_num_rows($select_course_query_result);
-	
-//	while($select_course=mysqli_fetch_assoc($select_course_query_result)){
-//		$course_id = $select_course['c_id'];
-//		$course_name = $select_course['c_name'];
-//        $course_credit = $select_course['credit'];
-//        $course_section = $select_course['section'];
-//	}
 ?>
 
 <div class="trimester-container">
     <!--  Edit Trimester / Add Courses -->
     <div class="trimester-control">
-        <button onclick="toggleVisibility('add-course-popup')"> Add Course </button>
+        <center>
+            <button onclick="toggleVisibility('add-course-popup')" class="new-post-btn"> Add Course </button>
+        </center>
     </div>
 
     <!--  View Course  -->
@@ -64,7 +60,8 @@
     </div>
 </div>
 
-<div class="all_post">
+<div class="post-container">
+    <br>
     <?php
     if ($total_course){
         ?>
@@ -73,10 +70,24 @@
         while($select_all_course=mysqli_fetch_assoc($select_course_query_result))
         {
             ?>
-            <center>
-                <b> <a href="course.php?course_id=<?php echo $select_all_course['c_id']; ?>"><?php echo $select_all_course['c_name']; ?></a></b>
-                <br />
-            </center>
+            <a href="course.php?course_id=<?php echo $select_all_course['c_id']; ?>">
+                <div class="post-card">
+                    <div class="post-text-container">
+                        <div class="post-title-style">
+                            <?php echo $select_all_course['c_name']; ?>
+                        </div>
+                        <span class="post-tag"><?php echo $select_all_course['c_code']; ?></span>
+                        <div class="post-author">
+                            <?php echo "Expected: ".$select_all_course['expected_marks']."/".$select_all_course['total_marks']; ?>
+                        </div>
+                        <div>
+                            <p class="post-text-style">
+                                <?php echo "Obtained: ".$select_all_course['obtained_marks']."/".$select_all_course['total_marks']; ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
         <?php }
 
     } else {?>
