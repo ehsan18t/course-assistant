@@ -134,14 +134,9 @@ if(isset($_POST['submit_trimester'])){
 
             // Y exis
             var options = {
-                legend: 'none',
                 title: 'Result History',
-                trendlines: {
-                    0: {type: 'linear', lineWidth: 5, opacity: .3},
-                    1: {type: 'exponential', lineWidth: 10, opacity: .3}
-                },
                 hAxis: {
-                    title: 'Year'
+                    title: 'Trimester'
                 },
                 vAxis: {
                     viewWindow: {
