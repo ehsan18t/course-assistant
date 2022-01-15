@@ -23,7 +23,7 @@
 
 <div class="post-container">
     <div class="move-center">
-<button type="submit" onclick="window.location.href='<?php echo PAGES['add-post']; ?>'" class="new-post-btn"> Create New Post </button></div>
+        <center><button type="submit" onclick="window.location.href='<?php echo PAGES['add-post']; ?>'" class="new-post-btn"> Create New Post </button></div></center>
 <?php while($post=mysqli_fetch_assoc($posts)){ ?>
 
     <?php
