@@ -183,11 +183,11 @@ if(isset($_POST['submit_trimester'])){
                             </div>
                             <span class="post-tag"><?php echo date_format($s_date,"d-M-Y")." - ".date_format($e_date,"d-M-Y"); ?></span>
                             <div class="post-author">
-                                <?php echo $select_all_trimester['expected_cgpa']?>
+                                <?php echo "Expected: ".$select_all_trimester['expected_cgpa']?>
                             </div>
                             <div>
                                 <p class="post-text-style">
-                                    <?php echo $select_all_trimester['cgpa']; ?>
+                                    <?php echo "Obtained: ".$select_all_trimester['cgpa']; ?>
                                 </p>
                             </div>
                         </div>
