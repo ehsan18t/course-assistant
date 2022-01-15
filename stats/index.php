@@ -8,6 +8,7 @@
 
 <title>Trimester List</title>
 <link rel="stylesheet" href="<?php echo CSS['modal.css'] ?>">
+<link rel="stylesheet" href="<?php echo CSS['stats.css'] ?>">
 <script type="text/javascript" src="<?php echo JS['toggle-visibility.js']; ?>"></script>
 </head>
 
@@ -17,23 +18,14 @@
 
 <?php
 $select_all_trimester_query = "SELECT * FROM trimesters WHERE u_id = " . $user_data['u_id'] . " ORDER BY YEAR(start_date) DESC";
+$select_all_trimester_query_copy = "SELECT * FROM trimesters WHERE u_id = " . $user_data['u_id'] . " ORDER BY YEAR(start_date) ASC";
 $select_all_trimester_query_result = $conn->query($select_all_trimester_query);
-$select_all_trimester_query_result_copy = $conn->query($select_all_trimester_query);
+$select_all_trimester_query_result_copy = $conn->query($select_all_trimester_query_copy);
 $total_trimester = mysqli_num_rows($select_all_trimester_query_result);
 ?>
 
-
-<br />
-
-<!-- <form method="GET" action="">
-	<input name="post_search_keyword" type="text" placeholder="Search post" />
-	<input name="search_submit" type="submit" value="Search" />
-</form>
-<br /> -->
-
-
 <!-- Modal for New Trimester -->
-<center><a href="#" onclick="toggleVisibility('open_trimester_creator_window')"><b>Create New Trimester</b></a></center>
+<center><button type="submit" onclick="toggleVisibility('open_trimester_creator_window')" class="new-post-btn"><b>Create New Trimester</b></button></center>
 
 <div id="open_trimester_creator_window" class="hide">
     <div class="modal-content">
@@ -96,7 +88,7 @@ if(isset($_POST['submit_trimester'])){
 
         function drawMultSeries() {
             var data = new google.visualization.DataTable();
-            data.addColumn('number', 'Trimester');
+            data.addColumn('string', 'Trimester');
             data.addColumn('number', 'Expectation');
             data.addColumn('number', 'Reality');
 
@@ -122,36 +114,34 @@ if(isset($_POST['submit_trimester'])){
                 $_year = (int)getYear($trimester_graph['start_date']);
 
 
-                if ($prev_year > $_year && $prev_year != 0)
-                    $count = 0;
+                if ($_year > $prev_year && $prev_year != 0)
+                    $count = 1;
                 else
                     $count++;
                 $prev_year = $_year;
                 $_year = ($_year * 10) + $count;
 
-                if ($start_y == 0) {
-                    $start_y = $_year - 1;
-                }
+//                if ($start_y == 0) {
+                    $start_y = $_year;
+//                }
                 $_name = $trimester_graph['t_name'];
                 $_expectation = $trimester_graph['expected_cgpa'];
                 $_reality = $trimester_graph['cgpa'];
-                echo "[{v: ".$_year.", f: '".$_name."'}, ".$_expectation.", ".$_reality."],";
+//                echo "[{v: ".$_year.", f: '".$_name."'}, ".$_expectation.", ".$_reality."],";
+                echo "['".$_year."', ".$_expectation.", ".$_reality."],";
                 $x++; }} ?>
             ]);
 
             // Y exis
             var options = {
+                legend: 'none',
                 title: 'Result History',
                 trendlines: {
                     0: {type: 'linear', lineWidth: 5, opacity: .3},
                     1: {type: 'exponential', lineWidth: 10, opacity: .3}
                 },
                 hAxis: {
-                    title: 'Year',
-                    viewWindow: {
-                        min: [<?php echo $start_y; ?>],
-                        max: [<?php echo ($start_y + 11); ?>]
-                    }
+                    title: 'Year'
                 },
                 vAxis: {
                     viewWindow: {
@@ -170,9 +160,6 @@ if(isset($_POST['submit_trimester'])){
 
     </script>
 
-<?php
-echo $start_y." ".($start_y  + 11);
-?>
 
     <!--     Actual Chart       -->
     <div id="trimester_chart"></div>
@@ -181,9 +168,8 @@ echo $start_y." ".($start_y  + 11);
 
 <!-- Chart End -->
 
-<br />
-<br />
-<div class="all_post">
+<div class="post-container">
+    <br />
     <?php
     if ($total_trimester){
         ?>
@@ -191,14 +177,27 @@ echo $start_y." ".($start_y  + 11);
         <?php
         while($select_all_trimester=mysqli_fetch_assoc($select_all_trimester_query_result))
         {
+            $s_date = date_create($select_all_trimester['start_date']);
+            $e_date = date_create($select_all_trimester['end_date']);
             ?>
-            <center>
-                <b> <a href="trimester.php?trimester_id=<?php echo $select_all_trimester['t_id']; ?>">
-                        <?php echo $select_all_trimester['t_name']; ?>
-                    </a>
-                </b>
-                <br />
-            </center>
+                <a href="trimester.php?trimester_id=<?php echo $select_all_trimester['t_id']; ?>">
+                    <div class="post-card">
+                        <div class="post-text-container">
+                            <div class="post-title-style">
+                                <?php echo $select_all_trimester['t_name']; ?>
+                            </div>
+                            <span class="post-tag"><?php echo date_format($s_date,"d-M-Y")." - ".date_format($e_date,"d-M-Y"); ?></span>
+                            <div class="post-author">
+                                <?php echo $select_all_trimester['expected_cgpa']?>
+                            </div>
+                            <div>
+                                <p class="post-text-style">
+                                    <?php echo $select_all_trimester['cgpa']; ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
         <?php }
 
     } else {?>
@@ -206,8 +205,8 @@ echo $start_y." ".($start_y  + 11);
         <center><b>No data found...</b></center>
 
     <?php } ?>
+    <br>
 </div>
-
 </body>
 
 
