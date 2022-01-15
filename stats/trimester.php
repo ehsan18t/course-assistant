@@ -4,6 +4,7 @@
 <?php
     require_once '../header.php';
     //if user is already login then this index page will be shown in browser
+    require_once INCLUDES['result-calculation-function'];
     $user_data = check_login($conn);
     if(!isset($_GET['trimester_id']))
         header('location:'.PAGES['stats']);
@@ -24,6 +25,7 @@
 	$trimester_id=$_GET['trimester_id'];
 	$select_course_query="SELECT * FROM courses WHERE t_id = $trimester_id";
 	$select_course_query_result = $conn->query($select_course_query);
+	$select_course_query_result_copy = $conn->query($select_course_query);
     $total_course = mysqli_num_rows($select_course_query_result);
 ?>
 
@@ -59,6 +61,44 @@
     </div>
     </div>
 </div>
+
+<!--PIE CHART START-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+        ['Course Code', 'GPA'],
+        <?php
+        $arr = array();
+        while($course_cg=mysqli_fetch_assoc($select_course_query_result_copy)) {
+//            if ($course_cg['obtained_marks'] == null) continue;
+            $cg = get_grade_by_mark($course_cg['obtained_marks']);
+            $arr[$course_cg['c_code']] = $cg;
+        }
+        foreach ($arr as $key => $val) {
+            echo "['".$key."', ".$val."],";
+        }
+        ?>
+    ]);
+
+    var options = {
+    title: 'Courses'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('course_piechart'));
+
+    chart.draw(data, options);
+    }
+</script>
+<!--     Actual Chart       -->
+<div id="course_piechart"></div>
+
+<!--PIE CHART END-->
+
 
 <div class="post-container">
     <br>

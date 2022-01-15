@@ -32,6 +32,7 @@
         'addPost-function' => INC_DOMAIN . '/include/addPost_Function.php',
         'view-post-function' => INC_DOMAIN . '/include/view-post-function.php',
         'signup-function' => INC_DOMAIN . '/include/signup_function.php',
+        'result-calculation-function' => INC_DOMAIN . '/include/result-calculation-functions.php',
         'edit-profile-function' => INC_DOMAIN . '/include/edit-profile-function.php',
         'nav-main-template' => INC_DOMAIN . '/template/nav-main.php',
         'nav-logged-template' => INC_DOMAIN . '/template/nav-menu-for-logged-user.php',
