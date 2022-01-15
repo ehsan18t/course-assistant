@@ -7,8 +7,8 @@
 ?>
 
 <title>Trimester List</title>
-<link rel="stylesheet" href="<?php echo CSS['modal.css'] ?>">
-<link rel="stylesheet" href="<?php echo CSS['stats.css'] ?>">
+<link rel="stylesheet" href="<?php echo CSS['modal.css']; ?>">
+<link rel="stylesheet" href="<?php echo CSS['stats.css']; ?>">
 <script type="text/javascript" src="<?php echo JS['toggle-visibility.js']; ?>"></script>
 </head>
 
