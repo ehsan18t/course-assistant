@@ -42,9 +42,10 @@
     const CSS = array(
         'styles.css' => DOMAIN . '/css/styles.css',
         'profile.css' => DOMAIN . '/css/profile.css',
-        'style.css' => DOMAIN . '/css/style.css',
         'post.css' => DOMAIN . '/css/post.css',
-        'modal.css' => DOMAIN . '/css/modal.css'
+        'modal.css' => DOMAIN . '/css/modal.css',
+        'stats.css' => DOMAIN . '/css/stats.css',
+        'style.css' => DOMAIN . '/css/style.css'
     );
 
     const JS = array(
