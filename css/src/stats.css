@@ -3,7 +3,7 @@
 }
 
 .post-card {
-    @apply mr-8 ml-8 mt-3 h-full flex bg-white hover:bg-cyan-500 rounded-3xl p-8 md:p-0 shadow-md hover:transition hover:duration-300;
+    @apply mr-8 ml-8 mt-3 h-full flex bg-white hover:bg-amber-50 hover:transition hover:duration-300 rounded-3xl p-8 md:p-0 shadow-md;
 }
 
 .post-img {
