@@ -28,10 +28,10 @@
     // Includes
     const INCLUDES = array(
         'connection' => INC_DOMAIN . '/include/connection.php',
-        'main-function' => INC_DOMAIN . '/include/function.php',
-        'addPost-function' => INC_DOMAIN . '/include/addPost_Function.php',
+        'main-function' => INC_DOMAIN . '/include/main-function.php',
+        'addPost-function' => INC_DOMAIN . '/include/add-post-function.php',
         'view-post-function' => INC_DOMAIN . '/include/view-post-function.php',
-        'signup-function' => INC_DOMAIN . '/include/signup_function.php',
+        'signup-function' => INC_DOMAIN . '/include/signup-function.php',
         'result-calculation-function' => INC_DOMAIN . '/include/result-calculation-functions.php',
         'edit-profile-function' => INC_DOMAIN . '/include/edit-profile-function.php',
         'nav-main-template' => INC_DOMAIN . '/template/nav-main.php',
