@@ -75,7 +75,7 @@
         <?php
         $arr = array();
         while($course_cg=mysqli_fetch_assoc($select_course_query_result_copy)) {
-//            if ($course_cg['obtained_marks'] == null) continue;
+            if ($course_cg['obtained_marks'] == null) continue;
             $cg = get_grade_by_mark($course_cg['obtained_marks']);
             $arr[$course_cg['c_code']] = $cg;
         }
