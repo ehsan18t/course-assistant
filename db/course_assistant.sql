@@ -82,7 +82,7 @@ CREATE TABLE massages (
     sender INT NOT NULL,
     receiver INT NOT NULL,
     group_id INT NOT NULL ,
-    time timestamp NOT NULL DEFAULT current_timestamp(),
+    msg_time timestamp NOT NULL DEFAULT current_timestamp(),
     CONSTRAINT pk_massages PRIMARY KEY (msg_id),
     CONSTRAINT fk_group FOREIGN KEY (group_id) REFERENCES study_group(group_id),
     CONSTRAINT fk_sender FOREIGN KEY (sender) REFERENCES users(u_id),
