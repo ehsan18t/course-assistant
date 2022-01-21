@@ -15,12 +15,12 @@
        }
           $posts = desplay_my_data($conn,$user_data);
 
-    //    if(isset($_GET['status'])){
-    //     if($_GET['status']='delete'){
-    //         $delete_id = $_GET['id'];
-    //         $delmsg =  delete_data($conn,$delete_id);
-    //     }
-    // }
+       if(isset($_GET['status'])){
+        if($_GET['status']='delete'){
+            $delete_id = $_GET['id'];
+            $delmsg =  delete_data($conn,$delete_id);
+        }
+    }
    
 ?>
 
@@ -69,7 +69,7 @@
                     <td><?php  echo $post['helper_id']; ?></td>
                     <td>
                         <a  href="files/<?php echo $post['r_course_link']; ?>" download>Download</a>
-                        <a  href="?status=delete&&id=<?php //echo $post['p_id']?>" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a>
+                        <a  href="?status=delete&&id=<?php echo $post['r_id']?>" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a>
                     </td>
                 </tr>
                 <?php } ?>

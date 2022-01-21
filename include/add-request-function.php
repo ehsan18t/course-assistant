@@ -71,4 +71,12 @@
       die();
     }
   }
+  function delete_data($conn,$id){
+    
+    $query = "DELETE FROM request WHERE r_id=$id";
+    if(mysqli_query($conn, $query)){
+        //unlink('upload/'.$deleteImg_data);
+        return "Deleted Successfully";
+    }
+}
 ?>
