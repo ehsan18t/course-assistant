@@ -80,26 +80,32 @@ EOD;
         </div>
 
     </div>
-    <!-- end avatar profile-->
+    <!-- end avatar profile -->
 <?php if ($current_uid != $user_data['u_id']) {
-    $contact_code = <<<'EOD'
+    $contact_code_p1 = <<<'EOD'
     <!-- START PM/Email Me Option -->
     <div class="h-24 mx-auto relative shadow-lg bg-white rounded-lg p-2 flex w-3/12" style="top:1em">
         <div class="w-1/2 ml-2 flex my-auto">
-            <a class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full ml-3">
+            <a href="
+EOD;
+    $contact_code_p2 = <<<'EOD'
+" class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full ml-3">
                 Email Me
             </a>
 
         </div>
         <div class="w-1/2 flex my-auto pl-5 border-l-2 border-gray-300 object-right">
-            <a class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full ml-3">
+            <a href="
+EOD;
+    $contact_code_p3 = <<<'EOD'
+" class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full ml-3">
                 PM Me
             </a>
         </div>
     </div>
     <!-- END PM/Email Me Option -->
 EOD;
-    echo $contact_code;
+    echo $contact_code_p1."mailto:".$user_data['email'].$contact_code_p2.PAGES['private-chat']."?receiver_uid=".$user_data['u_id'].$contact_code_p3;
 }
 ?>
 
