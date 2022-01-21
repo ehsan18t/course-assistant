@@ -76,14 +76,14 @@ CREATE TABLE study_group (
     CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES courses(c_id)
 );
 
-CREATE TABLE massages (
-    msg_id int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE messages (
+    msg_id INT NOT NULL AUTO_INCREMENT,
     msg varchar(1000) NOT NULL,
     sender INT NOT NULL,
     receiver INT NOT NULL,
     group_id INT,
     msg_time timestamp NOT NULL DEFAULT current_timestamp(),
-    CONSTRAINT pk_massages PRIMARY KEY (msg_id),
+    CONSTRAINT pk_messages PRIMARY KEY (msg_id),
     CONSTRAINT fk_group FOREIGN KEY (group_id) REFERENCES study_group(group_id),
     CONSTRAINT fk_sender FOREIGN KEY (sender) REFERENCES users(u_id),
     CONSTRAINT fk_receiver FOREIGN KEY (receiver) REFERENCES users(u_id)
@@ -99,14 +99,14 @@ CREATE TABLE study_group (
     CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES courses(c_id)
 );
 
-CREATE TABLE massages (
+CREATE TABLE messages (
     msg_id int(11) NOT NULL AUTO_INCREMENT,
     msg varchar(1000) NOT NULL,
     sender INT NOT NULL,
     receiver INT NOT NULL,
-    group_id INT NOT NULL ,
+    group_id INT,
     time timestamp NOT NULL DEFAULT current_timestamp(),
-    CONSTRAINT pk_massages PRIMARY KEY (msg_id),
+    CONSTRAINT pk_messages PRIMARY KEY (msg_id),
     CONSTRAINT fk_group FOREIGN KEY (group_id) REFERENCES study_group(group_id),
     CONSTRAINT fk_sender FOREIGN KEY (sender) REFERENCES users(u_id),
     CONSTRAINT fk_receiver FOREIGN KEY (receiver) REFERENCES users(u_id)
@@ -144,17 +144,17 @@ CREATE TABLE courses_has_assessments (
     CONSTRAINT fk_c_a_assess_id FOREIGN KEY (assess_id) REFERENCES assessments(assess_id)
 );
 
---  Relational/Junction Table -- (user - massages)
-CREATE TABLE user_has_massages(
+--  Relational/Junction Table -- (user - messages)
+CREATE TABLE user_has_messages(
     user_id INT NOT NULL,
     group_id INT NOT NULL,
     msg_id INT NOT NULL,
-    CONSTRAINT pk_user_has_massages PRIMARY KEY (
+    CONSTRAINT pk_user_has_messages PRIMARY KEY (
             msg_id,
             group_id,
             user_id
         ),
-    CONSTRAINT fk_relational_massages Foreign KEY(msg_id) REFERENCES massages(msg_id),
+    CONSTRAINT fk_relational_messages Foreign KEY(msg_id) REFERENCES messages(msg_id),
     CONSTRAINT fk_relational_group FOREIGN KEY(group_id) REFERENCES study_group(group_id),
     CONSTRAINT fk_relational_user FOREIGN KEY(user_id) REFERENCES users(u_id)
 );
