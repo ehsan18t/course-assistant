@@ -31,15 +31,21 @@
 <!-- top section-->
 <div class="w-full bg-white h-64 bg-sky-500 flex-col shadow-2xl flex" style="background-color: rgb(14 165 233);">
     <?php if ($current_uid == $user_data['u_id']) {
-    $edit_code = <<<'EOD'
+    $edit_code_p1 = <<<'EOD'
     <!-- START Edit Profile Options -->
     <div class="top-icons" >
         <div class="h-4 text-white pr-2" >
             <div class="inline float-right text-xs mt-4" >
-                <a href = "<?php echo PAGES['edit-profile'] ?>" class="hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full" >
+                <a href = "
+EOD;
+$edit_code_p2 = <<<'EOD'
+" class="hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full" >
         Edit Profile
         </a >
-                <a href = "<?php echo PAGES['change-profile-pic'] ?>" class="hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full" >
+                <a href = "
+EOD;
+$edit_code_p3 = <<<'EOD'
+" class="hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full" >
         Change Profile Picture
         </a >
             </div >
@@ -47,7 +53,7 @@
     </div >
     <!--  END Edit Profile Options  -->
 EOD;
-    echo $edit_code;
+    echo $edit_code_p1.PAGES['edit-profile'].$edit_code_p2.PAGES['change-profile-pic'].$edit_code_p3;
     }
  ?>
     <!--back button-->
