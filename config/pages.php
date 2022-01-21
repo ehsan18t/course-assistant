@@ -22,7 +22,9 @@
         'edit-profile' =>  DOMAIN . '/user/edit-profile.php',
         'change-profile-pic' =>  DOMAIN . '/user/change-profile-picture.php',
         'logout' => DOMAIN . '/user/logout.php',
-        'add-post' => DOMAIN . '/post/addPost.php'
+        'add-post' => DOMAIN . '/post/addPost.php',
+        'request' => DOMAIN.'/request/all_request.php',//new added
+        'add_request' => DOMAIN.'/request/my_request.php'//new added
     );
 
     // Includes
@@ -30,6 +32,7 @@
         'connection' => INC_DOMAIN . '/include/connection.php',
         'main-function' => INC_DOMAIN . '/include/main-function.php',
         'addPost-function' => INC_DOMAIN . '/include/add-post-function.php',
+        'addRequest-function' => INC_DOMAIN . '/include/add-request-function.php',// new added
         'view-post-function' => INC_DOMAIN . '/include/view-post-function.php',
         'signup-function' => INC_DOMAIN . '/include/signup-function.php',
         'result-calculation-function' => INC_DOMAIN . '/include/result-calculation-functions.php',
