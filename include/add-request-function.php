@@ -91,8 +91,9 @@
           else echo "There is some problem";
       }
       else{
-        $query = "INSERT INTO rating(rating_email,points)
-                           VALUE('$halper','10')";
+        $domain = $admin['domain'];
+        $query = "INSERT INTO rating(rating_email,points,domain)
+                           VALUE('$halper','10','$domain')";
         mysqli_query($conn, $query);
       }
 
@@ -110,5 +111,15 @@
         //unlink('upload/'.$deleteImg_data);
         return "Deleted Successfully";
     }
+}
+function view_rating($conn , $user_data){
+  $post_domain = $user_data['domain'];
+  $query = "SELECT * FROM rating WHERE domain='$post_domain' ORDER BY points DESC";
+      if(mysqli_query($conn, $query)){
+          return mysqli_query($conn, $query);
+      }
+      else{
+         echo  "Something wrong!";
+      }
 }
 ?>
