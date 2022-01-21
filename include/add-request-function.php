@@ -56,6 +56,13 @@
 
   }
 
+  function addPoint($conn,$user_email){
+       $query = "SELECT * FROM rating where rating_email='$user_email'";
+       //$query = "SELECT count(*) as total,points FROM rating HAVING rating_email='$user_email'"; 
+       $result = mysqli_query($conn,$query);
+       return $result;
+  }
+
   function upload_data($conn,$data,$request_id,$admin){
    $temp_name = $_FILES['file']['tmp_name'];
    $file_name = $_FILES['file']['name'];
@@ -66,7 +73,32 @@
     SET  r_course_link = '$file_address',
          helper_id   =  '$halper' 
     WHERE r_id=$request_id";
+
+
     if(mysqli_query($conn, $query)){
+      $data = addPoint($conn,$halper);
+      $data = mysqli_fetch_assoc($data);
+      if(isset($data)){
+        $points =$data['points'] + 10;
+        echo $points;
+        echo $halper;
+          $query = "UPDATE rating
+                     SET   points = $points
+                     WHERE rating_email='$halper'";
+          if(mysqli_query($conn, $query)){
+            mysqli_query($conn, $query);
+          }
+          else echo "There is some problem";
+      }
+      else{
+        $query = "INSERT INTO rating(rating_email,points)
+                           VALUE('$halper','10')";
+        mysqli_query($conn, $query);
+      }
+
+           
+
+
       header("Location: " . PAGES['home']);
       die();
     }
