@@ -57,10 +57,10 @@
 ?>
 <div class="chat-people-container">
     <div class="chat-people-img">
-        <img src="<?php echo DIR['picture'].$user['profile_pic_url']; ?>" alt="" class="chat-people-img-style">
+        <img src="<?php echo ($user['profile_pic_url'] == null ? IMG['avatar'] : DIR['picture'].$user['profile_pic_url']); ?>" alt="" class="chat-people-img-style">
         <div class="chat-people-name-container">
             <div class="chat-people-name">
-                <span class="chat-people-name-style"><?php echo $user['f_name'].$user['l_name']; ?></span>
+                <span class="chat-people-name-style"><?php echo $user['f_name']." ".$user['l_name']; ?></span>
             </div>
             <span class="chat-people-des-style"><?php echo $user['university']; ?></span>
             <span class="chat-people-des-style"><?php echo $user['department']; ?></span>
