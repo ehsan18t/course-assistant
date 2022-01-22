@@ -89,7 +89,14 @@ CREATE TABLE study_group (
     CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES courses(c_id)
 );
 
-
+CREATE TABLE participants (
+    user_id INT NOT NULL,
+    course_id INT NOT NULL,
+    group_id INT NOT NULL,
+    CONSTRAINT fk_participants_user FOREIGN KEY (user_id) REFERENCES users(u_id),
+    CONSTRAINT fk_participants_group FOREIGN KEY (group_id) REFERENCES study_group(group_id),
+    CONSTRAINT fk_participants_course FOREIGN KEY (course_id) REFERENCES courses(c_id)
+);
 
 
 --  Relational/Junction Table -- (trimester - courses)
