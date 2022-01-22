@@ -5,10 +5,30 @@
     require_once '../header.php';
     $user_data = check_login($conn);
     $current_uid = $user_data['u_id'];
+    $current_uemail = $user_data['email'];
     require_once INCLUDES['view-post-function'];
     require_once INCLUDES['addPost-function'];
     $posts = null;
 
+
+    // Delete Post
+    if(isset($_POST['delete'])){
+        $delete_id = $_POST['id'];
+        $delmsg =  delete_data($conn, $delete_id);
+        header("Location: " . PAGES['home']);
+    }
+
+    // Edit Post
+    if(isset($_POST['id'])){
+        $id = $_POST['id'];
+        $posts= display_data_by_id($conn,$id);
+        $old_data=mysqli_fetch_assoc($posts);
+    }
+    if(isset($_POST['edit_btn'])){
+        update_data($conn, $_POST);
+    }
+
+    // Search
     if(isset($_GET['user_id'])) {
         $posts = view_post_by_id($conn, $user_data, $_GET['user_id']);
         $user_data = get_user($conn, $_GET['user_id']);
@@ -20,6 +40,8 @@
     <title>Profile Page</title>
     <link rel="stylesheet" href="<?php echo CSS['profile.css']."?".time(); ?>">
     <link rel="stylesheet" href="<?php echo CSS['post.css']."?".time(); ?>">
+<link rel="stylesheet" href="<?php echo CSS['modal.css']."?".time(); ?>">
+<script type="text/javascript" src="<?php echo JS['toggle-visibility.js']; ?>"></script>
 </head>
 
 <body>
@@ -114,6 +136,23 @@ EOD;
 <?php while($post=mysqli_fetch_assoc($posts)){ ?>
 
 <div class="post-container">
+
+    <div id="edit-post-popup" class="<?php echo (isset($id) ? 'show': 'hide'); ?>">
+        <div class="modal-content">
+            <button onclick="toggleVisibility('edit-post-popup')" class="close"> Close </button>
+            <form action="" method="post" enctype="multipart/form-data">
+                <input type="text" name="edit_course_code" value="<?php echo $old_data['course_code']; ?>">
+                <input type="text" name="edit_course_name" value="<?php echo $old_data['course_name']; ?>">
+                <input type="text" name="edit_course_des" value="<?php echo $old_data['course_des']; ?>">
+                <label for="files">Update your File</label>
+                <input type="file" name="edit_course_file">
+                <input type="hidden" name="fk_id" value="<?php echo $id; ?>">
+                <input type="hidden" name="fk_address" value="<?php echo $old_data['file_link']; ?>">
+                <input type="submit" value="Update Information" name="edit_btn">
+            </form>
+        </div>
+    </div>
+
     <?php
     $author_email = $post['post_admin'];
     $image_link = admin_image($conn, $author_email);
@@ -138,8 +177,17 @@ EOD;
                 </p>
             </div>
             <div class="post-btn-container">
+                <form action="" method="post">
                 <a class="post-dl-btn" href="post/file/<?php echo $post['file_link']; ?>">Download</a>
                 <a class="post-cm-btn" href="#">Comment</a>
+                <input type="hidden" name="id" value="<?php echo $post['p_id']; ?>">
+
+                <?php
+                if ($author_email == $current_uemail) {
+                    echo "<input class='post-cm-btn' onclick='toggleVisibility(\"edit-post-popup\")' type='submit' value='Edit'>";
+                    echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='return confirm(\"Are you sure you want to delete this item?\")' type='submit' name='delete' value='Delete'>";
+                } ?>
+                </form>
             </div>
         </div>
     </div>
