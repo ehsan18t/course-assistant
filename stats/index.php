@@ -30,24 +30,19 @@ $total_trimester = mysqli_num_rows($select_all_trimester_query_result);
 <div id="open_trimester_creator_window" class="hide">
     <div class="modal-content">
     <a href="#" class="close" onclick="toggleVisibility('open_trimester_creator_window')">Close</a>
-
-    <br />
-    <br />
     <form action="index.php" method="POST">
+        <label for="is_trimester_running"> Name </label>
         <input type="text" name="trimester_name" placeholder="Enter Trimester Title" />
-        <br />
-        <label for="is_trimester_running"> Running:
-            <input type="checkbox" value="0" name="is_trimester_running" />
+
+        <label class="checkbox-label" for="is_trimester_running">
+            <input type="checkbox" value="0" name="is_trimester_running" /> Currently Running
         </label>
-        <br />
 
-        <label for="trimester_start_date">Start Date: </label>
+        <label for="trimester_start_date">Start Date </label>
         <input type="date" name="trimester_start_date" />
-        <br />
 
-        <label for="trimester_end_date">End Date: </label>
-        <input type="date" name="trimester_end_date" />
-        <br />
+        <label for="trimester_end_date">End Date </label>
+        <input  type="date" name="trimester_end_date" />
 
         <input type="submit" name="submit_trimester" value="Add" />
     </form>

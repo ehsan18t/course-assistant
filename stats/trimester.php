@@ -44,7 +44,7 @@
         <br />
         <br />
         <form action="trimester.php?trimester_id=<?php echo $trimester_id?>" method="POST">
-            <input type="text" name="course_name" placeholder="Course Name" />
+            <input type="text" class="input-box" name="course_name" placeholder="Course Name" />
             <br>
             <input type="text" name="course_code" placeholder="Course Code" />
             <br>
