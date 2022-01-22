@@ -24,9 +24,6 @@
         <a href="<?php echo PAGES['group']; ?>" class="nav-menu-item mr-4c">
             Study Group
         </a>
-        <a href="<?php echo PAGES['request']; ?>" class="nav-menu-item mr-4c">
-            Course Request
-        </a>
     </div>
 
     <div class="search-bar">
