@@ -7,18 +7,18 @@
     $user_data = check_login($conn);
 ?>
 
-<title>Home Page</title>
+<title>Inbox Page</title>
 
+<link rel="stylesheet" href="<?php echo CSS['post.css']."?".time(); ?>">
 </head>
 
 <body>
 <?php require_once INCLUDES['nav-main-template']; ?>
 <?php require_once INCLUDES['nav-logged-template']; ?>
 
-<br />
 
-<center>
-	
+
+<div class="post-container">
 <?php 
 	$users=array();
 	
@@ -44,13 +44,19 @@
 	
 	
 	foreach($users as $x){
-        $u = mysqli_fetch_assoc($conn->query("SELECT * FROM users WHERE u_id=$x"));
-		echo "<a href='private.php?receiver_uid=".$x."'>".$u['f_name']." ".$u['l_name']."</a><br /> <br />";
-	}
-	
-?>
-	
-</center>
+        $u = mysqli_fetch_assoc($conn->query("SELECT * FROM users WHERE u_id=$x")); ?>
+    <a href="<?php echo PAGES['private-chat'].'?receiver_uid='.$x; ?>">
+    <div class="post-card">
+    <img class="post-img" style="height: 100px; width: 100px;" src="<?php echo DIR['picture'].$u['profile_pic_url']; ?>" alt="">
+    <div class="post-text-container">
+        <div class="post-title-style">
+            <?php echo $u['f_name']." ".$u['l_name']; ?>
+        </div>
+    </div>
+    </div>
+    </a>
+	<?php } ?>
+</div>
 
 </body>
 
