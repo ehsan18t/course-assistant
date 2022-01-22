@@ -8,23 +8,6 @@
 ?>
 
 <title>Message Page</title>
-
-<style type="text/css">
-
-.sender_message_color{
-	color: #ff0000;
-	float: right;
-	margin-right: 50px;
-}
-
-.receiver_message_color{
-	color: #000000;
-	float: left;
-	margin-left: 50px;
-}
-
-</style>
-
 <link rel="stylesheet" href="<?php echo CSS['chat.css']."?".time(); ?>">
 </head>
 
@@ -54,17 +37,6 @@
  ?>
 
 
-
-<br />
-<form action="" method="POST">
-	<textarea type="text" name="message" placeholder="Write something"></textarea>
-	<input type="hidden" name="receiver_uid" value="<?php echo $receiver_uid ?>" />
-	<input type="submit" name="submit" value="Send Message" />
-</form>
-
-<br />
-<br />
-
 <?php
     // Message Query using Sub-query
     $messages_query = "SELECT *
@@ -79,7 +51,31 @@
     $message_sql=$conn->query($messages_query);
 ?>
 
+<!-- Chat Header Section -->
+<?php
+    $user = mysqli_fetch_assoc($conn->query("SELECT * FROM users WHERE u_id=$receiver_uid"));
+?>
+<div class="chat-people-container">
+    <div class="chat-people-img">
+        <img src="<?php echo DIR['picture'].$user['profile_pic_url']; ?>" alt="" class="chat-people-img-style">
+        <div class="chat-people-name-container">
+            <div class="chat-people-name">
+                <span class="chat-people-name-style"><?php echo $user['f_name'].$user['l_name']; ?></span>
+            </div>
+            <span class="chat-people-des-style"><?php echo $user['university']; ?></span>
+            <span class="chat-people-des-style"><?php echo $user['department']; ?></span>
+        </div>
+    </div>
+</div>
+<!-- Chat Section -->
 <div class="chat-container">
+    <form action="" method="POST" class="chat-input-form">
+        <div class="chat-input-area">
+            <textarea type="text" class="chat-input" name="message" placeholder="Write something"></textarea>
+            <input type="hidden" name="receiver_uid" value="<?php echo $receiver_uid ?>" />
+            <input type="submit" class="chat-send-btn" name="submit" value="Send Message" />
+        </div>
+    </form>
     <div class="chat-content">
     <?php
     while($select_all_message=mysqli_fetch_assoc($message_sql)){
