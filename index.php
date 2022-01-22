@@ -50,7 +50,7 @@
                 </p>
             </div>
             <div class="post-btn-container">
-                <a class="post-dl-btn" href="post/file/<?php echo $post['file_link']; ?>">Download</a>
+                <a class="post-dl-btn" href="post/file/<?php echo $post['file_link']; ?>" download>Download</a>
                 <a class="post-cm-btn" href="#">Comment</a>
             </div>
         </div>
