@@ -67,10 +67,12 @@
 
     const DIR = array(
         'uploads' => DOMAIN . '/uploads/',
+        'files' => DOMAIN . '/uploads/files/',
         'picture' => DOMAIN . '/uploads/picture/'
     );
 
     const INC_DIR = array(
         'uploads' => INC_DOMAIN . '/uploads/',
+        'files' => INC_DOMAIN . '/uploads/files/',
         'picture' => INC_DOMAIN . '/uploads/picture/'
     );
