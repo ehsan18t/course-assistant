@@ -6,7 +6,7 @@
          $course_des = $POST['course_des'];
          $temp_name = $_FILES['course_file']['tmp_name'];
          $file_name = $_FILES['course_file']['name'];
-         $file_address = "files/".$file_name;
+         $file_address = INC_DIR['files'].$file_name;
          move_uploaded_file($temp_name,$file_address);
          $post_admin = $user_data['email'];
          $domain = $user_data['domain'];
@@ -80,7 +80,7 @@
            WHERE p_id='$idno'";
         
         if(mysqli_query($conn, $query)){
-            if(!empty($_FILES))move_uploaded_file($tmp_name, 'files/'.$course_file);
+            if(!empty($_FILES))move_uploaded_file($tmp_name, PAGES['post'].INC_DIR['files'].$course_file);
             header("Location: " . PAGES['add_post']);
             die();
         }
