@@ -6,6 +6,7 @@
     $user_data = check_login($conn);
     require_once INCLUDES['addPost-function'];
 
+    // Add Post
     if(isset($_POST['add_post']))
     {
         //echo "Send Massage";
@@ -13,13 +14,24 @@
     }
     $posts = desplay_my_data($conn,$user_data);
 
-    if(isset($_GET['status'])){
-        if($_GET['status']='delete'){
-            $delete_id = $_GET['id'];
-            $delmsg =  delete_data($conn,$delete_id);
-        }
+    // Delete Post
+    if(isset($_POST['delete'])){
+        $delete_id = $_POST['id'];
+        $delmsg =  delete_data($conn, $delete_id);
+        header("Location: " . PAGES['home']);
     }
 
+    // Edit Post
+    if(isset($_POST['id'])){
+         $id = $_POST['id'];
+         $posts= display_data_by_id($conn,$id);
+         $old_data=mysqli_fetch_assoc($posts);
+    }
+    if(isset($_POST['edit_btn'])){
+        update_data($conn, $_POST);
+    }
+
+    // Search
     if(isset($_GET['search-text'])) {
         $key = $_GET['search-text'];
         $posts = view_post_search($conn, $user_data, $key);
@@ -38,6 +50,21 @@
 <?php require_once INCLUDES['nav-logged-template']; ?>
 
 <div class="post-container">
+    <div id="edit-post-popup" class="<?php echo (isset($id) ? 'show': 'hide'); ?>">
+        <div class="modal-content">
+            <button onclick="toggleVisibility('edit-post-popup')" class="close"> Close </button>
+            <form action="" method="post" enctype="multipart/form-data">
+                <input type="text" name="edit_course_code" value="<?php echo $old_data['course_code']; ?>">
+                <input type="text" name="edit_course_name" value="<?php echo $old_data['course_name']; ?>">
+                <input type="text" name="edit_course_des" value="<?php echo $old_data['course_des']; ?>">
+                <label for="files">Update your File</label>
+                <input type="file" name="edit_course_file">
+                <input type="hidden" name="fk_id" value="<?php echo $id; ?>">
+                <input type="hidden" name="fk_address" value="<?php echo $old_data['file_link']; ?>">
+                <input type="submit" value="Update Information" name="edit_btn">
+            </form>
+        </div>
+    </div>
 
     <div id="add-post-popup" class="hide">
         <div class="modal-content">
@@ -85,14 +112,22 @@
                 </p>
             </div>
             <div class="post-btn-container">
-                <a class="post-dl-btn" href="post/file/<?php echo $post['file_link']; ?>" download>Download</a>
+                <form action="" method="post">
+                <a class="post-dl-btn" href="post/file/<?php echo $post['file_link']; ?>">Download</a>
                 <a class="post-cm-btn" href="#">Comment</a>
+                    <input type="hidden" name="id" value="<?php echo $post['p_id']; ?>">
+
+                    <?php
+                    if ($author_email == $user_data['email']) {
+                        echo "<input class='post-cm-btn' onclick='toggleVisibility(\"edit-post-popup\")' type='submit' value='Edit'>";
+                        echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='return confirm(\"Are you sure you want to delete this item?\")' type='submit' name='delete' value='Delete'>";
+                    } ?>
+                </form>
             </div>
         </div>
     </div>
     <?php } ?>
         <br><br>
-
 </div>
 </body>
 

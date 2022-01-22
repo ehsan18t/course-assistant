@@ -61,7 +61,7 @@
         }
     }
     
-    function update_data($conn,$data){
+    function update_data($conn, $data){
         $course_code = $data['edit_course_code'];
         $course_name = $data['edit_course_name'];
         $course_des =$data['edit_course_des'];
@@ -81,7 +81,7 @@
         
         if(mysqli_query($conn, $query)){
             if(!empty($_FILES))move_uploaded_file($tmp_name, PAGES['post'].INC_DIR['files'].$course_file);
-            header("Location: " . PAGES['add_post']);
+            header("Location: " . PAGES['home']);
             die();
         }
     }
