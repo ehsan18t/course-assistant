@@ -40,22 +40,14 @@
     <!--  View Course  -->
     <div id="add-course-popup" class="hide">
         <div class="modal-content">
-        <button onclick="toggleVisibility('add-course-popup')" class="close"> x </button>
-        <br />
-        <br />
+        <button onclick="toggleVisibility('add-course-popup')" class="close"> Close </button>
         <form action="trimester.php?trimester_id=<?php echo $trimester_id?>" method="POST">
             <input type="text" class="input-box" name="course_name" placeholder="Course Name" />
-            <br>
             <input type="text" name="course_code" placeholder="Course Code" />
-            <br>
             <input type="text" name="course_credit" placeholder="Credit" />
-            <br>
             <input type="text" name="course_section" placeholder="Section (Optional)" />
-            <br>
             <input type="text" name="course_total_mark" placeholder="Total Mark" />
-            <br>
             <input type="text" name="course_expected_mark" placeholder="Expected Mark (optional)" />
-            <br>
             <input type="submit" name="add_course" value="Add" />
         </form>
     </div>
