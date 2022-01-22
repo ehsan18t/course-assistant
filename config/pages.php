@@ -23,6 +23,7 @@
         'change-profile-pic' =>  DOMAIN . '/user/change-profile-picture.php',
         'logout' => DOMAIN . '/user/logout.php',
         'add-post' => DOMAIN . '/post/addPost.php',
+        'chat' => DOMAIN . '/chat/',
         'private-chat' => DOMAIN . '/chat/private.php'
     );
 
