@@ -47,7 +47,7 @@
         $u = mysqli_fetch_assoc($conn->query("SELECT * FROM users WHERE u_id=$x")); ?>
     <a href="<?php echo PAGES['private-chat'].'?receiver_uid='.$x; ?>">
     <div class="post-card">
-    <img class="post-img" style="height: 100px; width: 100px;" src="<?php echo (DIR['picture'].$u['profile_pic_url'] == NULL ? IMG['avatar'] : DIR['picture'].$user_data['profile_pic_url']); ?>" alt="">
+    <img class="post-img" style="height: 100px; width: 100px;" src="<?php echo ($u['profile_pic_url'] == NULL ? IMG['avatar'] : DIR['picture'].$u['profile_pic_url']); ?>" alt="">
     <div class="post-text-container">
         <div class="post-title-style">
             <?php echo $u['f_name']." ".$u['l_name']; ?>

@@ -121,7 +121,7 @@ EOD;
     ?>
     <div class="post-card">
 
-        <img class="post-img" src="<?php echo (DIR['picture'].$author['profile_pic_url'] == null ? IMG['avatar'] : DIR['picture'].$user_data['profile_pic_url']); ?>">
+        <img class="post-img" src="<?php echo ($author['profile_pic_url'] == null ? IMG['avatar'] : DIR['picture'].$author['profile_pic_url']); ?>">
         <div class="post-text-container">
             <div class="post-title-style">
                 <?php echo $post['course_name']; ?>
