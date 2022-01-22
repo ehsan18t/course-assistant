@@ -23,9 +23,13 @@
         'change-profile-pic' =>  DOMAIN . '/user/change-profile-picture.php',
         'logout' => DOMAIN . '/user/logout.php',
         'add-post' => DOMAIN . '/post/addPost.php',
-        'request' => DOMAIN.'/request/all_request.php',//new added
-        'add_request' => DOMAIN.'/request/my_request.php',//new added
-        'rating' => DOMAIN.'/request/rating.php'//new added
+        'chat' => DOMAIN . '/chat/',
+        'group' => DOMAIN . '/study-group/',
+        'private-chat' => DOMAIN . '/chat/private.php',
+        'group-chat' => DOMAIN . '/study-group/group.php',
+        'request' => DOMAIN.'/request/all_request.php',
+        'add_request' => DOMAIN.'/request/my_request.php',
+        'rating' => DOMAIN.'/request/rating.php'
     );
 
     // Includes

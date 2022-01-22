@@ -7,7 +7,7 @@
     $user_data = check_login($conn);
 ?>
 
-<title>Home Page</title>
+<title>Message Page</title>
 
 <style type="text/css">
 
@@ -37,15 +37,18 @@
 ?>
 
 
-
+<!-- Sent message action-->
  <?php 
  if(isset($_REQUEST['submit'])){
 	$message = $_REQUEST['message'];
 	 
-	$insert_sql="INSERT INTO massages (msg, sender, receiver)
+	$insert_sql="INSERT INTO messages (msg, sender, receiver)
 				VALUES('$message', $sender_uid, $receiver_uid)";
-	$insert_query = $conn->query($insert_sql);
-	header('location:chatting.php?receiver_uid='.$receiver_uid);
+    if (!$conn->query($insert_sql))
+        echo "Message we not sent! Please try again!";
+        //  last inserted row id
+//        $msg_id = $conn->insert_id;
+	header('location:'.PAGES['private-chat'].'?receiver_uid='.$receiver_uid);
  }
  ?>
 
@@ -53,18 +56,25 @@
 
 <br />
 <form action="" method="POST">
-	<input type="text" name="message" placeholder="Write something" />
+	<textarea type="text" name="message" placeholder="Write something"></textarea>
 	<input type="hidden" name="receiver_uid" value="<?php echo $receiver_uid ?>" />
 	<input type="submit" name="submit" value="Send Message" />
 </form>
 
 <br />
 <br />
-
-<?php 
-	$messages_query = "SELECT * FROM massages WHERE (sender=$sender_uid AND receiver=$receiver_uid) OR (sender=$receiver_uid AND receiver=$sender_uid) AND group_id IS NULL ORDER BY msg_id DESC";
+<?php
+    // Sub-query
+	$messages_query = "SELECT *
+                        FROM (
+                               SELECT *
+                               FROM messages
+                               WHERE group_id IS NULL
+                                     ) AS msg
+                        WHERE (sender=$sender_uid AND receiver=$receiver_uid)
+                           OR (sender=$receiver_uid AND receiver=$sender_uid)
+                        ORDER BY msg_id DESC";
 	$message_sql=$conn->query($messages_query);
-	
 	while($select_all_message=mysqli_fetch_assoc($message_sql)){
 		
 		if($select_all_message['sender'] == $sender_uid){

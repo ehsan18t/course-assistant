@@ -163,7 +163,7 @@
 }
 
 .search-bar-container {
-  @apply relative sm:mr-10 lg:mr-32;
+  @apply relative sm:mr-10 lg:mr-8;
 }
 
 .search-bar-input {
