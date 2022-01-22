@@ -1,56 +1,59 @@
 /* Profile */
 .profile-container {
-    @apply max-w-6xl flex items-center h-auto lg:h-screen flex-nowrap mx-auto my-32 lg:my-0;
+    @apply w-full h-64 bg-sky-500 flex-col shadow-2xl flex;
 }
 
-.profile-card {
-    @apply w-full lg:w-3/4 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0;
+.profile-top-btn-container {
+    @apply h-4 text-white pr-2;
 }
 
-.profile-wrapper {
-    @apply p-4 md:p-12 text-center lg:text-left;
+.profile-top-btn-style {
+    @apply inline float-right text-xs mt-4;
 }
 
-.profile-img {
-    @apply block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center;
+.profile-top-btn {
+    @apply hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full;
 }
 
-.profile-big-img-container {
-    @apply w-full lg:w-1/4;
+.profile-info-container {
+    @apply h-32 mb-4;
 }
 
-.profile-big-img {
-    @apply rounded-none lg:rounded-lg shadow-2xl hidden lg:block;
+.profile-info-content {
+    @apply flex-col items-center;
 }
 
-.profile-name-decoration {
-    @apply text-3xl font-bold pt-8 lg:pt-0;
+.profile-avatar {
+    @apply h-16 w-16 rounded-full bg-white mx-auto;
 }
 
-.profile-horizontal-line {
-    @apply mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25;
+.profile-avatar-style {
+    @apply rounded-full;
 }
 
-.profile-work-icon {
-    @apply pt-4 text-base font-bold flex items-center justify-center lg:justify-start;
+.profile-info-title {
+    @apply text-white font-semibold text-2xl mt-1 content-center text-center;
 }
 
-.profile-work-icon-size {
-    @apply h-4 fill-current text-green-700 pr-4;
+.profile-info-other {
+    @apply text-white text-center text-gray-100;
 }
 
-.profile-button-container {
-    @apply pt-12 pb-8;
+.profile-contact-container {
+    @apply h-24 mx-auto relative shadow-lg bg-white rounded-lg p-2 flex w-3/12;
 }
 
-.profile-button {
-    @apply bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full transition duration-300;
+.profile-contact-first-of-two {
+    @apply w-1/2 ml-2 flex my-auto;
 }
 
-.profile-social-icon-container {
-    @apply mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-between;
+.profile-contact-second-of-two {
+    @apply w-1/2 flex my-auto pl-5 border-l-2 border-gray-300 object-right;
+}
+.profile-btn-contact {
+    @apply bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full ml-3;
 }
 
-.profile-social-icon {
-    @apply h-6 fill-current text-gray-600 hover:text-green-700;
+.profile-top-gap {
+    @apply h-6 mt-8;
 }

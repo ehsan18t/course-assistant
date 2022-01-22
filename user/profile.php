@@ -20,7 +20,6 @@
     <title>Profile Page</title>
     <link rel="stylesheet" href="<?php echo CSS['profile.css']."?".time(); ?>">
     <link rel="stylesheet" href="<?php echo CSS['post.css']."?".time(); ?>">
-<link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,52 +28,48 @@
 
 
 <!-- top section-->
-<div class="w-full bg-white h-64 bg-sky-500 flex-col shadow-2xl flex" style="background-color: rgb(14 165 233);">
+<div class="profile-container">
     <?php if ($current_uid == $user_data['u_id']) {
     $edit_code_p1 = <<<'EOD'
     <!-- START Edit Profile Options -->
-    <div class="top-icons" >
-        <div class="h-4 text-white pr-2" >
-            <div class="inline float-right text-xs mt-4" >
+        <div class="profile-top-btn-container" >
+            <div class="profile-top-btn-style" >
                 <a href = "
 EOD;
 $edit_code_p2 = <<<'EOD'
-" class="hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full" >
+" class="profile-top-btn" >
         Edit Profile
         </a >
                 <a href = "
 EOD;
 $edit_code_p3 = <<<'EOD'
-" class="hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full" >
+" class="profile-top-btn" >
         Change Profile Picture
         </a >
             </div >
         </div >
-    </div >
     <!--  END Edit Profile Options  -->
 EOD;
     echo $edit_code_p1.PAGES['edit-profile'].$edit_code_p2.PAGES['change-profile-pic'].$edit_code_p3;
     }
  ?>
     <!--back button-->
-    <div class="h-6 mt-2">
-
-    </div>
+    <div class="profile-top-gap"> </div>
     <!-- end back button-->
 
     <!-- avatar profile-->
-    <div class="h-32 mb-4">
-        <div class="wrapper flex-column items-center">
-            <div class="h-16 w-16 rounded-full bg-white mx-auto">
-                <img src="<?php echo ($user_data['profile_pic_url'] == NULL ? IMG['avatar'] : DIR['picture'].$user_data['profile_pic_url']) ?>" class="rounded-full" alt="">
+    <div class="profile-info-container">
+        <div class="profile-info-content">
+            <div class="profile-avatar">
+                <img src="<?php echo ($user_data['profile_pic_url'] == NULL ? IMG['avatar'] : DIR['picture'].$user_data['profile_pic_url']) ?>" class="profile-avatar-style" alt="">
             </div>
-            <div class="text-white font-semibold text-2xl mt-1 content-center text-center">
+            <div class="profile-info-title">
                 <?php echo $user_data['f_name']. ' ' .$user_data['l_name']; ?>
             </div>
-            <div class="text-white text-s text-center text-gray-300">
+            <div class="profile-info-other">
                 <?php echo $user_data['university'] ?>
             </div>
-            <div class="text-white text-s text-center text-gray-300">
+            <div class="profile-info-other">
                 <?php echo $user_data['department'] ?>
             </div>
         </div>
@@ -84,21 +79,21 @@ EOD;
 <?php if ($current_uid != $user_data['u_id']) {
     $contact_code_p1 = <<<'EOD'
     <!-- START PM/Email Me Option -->
-    <div class="h-24 mx-auto relative shadow-lg bg-white rounded-lg p-2 flex w-3/12" style="top:1em">
-        <div class="w-1/2 ml-2 flex my-auto">
+    <div class="profile-contact-container" style="top:1em">
+        <div class="profile-contact-first-of-two">
             <a href="
 EOD;
     $contact_code_p2 = <<<'EOD'
-" class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full ml-3">
+" class="profile-btn-contact">
                 Email Me
             </a>
 
         </div>
-        <div class="w-1/2 flex my-auto pl-5 border-l-2 border-gray-300 object-right">
+        <div class="profile-contact-second-of-two">
             <a href="
 EOD;
     $contact_code_p3 = <<<'EOD'
-" class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full ml-3">
+" class="profile-btn-contact">
                 PM Me
             </a>
         </div>
