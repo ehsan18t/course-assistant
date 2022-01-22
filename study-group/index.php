@@ -38,12 +38,11 @@ $user_data = check_login($conn);
 
     $count = 0;
     foreach($groups as $x){
-        echo "<a href='group.php?receiver_uid=".$x['group_id']."'>".$x['group_name']."</a><br /> <br />";
+        echo "<a href='".PAGES['group-chat']."?group_id=".$x['group_id']."'>".$x['group_name']."</a><br /> <br />";
         $count++;
     }
     if ($count == 0)
         echo " You have no active study group."
-
     ?>
 
 </center>

@@ -24,7 +24,9 @@
         'logout' => DOMAIN . '/user/logout.php',
         'add-post' => DOMAIN . '/post/addPost.php',
         'chat' => DOMAIN . '/chat/',
-        'private-chat' => DOMAIN . '/chat/private.php'
+        'group' => DOMAIN . '/study-group/',
+        'private-chat' => DOMAIN . '/chat/private.php',
+        'group-chat' => DOMAIN . '/study-group/group.php'
     );
 
     // Includes
