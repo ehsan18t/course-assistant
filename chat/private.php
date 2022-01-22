@@ -25,6 +25,7 @@
 
 </style>
 
+<link rel="stylesheet" href="<?php echo CSS['chat.css']."?".time(); ?>">
 </head>
 
 <body>
@@ -63,37 +64,40 @@
 
 <br />
 <br />
+
 <?php
-    // Sub-query
-	$messages_query = "SELECT *
-                        FROM (
-                               SELECT *
-                               FROM messages
-                               WHERE group_id IS NULL
-                                     ) AS msg
-                        WHERE (sender=$sender_uid AND receiver=$receiver_uid)
-                           OR (sender=$receiver_uid AND receiver=$sender_uid)
-                        ORDER BY msg_id DESC";
-	$message_sql=$conn->query($messages_query);
-	while($select_all_message=mysqli_fetch_assoc($message_sql)){
-		
-		if($select_all_message['sender'] == $sender_uid){
-		?> 
-			<div class="sender_message_color">
-				<?php echo $select_all_message['msg']; ?>
-			</div> <br /> <br /> <br />
-		<?php
-		} else{
-		?> 
-			<div class="receiver_message_color">
-				<?php echo $select_all_message['msg']; ?>
-			</div>  <br /> <br /> <br />
-		<?php
-		}
-	}
-	
+    // Message Query using Sub-query
+    $messages_query = "SELECT *
+                            FROM (
+                                   SELECT *
+                                   FROM messages
+                                   WHERE group_id IS NULL
+                                         ) AS msg
+                            WHERE (sender=$sender_uid AND receiver=$receiver_uid)
+                               OR (sender=$receiver_uid AND receiver=$sender_uid)
+                            ORDER BY msg_id DESC";
+    $message_sql=$conn->query($messages_query);
 ?>
 
+<div class="chat-container">
+    <div class="chat-content">
+    <?php
+    while($select_all_message=mysqli_fetch_assoc($message_sql)){
+        if($select_all_message['sender'] == $sender_uid){ ?>
+        <div class="chat-sender">
+            <div class="chat-sender-style">
+                <?php echo $select_all_message['msg']; ?>
+            </div>
+        </div>
+            <?php } else { ?>
+        <div class="chat-receiver">
+            <div class="chat-receiver-style">
+                <?php echo $select_all_message['msg']; ?>
+            </div>
+        </div>
+<?php } } ?>
+    </div>
+</div>
 
 </body>
 

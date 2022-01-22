@@ -1,1 +1,24 @@
 /* Chat Styles */
+.chat-container {
+    @apply min-h-screen bg-gray-100 p-8;
+}
+
+.chat-content {
+    @apply max-w-4xl mx-auto space-y-12 grid grid-cols-1;
+}
+
+.chat-sender {
+    @apply place-self-end text-right;
+}
+
+.chat-sender-style {
+    @apply bg-blue-400 border-y-green-500 text-white p-5 rounded-2xl rounded-tr-none;
+}
+
+.chat-receiver {
+    @apply place-self-start;
+}
+
+.chat-receiver-style {
+    @apply bg-gray-400 p-5 rounded-2xl rounded-tl-none;
+}

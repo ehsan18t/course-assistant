@@ -1,1 +1,52 @@
 /* Chat Styles */
+
+.chat-container {
+  min-height: 100vh;
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  padding: 2rem
+}
+
+.chat-content {
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  max-width: 56rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr))
+}
+
+.chat-content > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(3rem * var(--tw-space-y-reverse))
+}
+
+.chat-sender {
+  place-self: end;
+  text-align: right
+}
+
+.chat-sender-style {
+  border-radius: 1rem;
+  border-top-right-radius: 0px;
+  --tw-border-opacity: 1;
+  border-top-color: rgb(34 197 94 / var(--tw-border-opacity));
+  border-bottom-color: rgb(34 197 94 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+  padding: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.chat-receiver {
+  place-self: start
+}
+
+.chat-receiver-style {
+  border-radius: 1rem;
+  border-top-left-radius: 0px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+  padding: 1.25rem
+}
