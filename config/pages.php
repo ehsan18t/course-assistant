@@ -54,8 +54,7 @@
         'post.css' => DOMAIN . '/css/post.css',
         'modal.css' => DOMAIN . '/css/modal.css',
         'stats.css' => DOMAIN . '/css/stats.css',
-        'chat.css' => DOMAIN . '/css/chat.css',
-        'style.css' => DOMAIN . '/css/style.css'
+        'chat.css' => DOMAIN . '/css/chat.css'
     );
 
     const JS = array(
