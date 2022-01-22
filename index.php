@@ -13,7 +13,7 @@
         $posts = view_post($conn,$user_data);
 ?>
 
-<link rel="stylesheet" href="<?php echo CSS['post.css']; ?>">
+<link rel="stylesheet" href="<?php echo CSS['post.css']."?".time(); ?>">
 <title>Home Page</title>
 </head>
 

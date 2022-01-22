@@ -18,8 +18,8 @@
 ?>
 
     <title>Profile Page</title>
-    <link rel="stylesheet" href="<?php echo CSS['profile.css']; ?>">
-    <link rel="stylesheet" href="<?php echo CSS['post.css']; ?>">
+    <link rel="stylesheet" href="<?php echo CSS['profile.css']."?".time(); ?>">
+    <link rel="stylesheet" href="<?php echo CSS['post.css']."?".time(); ?>">
 <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
