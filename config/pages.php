@@ -26,7 +26,10 @@
         'chat' => DOMAIN . '/chat/',
         'group' => DOMAIN . '/study-group/',
         'private-chat' => DOMAIN . '/chat/private.php',
-        'group-chat' => DOMAIN . '/study-group/group.php'
+        'group-chat' => DOMAIN . '/study-group/group.php',
+        'request' => DOMAIN.'/request/all_request.php',
+        'add_request' => DOMAIN.'/request/my_request.php',
+        'rating' => DOMAIN.'/request/rating.php'
     );
 
     // Includes
@@ -34,6 +37,7 @@
         'connection' => INC_DOMAIN . '/include/connection.php',
         'main-function' => INC_DOMAIN . '/include/main-function.php',
         'addPost-function' => INC_DOMAIN . '/include/add-post-function.php',
+        'addRequest-function' => INC_DOMAIN . '/include/add-request-function.php',// new added
         'view-post-function' => INC_DOMAIN . '/include/view-post-function.php',
         'signup-function' => INC_DOMAIN . '/include/signup-function.php',
         'result-calculation-function' => INC_DOMAIN . '/include/result-calculation-functions.php',

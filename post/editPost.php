@@ -8,16 +8,17 @@
  //  if user is already login then this index page will be shown in browser
       $user_data = check_login($conn);
       require_once INCLUDES['addPost-function']; 
+      $id;
       if(isset($_GET['status'])){
         if($_GET['status']='edit'){
             $id = $_GET['id'];
-            $posts= display_data_by_id($conn,$id);
-            $returndata=mysqli_fetch_assoc($posts);
+            // $posts= display_data_by_id($conn,$id);
+            // $returndata=mysqli_fetch_assoc($posts);
         }
-    }
-    if(isset($_POST['edit_btn'])){
-        $msg = update_data($conn,$_POST);
-    }
+      }
+      if(isset($_POST['edit_btn'])){
+        $msg = upload_data($conn,$_POST,$id);
+      }
    
 ?>
 

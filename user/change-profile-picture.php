@@ -19,9 +19,10 @@ if (isset($_POST['submit'])) {
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
             if ($fileSize < 100000000) {
-
+               
                 $fileNameNew = uniqid('', true).".".$fileActualExt;
                 $fileDestination = INC_DIR['picture'].$fileNameNew;
+                echo  $fileName;
                 move_uploaded_file($fileTmpName, $fileDestination);
                 $conn->query("UPDATE users SET profile_pic_url = '" . $fileNameNew . "' WHERE email = '". $_SESSION['email'] ."'");
                 header("Location: " . PAGES['profile']);
