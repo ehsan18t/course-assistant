@@ -23,7 +23,7 @@
 	$users=array();
 	
 	$current_user_uid=(int)$user_data['u_id'];
-	$message_user_query = "SELECT * FROM massages WHERE (sender=$current_user_uid OR receiver=$current_user_uid) AND group_id IS NULL ORDER BY msg_id DESC";
+	$message_user_query = "SELECT * FROM messages WHERE (sender=$current_user_uid OR receiver=$current_user_uid) AND group_id IS NULL ORDER BY msg_id DESC";
 	
 	$message_user_sql=$conn->query($message_user_query);
 	
@@ -38,14 +38,14 @@
 		if($select_all_users['receiver'] != $current_user_uid){
 			if(!in_array($select_all_users['receiver'], $users)){
 				$users[]=$select_all_users['receiver'];
-				continue;
-			}
+            }
 		}
 	}
 	
 	
 	foreach($users as $x){
-		echo "<a href='chatting.php?receiver_uid=".$x."'>".$x."</a><br /> <br />";
+        $u = mysqli_fetch_assoc($conn->query("SELECT * FROM users WHERE u_id=$x"));
+		echo "<a href='private.php?receiver_uid=".$x."'>".$u['f_name']." ".$u['l_name']."</a><br /> <br />";
 	}
 	
 ?>
