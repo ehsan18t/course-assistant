@@ -54,8 +54,6 @@
             <input type="text" name="course_code" placeholder="Course Code" />
             <input type="text" name="course_credit" placeholder="Credit" />
             <input type="text" name="course_section" placeholder="Section (Optional)" />
-            <input type="text" name="course_total_mark" placeholder="Total Mark" />
-            <input type="text" name="course_expected_mark" placeholder="Expected Mark (optional)" />
             <input type="submit" name="add_course" value="Add" />
         </form>
     </div>
@@ -152,11 +150,9 @@ if(isset($_POST['add_course'])){
     $course_code = $_POST['course_code'];
     $course_credit = $_POST['course_credit'];
     $course_section = $_POST['course_section'];
-    $course_total_mark = $_POST['course_total_mark'];
-    $course_expected_mark = $_POST['course_expected_mark'];
 
-    $insert_sql="INSERT INTO courses (t_id, c_name, c_code, credit, section, total_marks, expected_marks)
-                    VALUES($trimester_id, '$course_name', '$course_code', $course_credit, '$course_section', $course_total_mark, $course_expected_mark)";
+    $insert_sql="INSERT INTO courses (t_id, c_name, c_code, credit, section)
+                    VALUES($trimester_id, '$course_name', '$course_code', $course_credit, '$course_section')";
     $insert_query = $conn->query($insert_sql);
     echo "<script>alert('New Course Added Successfully.');</script>";
 //    header("Refresh:0");
