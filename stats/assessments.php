@@ -68,7 +68,7 @@ if(!isset($_GET['course_id']))
     <div id="add-asses-popup" class="hide">
         <div class="modal-content">
             <button onclick="toggleVisibility('add-asses-popup')" class="close"> Close </button>
-            <form action="course.php?course_id=<?php echo $course_id?>" method="POST">
+            <form action="<?php echo PAGES['assess']; ?>?course_id=<?php echo $course_id?>" method="POST">
                 <input type="text" name="asses_name" placeholder="Assessment Name" />
                 <input type="text" name="asses_type" placeholder="Assessment Type" />
                 <input type="text" name="asses_total_mark" placeholder="Total Mark" />

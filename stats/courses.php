@@ -49,7 +49,7 @@
     <div id="add-course-popup" class="hide">
         <div class="modal-content">
         <button onclick="toggleVisibility('add-course-popup')" class="close"> Close </button>
-        <form action="trimester.php?trimester_id=<?php echo $trimester_id?>" method="POST">
+        <form action="<?php echo PAGES['courses']; ?>?trimester_id=<?php echo $trimester_id?>" method="POST">
             <input type="text" class="input-box" name="course_name" placeholder="Course Name" />
             <input type="text" name="course_code" placeholder="Course Code" />
             <input type="text" name="course_credit" placeholder="Credit" />
@@ -108,7 +108,7 @@
         while($select_all_course=mysqli_fetch_assoc($select_course_query_result))
         {
             ?>
-            <a href="course.php?course_id=<?php echo $select_all_course['c_id']; ?>">
+            <a href="<?php echo PAGES['assess']; ?>?course_id=<?php echo $select_all_course['c_id']; ?>">
                 <div class="post-card">
                     <div class="post-text-container">
                         <div class="post-title-style">

@@ -177,7 +177,7 @@ if(isset($_POST['submit_trimester'])){
             $s_date = date_create($select_all_trimester['start_date']);
             $e_date = date_create($select_all_trimester['end_date']);
             ?>
-                <a href="trimester.php?trimester_id=<?php echo $select_all_trimester['t_id']; ?>">
+                <a href="<?php echo PAGES['courses']; ?>?trimester_id=<?php echo $select_all_trimester['t_id']; ?>">
                     <div class="post-card">
                         <div class="post-text-container">
                             <div class="post-title-style">
