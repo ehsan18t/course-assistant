@@ -4,10 +4,18 @@
 <?php
     require_once '../header.php';
     //if user is already login then this index page will be shown in browser
-    require_once INCLUDES['result-calculation-function'];
     $user_data = check_login($conn);
+    require_once INCLUDES['result-calculation-function'];
     if(!isset($_GET['trimester_id']))
         header('location:'.PAGES['stats']);
+
+
+    // Delete Course
+    if(isset($_POST['delete'])){
+        delete_course($_POST['c_id'], $conn);
+        update_trimester($_GET['trimester_id'], $conn);
+        header("Location: " . PAGES['trimester']);
+    }
 ?>
 <title>Trimester Details</title>
 
@@ -117,6 +125,13 @@
                                 <?php echo "Obtained: ".$select_all_course['obtained_marks']."/".$select_all_course['total_marks']; ?>
                             </p>
                         </div>
+                        <form action="" method="post">
+                            <input type="hidden" name="c_id" value="<?php echo $select_all_course['c_id']; ?>">
+                            <?php
+//                                echo "<input class='post-cm-btn' onclick='toggleVisibility(\"edit-post-popup\")' type='submit' value='Edit'>";
+                                echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='return confirm(\"Are you sure you want to delete this item?\")' type='submit' name='delete' value='Delete'>";
+                            ?>
+                        </form>
                     </div>
                 </div>
             </a>
@@ -190,21 +205,6 @@ if(isset($_POST['add_course'])){
 //	header("Refresh:0");
 // }
 // ?>
- 
-<!-- Delete -->
-<!-- <div id="delete_popup">-->
-<!--	<a href="?post_id=--><?php //echo $post_id?><!--&delete_id=--><?php //echo $post_id?><!--">Yes</a>-->
-<!--	<a href="">No</a>-->
-<!-- </div>-->
- 
- <?php 
- if(isset($_GET['delete_id'])){
-	 $delete_id=(int)$_GET['delete_id'];
-	 $delete_post_query="DELETE FROM all_post WHERE post_id=".$delete_id;
-	 $delete_post_sql=$conn->query($delete_post_query);
-	 header('location:index.php');
- }
- ?>
 
 </body>
 

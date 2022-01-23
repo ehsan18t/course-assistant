@@ -7,6 +7,13 @@ $user_data = check_login($conn);
 require_once INCLUDES['result-calculation-function'];
 if(!isset($_GET['course_id']))
     header('location:'.PAGES['trimester']);
+
+    // Delete Course
+    if(isset($_POST['delete'])){
+        $conn->query("DELETE FROM assessments WHERE assess_id=".$_POST['assess_id']);
+        update_course($_GET['course_id'], $conn);
+        header("Location: " . PAGES['course']);
+    }
 ?>
 <title>Course Details</title>
 
@@ -74,43 +81,6 @@ if(!isset($_GET['course_id']))
     </div>
 </div>
 
-<!--PIE CHART START-->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script>
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-            ['Course Code', 'GPA'],
-            <?php
-            $arr = array();
-            while($course_cg=mysqli_fetch_assoc($select_asses_query_result_copy)) {
-//            if ($course_cg['obtained_marks'] == null) continue;
-                $cg = get_grade_by_mark($course_cg['obtained_marks']);
-                $arr[$course_cg['c_code']] = $cg;
-            }
-            foreach ($arr as $key => $val) {
-                echo "['".$key."', ".$val."],";
-            }
-            ?>
-        ]);
-
-        var options = {
-            title: 'Courses'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('course_piechart'));
-
-        chart.draw(data, options);
-    }
-</script>
-<!--     Actual Chart       -->
-<div id="course_piechart"></div>
-
-<!--PIE CHART END-->
-
 
 <!-- Show Assessments -->
 <div class="post-container">
@@ -133,6 +103,13 @@ if(!isset($_GET['course_id']))
                                 <?php echo "Obtained: ".$select_all_asses['obtained_marks']."/".$select_all_asses['total_marks']; ?>
                             </p>
                         </div>
+                        <form action="" method="post">
+                            <input type="hidden" name="assess_id" value="<?php echo $select_all_asses['assess_id']; ?>">
+                            <?php
+                            //                                echo "<input class='post-cm-btn' onclick='toggleVisibility(\"edit-post-popup\")' type='submit' value='Edit'>";
+                            echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='return confirm(\"Are you sure you want to delete this item?\")' type='submit' name='delete' value='Delete'>";
+                            ?>
+                        </form>
                     </div>
                 </div>
 <!--            </a>-->
@@ -190,20 +167,6 @@ if(!isset($_GET['course_id']))
 // }
 // ?>
 
-<!-- Delete -->
-<!-- <div id="delete_popup">-->
-<!--	<a href="?post_id=--><?php //echo $post_id?><!--&delete_id=--><?php //echo $post_id?><!--">Yes</a>-->
-<!--	<a href="">No</a>-->
-<!-- </div>-->
-
-<?php
-if(isset($_GET['delete_id'])){
-    $delete_id=(int)$_GET['delete_id'];
-    $delete_post_query="DELETE FROM all_post WHERE post_id=".$delete_id;
-    $delete_post_sql=$conn->query($delete_post_query);
-    header('location:index.php');
-}
-?>
 
 </body>
 

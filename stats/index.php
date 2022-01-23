@@ -4,6 +4,13 @@
 <?php
     require_once '../header.php';
     $user_data = check_login($conn);
+    require_once INCLUDES['result-calculation-function'];
+
+    // Delete Post
+    if(isset($_POST['delete'])){
+        delete_trimester($_POST['t_id'], $conn);
+        header("Location: " . PAGES['stats']);
+    }
 ?>
 
 <title>Trimester List</title>
@@ -185,6 +192,13 @@ if(isset($_POST['submit_trimester'])){
                                     <?php echo "Obtained: ".$select_all_trimester['cgpa']; ?>
                                 </p>
                             </div>
+                            <form action="" method="post">
+                                <input type="hidden" name="t_id" value="<?php echo $select_all_trimester['t_id']; ?>">
+                                <?php
+                                //                                echo "<input class='post-cm-btn' onclick='toggleVisibility(\"edit-post-popup\")' type='submit' value='Edit'>";
+                                echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='return confirm(\"Are you sure you want to delete this item?\")' type='submit' name='delete' value='Delete'>";
+                                ?>
+                            </form>
                         </div>
                     </div>
                 </a>
