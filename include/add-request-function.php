@@ -114,7 +114,8 @@
 }
 function view_rating($conn , $user_data){
   $post_domain = $user_data['domain'];
-  $query = "SELECT * FROM rating WHERE domain='$post_domain' ORDER BY points DESC";
+  
+  $query = "SELECT * FROM rating JOIN users ON rating.rating_email = users.email ORDER BY rating.points DESC"; 
       if(mysqli_query($conn, $query)){
           return mysqli_query($conn, $query);
       }
