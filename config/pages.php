@@ -18,7 +18,7 @@
         'profile' => DOMAIN . '/user/profile.php',
         'stats' => DOMAIN . '/stats/',
         'trimesters' => DOMAIN . '/stats/',
-        'course' => DOMAIN . '/stats/courses.php',
+        'courses' => DOMAIN . '/stats/courses.php',
         'assess' => DOMAIN . '/stats/assessments.php',
         'edit-profile' =>  DOMAIN . '/user/edit-profile.php',
         'change-profile-pic' =>  DOMAIN . '/user/change-profile-picture.php',
