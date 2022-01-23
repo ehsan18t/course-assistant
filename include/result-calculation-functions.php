@@ -22,9 +22,7 @@ function get_grade_by_mark($mark) {
     return -1;
 }
 
-function update_trimester_by_course($course_id, $conn) {
-    $course = mysqli_fetch_assoc($conn->query("SELECT * FROM courses WHERE c_id = $course_id"));
-    $trimester_id = $course['t_id'];
+function update_trimester($trimester_id, $conn) {
     $credit = 0.0;
     $total_gpa = 0.0;
     $ex_gpa = 0.0;
@@ -52,10 +50,8 @@ function update_trimester_by_course($course_id, $conn) {
                     WHERE t_id=$trimester_id");
 }
 
-function update_all_by_assess($assess_id, $conn) {
-    $assess = mysqli_fetch_assoc($conn->query("SELECT * FROM assessments WHERE assess_id=$assess_id"));
-    $course_id = $assess['course_id'];
 
+function update_course($course_id, $conn) {
     // Find all assessment type
     $assess_types = $conn->query("SELECT *
                                     FROM assessments
@@ -86,7 +82,40 @@ function update_all_by_assess($assess_id, $conn) {
                           expected_marks=$expected_marks,
                           obtained_marks=$obtained_marks
                       WHERE c_id=$course_id");
+}
 
+
+function update_trimester_by_course($course_id, $conn) {
+    $course = mysqli_fetch_assoc($conn->query("SELECT * FROM courses WHERE c_id = $course_id"));
+    $trimester_id = $course['t_id'];
+    update_trimester($trimester_id, $conn);
+}
+
+function update_all_by_assess($assess_id, $conn) {
+    $assess = mysqli_fetch_assoc($conn->query("SELECT * FROM assessments WHERE assess_id=$assess_id"));
+    $course_id = $assess['course_id'];
+    // Update course
+    update_course($course_id, $conn);
     // Update Trimester data
     update_trimester_by_course($course_id, $conn);
+}
+
+
+function delete_course($course_id, $conn) {
+    // removing all co-responding assessments
+    $conn->query("DELETE FROM assessments WHERE course_id=$course_id");
+    $conn->query("DELETE FROM courses WHERE c_id=$course_id");
+}
+
+function delete_trimester($trimester_id, $conn) {
+    $t_list = $conn->query("SELECT * FROM courses WHERE t_id = $trimester_id");
+
+    // removing all assessments from each course
+    while ($c=mysqli_fetch_assoc($t_list)) {
+        // removing course along with assessments
+        delete_course($c['c_id'], $conn);
+    }
+
+    // removing trimester
+    $conn->query("DELETE FROM trimesters WHERE t_id=$trimester_id");
 }
