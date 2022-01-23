@@ -54,6 +54,7 @@ CREATE TABLE courses (
 );
 
 CREATE TABLE assessments (
+    asses_name varchar(50),
     assess_id INT NOT NULL AUTO_INCREMENT,
     course_id INT NOT NULL,
     expected_marks decimal(5, 2),

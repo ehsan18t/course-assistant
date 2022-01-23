@@ -4,10 +4,18 @@
 <?php
     require_once '../header.php';
     //if user is already login then this index page will be shown in browser
-    require_once INCLUDES['result-calculation-function'];
     $user_data = check_login($conn);
+    require_once INCLUDES['result-calculation-function'];
     if(!isset($_GET['trimester_id']))
         header('location:'.PAGES['stats']);
+
+
+    // Delete Course
+    if(isset($_POST['delete'])){
+        delete_course($_POST['c_id'], $conn);
+        update_trimester($_GET['trimester_id'], $conn);
+        header("Location: " . PAGES['trimester']);
+    }
 ?>
 <title>Trimester Details</title>
 
@@ -41,13 +49,11 @@
     <div id="add-course-popup" class="hide">
         <div class="modal-content">
         <button onclick="toggleVisibility('add-course-popup')" class="close"> Close </button>
-        <form action="trimester.php?trimester_id=<?php echo $trimester_id?>" method="POST">
+        <form action="<?php echo PAGES['courses']; ?>?trimester_id=<?php echo $trimester_id?>" method="POST">
             <input type="text" class="input-box" name="course_name" placeholder="Course Name" />
             <input type="text" name="course_code" placeholder="Course Code" />
             <input type="text" name="course_credit" placeholder="Credit" />
             <input type="text" name="course_section" placeholder="Section (Optional)" />
-            <input type="text" name="course_total_mark" placeholder="Total Mark" />
-            <input type="text" name="course_expected_mark" placeholder="Expected Mark (optional)" />
             <input type="submit" name="add_course" value="Add" />
         </form>
     </div>
@@ -68,7 +74,7 @@
         $arr = array();
         while($course_cg=mysqli_fetch_assoc($select_course_query_result_copy)) {
 //            if ($course_cg['obtained_marks'] == null) continue;
-            $cg = get_grade_by_mark($course_cg['obtained_marks']);
+            $cg = get_grade_by_mark(($course_cg['obtained_marks']/$course_cg['total_marks']) * 100);
             $arr[$course_cg['c_code']] = $cg;
         }
         foreach ($arr as $key => $val) {
@@ -102,7 +108,7 @@
         while($select_all_course=mysqli_fetch_assoc($select_course_query_result))
         {
             ?>
-            <a href="course.php?course_id=<?php echo $select_all_course['c_id']; ?>">
+            <a href="<?php echo PAGES['assess']; ?>?course_id=<?php echo $select_all_course['c_id']; ?>">
                 <div class="post-card">
                     <div class="post-text-container">
                         <div class="post-title-style">
@@ -117,6 +123,13 @@
                                 <?php echo "Obtained: ".$select_all_course['obtained_marks']."/".$select_all_course['total_marks']; ?>
                             </p>
                         </div>
+                        <form action="" method="post">
+                            <input type="hidden" name="c_id" value="<?php echo $select_all_course['c_id']; ?>">
+                            <?php
+//                                echo "<input class='post-cm-btn' onclick='toggleVisibility(\"edit-post-popup\")' type='submit' value='Edit'>";
+                                echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='return confirm(\"Are you sure you want to delete this item?\")' type='submit' name='delete' value='Delete'>";
+                            ?>
+                        </form>
                     </div>
                 </div>
             </a>
@@ -137,11 +150,9 @@ if(isset($_POST['add_course'])){
     $course_code = $_POST['course_code'];
     $course_credit = $_POST['course_credit'];
     $course_section = $_POST['course_section'];
-    $course_total_mark = $_POST['course_total_mark'];
-    $course_expected_mark = $_POST['course_expected_mark'];
 
-    $insert_sql="INSERT INTO courses (t_id, c_name, c_code, credit, section, total_marks, expected_marks)
-                    VALUES($trimester_id, '$course_name', '$course_code', $course_credit, '$course_section', $course_total_mark, $course_expected_mark)";
+    $insert_sql="INSERT INTO courses (t_id, c_name, c_code, credit, section)
+                    VALUES($trimester_id, '$course_name', '$course_code', $course_credit, '$course_section')";
     $insert_query = $conn->query($insert_sql);
     echo "<script>alert('New Course Added Successfully.');</script>";
 //    header("Refresh:0");
@@ -190,21 +201,6 @@ if(isset($_POST['add_course'])){
 //	header("Refresh:0");
 // }
 // ?>
- 
-<!-- Delete -->
-<!-- <div id="delete_popup">-->
-<!--	<a href="?post_id=--><?php //echo $post_id?><!--&delete_id=--><?php //echo $post_id?><!--">Yes</a>-->
-<!--	<a href="">No</a>-->
-<!-- </div>-->
- 
- <?php 
- if(isset($_GET['delete_id'])){
-	 $delete_id=(int)$_GET['delete_id'];
-	 $delete_post_query="DELETE FROM all_post WHERE post_id=".$delete_id;
-	 $delete_post_sql=$conn->query($delete_post_query);
-	 header('location:index.php');
- }
- ?>
 
 </body>
 
