@@ -21,7 +21,7 @@
     // Create Group
     if(isset($_POST['create_group'])){
         create_group($_POST['c_id'], $conn);
-//        header("Location: " . PAGES['group']);
+        header("Location: " . PAGES['group']);
     }
 ?>
 <title>Trimester Details</title>
