@@ -9,15 +9,14 @@ $user_data = check_login($conn);
 
 <title>Study Group</title>
 
+<link rel="stylesheet" href="<?php echo CSS['post.css']."?".time(); ?>">
 </head>
 
 <body>
 <?php require_once INCLUDES['nav-main-template']; ?>
 <?php require_once INCLUDES['nav-logged-template']; ?>
 
-<br />
-
-<center>
+<div class="post-container">
 
     <?php
     $groups=array();
@@ -37,15 +36,23 @@ $user_data = check_login($conn);
     }
 
     $count = 0;
-    foreach($groups as $x){
-        echo "<a href='".PAGES['group-chat']."?group_id=".$x['group_id']."'>".$x['group_name']."</a><br /> <br />";
-        $count++;
+    foreach($groups as $x){ ?>
+        <a href="<?php echo PAGES['group-chat'].'?group_id='.$x['group_id']; ?>">
+            <div class="post-card">
+                <div class="post-text-container">
+                    <div class="post-title-style">
+                        <?php echo $x['group_name']; ?>
+                    </div>
+                </div>
+            </div>
+        </a>
+            <?php $count++;
     }
     if ($count == 0)
         echo " You have no active study group."
     ?>
 
-</center>
+</div>
 
 </body>
 
