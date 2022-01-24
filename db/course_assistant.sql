@@ -42,13 +42,12 @@ CREATE TABLE courses (
     c_id INT NOT NULL AUTO_INCREMENT,
     t_id INT NOT NULL,
     c_name varchar(100) NOT NULL,
-    c_code varchar(10) NOT NULL UNIQUE,
+    c_code varchar(10) NOT NULL,
     credit INT NOT NULL,
     section varchar(2),
-    auto_add_to_group BOOLEAN NOT NULL,
-    expected_marks decimal(5, 2),
-    total_marks decimal(5, 2),
-    obtained_marks decimal(5, 2),
+    expected_marks decimal(5, 2) NULL DEFAULT '0',
+    total_marks decimal(5, 2) NULL DEFAULT '0',
+    obtained_marks decimal(5, 2) NULL DEFAULT '0',
     CONSTRAINT pk_courses PRIMARY KEY (c_id),
     CONSTRAINT fk_trimester FOREIGN KEY (t_id) REFERENCES trimesters(t_id)
 );
@@ -82,12 +81,10 @@ CREATE TABLE messages (
 
 CREATE TABLE study_group (
     group_id INT AUTO_INCREMENT,
-    course_id INT NOT NULL,
     group_name varchar(100),
     open_date timestamp NOT NULL DEFAULT current_timestamp(),
     close_date timestamp NULL Default NULL,
-    CONSTRAINT pk_group PRIMARY KEY (group_id),
-    CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES courses(c_id)
+    CONSTRAINT pk_group PRIMARY KEY (group_id)
 );
 
 CREATE TABLE participants (

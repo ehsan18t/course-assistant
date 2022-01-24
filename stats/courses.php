@@ -6,6 +6,7 @@
     //if user is already login then this index page will be shown in browser
     $user_data = check_login($conn);
     require_once INCLUDES['result-calculation-function'];
+    require_once INCLUDES['group-function'];
     if(!isset($_GET['trimester_id']))
         header('location:'.PAGES['stats']);
 
@@ -15,6 +16,12 @@
         delete_course($_POST['c_id'], $conn);
         update_trimester($_GET['trimester_id'], $conn);
         header("Location: " . PAGES['trimester']);
+    }
+
+    // Create Group
+    if(isset($_POST['create_group'])){
+        create_group($_POST['c_id'], $conn);
+//        header("Location: " . PAGES['group']);
     }
 ?>
 <title>Trimester Details</title>
@@ -112,7 +119,7 @@
                 <div class="post-card">
                     <div class="post-text-container">
                         <div class="post-title-style">
-                            <?php echo $select_all_course['c_name']; ?>
+                            <?php echo $select_all_course['c_name']." [".$select_all_course['section']."]"; ?>
                         </div>
                         <span class="post-tag"><?php echo $select_all_course['c_code']; ?></span>
                         <div class="post-author">
@@ -128,6 +135,7 @@
                             <?php
 //                                echo "<input class='post-cm-btn' onclick='toggleVisibility(\"edit-post-popup\")' type='submit' value='Edit'>";
                                 echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='return confirm(\"Are you sure you want to delete this item?\")' type='submit' name='delete' value='Delete'>";
+                                echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='return confirm(\"Are you sure you want create a group?\")' type='submit' name='create_group' value='Create Group'>";
                             ?>
                         </form>
                     </div>
