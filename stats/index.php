@@ -6,7 +6,7 @@
     $user_data = check_login($conn);
     require_once INCLUDES['result-calculation-function'];
 
-    // Delete Post
+    // Delete trimester
     if(isset($_POST['delete'])){
         delete_trimester($_POST['t_id'], $conn);
         header("Location: " . PAGES['stats']);

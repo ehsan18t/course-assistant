@@ -1,6 +1,28 @@
 <?php
 
+// With current table structure it's impossible to check.
+// Even if it's possible it will be a terrible code.
+function is_group_exist($course_id, $uid, $conn) {
+    $course = mysqli_fetch_assoc($conn->query("SELECT * FROM courses WHERE c_id=$course_id"));
+    $trimester = mysqli_fetch_assoc($conn->query("SELECT * FROM trimesters WHERE t_id=".$course['t_id']));
+    $date = date_parse($trimester['start_date']);
+    $start_year = $date['year'];
+    $start_month = $date['month'];
+    $c_code = $course['c_code'];
+    $c_sec = $course['section'];
+    $sql = "";
+}
+
+// This function is correct and works 100% time. Don't think about it so much... :/
+function is_user_in_group($course_id, $uid, $conn) {
+    return mysqli_num_rows($conn->query("SELECT *
+                                            FROM participants
+                                            WHERE course_id = $course_id
+                                            AND user_id = $uid"));
+}
+
 function create_group($course_id, $conn) {
+//    if (is_group_exist($course_id))
     // Getting info
     $course = mysqli_fetch_assoc($conn->query("SELECT * FROM courses WHERE c_id=$course_id"));
     $section = $course['section'];
@@ -33,7 +55,4 @@ function create_group($course_id, $conn) {
     }
 }
 
-//function is_group_exist($course_id, $conn) {
-//    return mysqli_fetch_assoc($conn->query("SELECT COUNT(course_id) FROM study_group WHERE course_id=$course_id")) > 0;
-//}
 
