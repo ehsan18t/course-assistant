@@ -22,7 +22,7 @@
     }
 
     // Edit Post
-    if(isset($_POST['id'])){
+    if(isset($_POST['edit_post'])){
          $id = $_POST['id'];
          $posts= display_data_by_id($conn,$id);
          $old_data=mysqli_fetch_assoc($posts);
@@ -37,6 +37,29 @@
         $posts = view_post_search($conn, $user_data, $key);
     } else
         $posts = view_post($conn,$user_data);
+
+    //add comment
+    if(isset($_POST['comment'])){
+       $post_id_for_comment = $_POST['id'];
+        //echo $post_id_for_comment;
+    }
+    if(isset($_POST['submit_comment'])){
+        $post_id = $_POST['post_id'];
+        $commnet_admin = $_POST['comment_admin'];
+        $comment = $_POST['comment_contant'];
+        //echo $post_id_for_comment;
+         echo adding_comment($conn,$post_id,$commnet_admin,$comment);
+        //  sleep(5);
+         header("Location: " . PAGES['home']);
+         die();
+    }
+
+    //show comment
+    if(isset($_POST['view_comment'])){
+        $post_id = $_POST['id'];
+        $comment_data = show_comment($conn,$post_id);
+    }
+     
 ?>
 
 <link rel="stylesheet" href="<?php echo CSS['post.css']."?".time(); ?>">
@@ -49,7 +72,31 @@
 <?php require_once INCLUDES['nav-main-template']; ?>
 <?php require_once INCLUDES['nav-logged-template']; ?>
 
+
+
+
+ <!-- for comment -->
 <div class="post-container">
+
+      <div id="comment-post-popup"  class="<?php echo (isset($post_id_for_comment) ? 'show': 'hide'); ?>" >
+        <div class="modal-content">
+            <button onclick="toggleVisibility('comment-post-popup')" class="close"> Close </button>
+            <?php $post_id_for_comment;?>
+            <form action="" method="post" enctype="multipart/form-data"> 
+                <input type="text" name="comment_contant" required> 
+                <input type="hidden" name="post_id" value="<?php echo $post_id_for_comment ?>">
+                <input type="hidden" name="comment_admin" value="<?php echo $user_data['email']; ?>">
+                <input type="submit" value="Add Comment" name="submit_comment">
+            </form>
+            
+        </div>
+    </div>
+     <!-- fow showing all comment -->
+
+
+
+ 
+    
     <div id="edit-post-popup" class="<?php echo (isset($id) ? 'show': 'hide'); ?>">
         <div class="modal-content">
             <button onclick="toggleVisibility('edit-post-popup')" class="close"> Close </button>
@@ -114,15 +161,22 @@
             <div class="post-btn-container">
                 <form action="" method="post">
                 <a class="post-dl-btn" href="post/file/<?php echo $post['file_link']; ?>">Download</a>
-                <a class="post-cm-btn" href="#">Comment</a>
+                <!-- <a class="post-cm-btn" onclick="toggleVisibility('comment-post-popup')" >Comment</a> -->
                     <input type="hidden" name="id" value="<?php echo $post['p_id']; ?>">
 
                     <?php
+                      
                     if ($author_email == $user_data['email']) {
-                        echo "<input class='post-cm-btn' onclick='toggleVisibility(\"edit-post-popup\")' type='submit' value='Edit'>";
+                        echo "<input class='post-cm-btn' onclick='toggleVisibility(\"edit-post-popup\")' type='submit' name='edit_post' value='Edit'>";
                         echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='return confirm(\"Are you sure you want to delete this item?\")' type='submit' name='delete' value='Delete'>";
-                    } ?>
+                    } 
+                    echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='toggleVisibility(\"comment-post-popup\")' type='submit' name='comment'  value=' ADD Comment'>";
+                    //echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='toggleVisibility(\"comment-show-popup\")' type='submit' name='view_comment'  value='View Comment'>";
+                    ?>
+                    <!-- <input type="hidden"class='post-cm-btn' style='margin-left: 0.25rem' name="id" value=""> -->
+                    <a  class='post-cm-btn' style='margin-left: 0.25rem' href="post/view_comment.php?status=comments&&id=<?php echo $post['p_id']; ?>" >All Comment</a>
                 </form>
+               
             </div>
         </div>
     </div>

@@ -97,4 +97,23 @@
             return "Deleted Successfully";
         }
     }
+
+    function adding_comment($conn,$post_id,$commnet_admin,$comment){
+        $query = "INSERT INTO comment(post_id,comment,comment_admin)
+        VALUE('$post_id','$comment','$commnet_admin')";
+        if(mysqli_query($conn, $query)){
+            echo "Comment Added";
+            
+        }
+    }
+
+    function show_comment($conn,$post_id){
+        //echo $post_id;
+        $query = "SELECT * FROM comment WHERE post_id='$post_id'";
+            if(mysqli_query($conn, $query)){
+                return mysqli_query($conn, $query);
+            }
+                //else echo "WRONG";
+        
+    }
 ?>

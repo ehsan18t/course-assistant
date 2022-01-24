@@ -14,7 +14,7 @@
 ?>
 
 <link rel="stylesheet" href="<?php echo CSS['post.css']; ?>">
-<title>Home Page</title>
+<title>All Request</title>
 </head>
 
 <body>
