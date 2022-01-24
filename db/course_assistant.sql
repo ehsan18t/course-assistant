@@ -82,12 +82,10 @@ CREATE TABLE messages (
 
 CREATE TABLE study_group (
     group_id INT AUTO_INCREMENT,
-    course_id INT NOT NULL,
     group_name varchar(100),
     open_date timestamp NOT NULL DEFAULT current_timestamp(),
     close_date timestamp NULL Default NULL,
-    CONSTRAINT pk_group PRIMARY KEY (group_id),
-    CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES courses(c_id)
+    CONSTRAINT pk_group PRIMARY KEY (group_id)
 );
 
 CREATE TABLE participants (
