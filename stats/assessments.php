@@ -61,7 +61,7 @@ if(!isset($_GET['course_id']))
         }
         else
             echo "<script>alert('FAILED!');</script>";
-    header("Refresh:0");
+        header("Refresh:0");
     }
     ?>
 

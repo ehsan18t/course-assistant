@@ -164,7 +164,7 @@ if(isset($_POST['add_course'])){
                     VALUES($trimester_id, '$course_name', '$course_code', $course_credit, '$course_section')";
     $insert_query = $conn->query($insert_sql);
     echo "<script>alert('New Course Added Successfully.');</script>";
-//    header("Refresh:0");
+    echo "<script>window.location.href = '" . PAGES['trimester'] . "'; </script>";
 }
 ?>
 

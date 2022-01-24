@@ -11,6 +11,29 @@
         delete_trimester($_POST['t_id'], $conn);
         header("Location: " . PAGES['stats']);
     }
+
+
+    if (isset($_POST['submit_trimester'])) {
+        $trimester_title = $_POST['trimester_name'];
+        $trimester_start_date = $_POST['trimester_start_date'];
+        $trimester_end_date = $_POST['trimester_end_date'];
+        if (isset($_POST['is_trimester_running']))
+            $is_trimester_running = 1;
+        else
+            $is_trimester_running = 0;
+        $current_user_uid = $user_data['u_id'];
+
+        $insert_sql = "INSERT INTO trimesters (u_id, t_name, is_running, start_date, end_date)
+                        VALUES($current_user_uid, '$trimester_title', $is_trimester_running, '$trimester_start_date', '$trimester_end_date')";
+        if ($conn->query($insert_sql)) {
+            echo "<script>alert('New Trimester Added Successfully.');</script>";
+            header("Refresh:0");
+        } else {
+            echo "<script>alert('Operation Failed!');</script>";
+        }
+    }
+
+
 ?>
 
 <title>Trimester List</title>
@@ -55,25 +78,6 @@ $total_trimester = mysqli_num_rows($select_all_trimester_query_result);
     </form>
     </div>
 </div>
-
-<?php
-if(isset($_POST['submit_trimester'])){
-    $trimester_title = $_POST['trimester_name'];
-    $trimester_start_date = $_POST['trimester_start_date'];
-    $trimester_end_date = $_POST['trimester_end_date'];
-    if (isset($_POST['is_trimester_running']))
-        $is_trimester_running = 1;
-    else
-        $is_trimester_running = 0;
-    $current_user_uid = $user_data['u_id'];
-
-    $insert_sql="INSERT INTO trimesters (u_id, t_name, is_running, start_date, end_date)
-                    VALUES($current_user_uid, '$trimester_title', $is_trimester_running, '$trimester_start_date', '$trimester_end_date')";
-    $insert_query = $conn->query($insert_sql);
-    echo "<script>alert('New Trimester Added Successfully.');</script>";
-//    header("Refresh:0");
-}
-?>
 
 
 <!-- Chart Start -->
