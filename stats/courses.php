@@ -119,7 +119,7 @@
                 <div class="post-card">
                     <div class="post-text-container">
                         <div class="post-title-style">
-                            <?php echo $select_all_course['c_name']; ?>
+                            <?php echo $select_all_course['c_name']." [".$select_all_course['section']."]"; ?>
                         </div>
                         <span class="post-tag"><?php echo $select_all_course['c_code']; ?></span>
                         <div class="post-author">
