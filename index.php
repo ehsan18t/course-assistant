@@ -165,7 +165,6 @@
                     <input type="hidden" name="id" value="<?php echo $post['p_id']; ?>">
 
                     <?php
-                      
                     if ($author_email == $user_data['email']) {
                         echo "<input class='post-cm-btn' onclick='toggleVisibility(\"edit-post-popup\")' type='submit' name='edit_post' value='Edit'>";
                         echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='return confirm(\"Are you sure you want to delete this item?\")' type='submit' name='delete' value='Delete'>";

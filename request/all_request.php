@@ -6,6 +6,22 @@
     $user_data = check_login($conn);
     require_once INCLUDES['addRequest-function'];
 
+
+    // Add Request
+    if(isset($_POST['add_request']))
+    {
+        //echo "Send Massage";
+        $upload_lmsg = add_post($conn, $_POST,$user_data);
+    }
+    $posts = desplay_my_data($conn,$user_data);
+
+    if(isset($_GET['status'])){
+        if($_GET['status']='delete'){
+            $delete_id = $_GET['id'];
+            $delmsg =  delete_data($conn,$delete_id);
+        }
+    }
+
     // if(isset($_GET['search-text'])) {
     //     $key = $_GET['search-text'];
     //     $posts = view_request_search($conn, $user_data, $key);
@@ -13,7 +29,9 @@
         $posts = view_request($conn,$user_data);
 ?>
 
-<link rel="stylesheet" href="<?php echo CSS['post.css']; ?>">
+<link rel="stylesheet" href="<?php echo CSS['post.css']."?".time(); ?>">
+<link rel="stylesheet" href="<?php echo CSS['modal.css']."?".time(); ?>">
+<script type="text/javascript" src="<?php echo JS['toggle-visibility.js']; ?>"></script>
 <title>All Request</title>
 </head>
 
