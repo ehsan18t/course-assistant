@@ -8,23 +8,7 @@ $user_data = check_login($conn);
 ?>
 
 <title>Message Page</title>
-
-<style type="text/css">
-
-    .sender_message_color{
-        color: #ff0000;
-        float: right;
-        margin-right: 50px;
-    }
-
-    .receiver_message_color{
-        color: #000000;
-        float: left;
-        margin-left: 50px;
-    }
-
-</style>
-
+<link rel="stylesheet" href="<?php echo CSS['chat.css']."?".time(); ?>">
 </head>
 
 <body>
@@ -54,42 +38,77 @@ if(isset($_REQUEST['submit'])){
 
 
 
-<br />
+<!-- Chat Header Section -->
+<?php
+    $group = mysqli_fetch_assoc($conn->query("SELECT * FROM study_group WHERE group_id=$group_id"));
+    $open_date = new DateTime();
+    $close_date = new DateTime();
+    try {
+        $open_date = new DateTime($group['open_date']);
+        $close_date = new DateTime($group['close_date']);
+    } catch (Exception $e) {}
+    $open_date = $open_date->format('d/m/Y');
+    $close_date = $close_date->format('d/m/Y');
+
+    ?>
+<div class="chat-people-container">
+    <div class="chat-people-img">
+<!--        <img src="--><?php //echo ($user['profile_pic_url'] == null ? IMG['avatar'] : DIR['picture'].$user['profile_pic_url']); ?><!--" alt="" class="chat-people-img-style">-->
+        <div class="chat-people-name-container">
+            <div class="chat-people-name">
+                <span class="chat-people-name-style"><?php echo $group['group_name']; ?></span>
+            </div>
+            <span class="chat-people-des-style"><?php echo $open_date." - ".$close_date; ?></span>
+        </div>
+    </div>
+</div>
+
+<div class="chat-container">
 <form action="" method="POST">
-    <textarea type="text" name="message" placeholder="Write something"></textarea>
-    <input type="hidden" name="group_id" value="<?php echo $group_id; ?>" />
-    <input type="submit" name="submit" value="Send Message" />
+    <div class="chat-input-area">
+        <textarea class="chat-input" type="text" name="message" placeholder="Write something"></textarea>
+        <input type="hidden" name="group_id" value="<?php echo $group_id; ?>" />
+        <input class="chat-send-btn" type="submit" name="submit" value="Send Message" />
+    </div>
 </form>
 
-<br />
-<br />
-<?php
-// Sub-query
-$messages_query = "SELECT *
+    <?php
+    // Sub-query
+    $messages_query = "SELECT *
                         FROM ( SELECT *
                                FROM messages
                                WHERE group_id = $group_id) AS msg
                         ORDER BY msg_id DESC";
-$message_sql=$conn->query($messages_query);
-while($select_all_message=mysqli_fetch_assoc($message_sql)){
+    $message_sql=$conn->query($messages_query);
+    ?>
 
-    if($select_all_message['sender'] == $sender_uid){
-        ?>
-        <div class="sender_message_color">
-            <?php echo $select_all_message['msg']; ?>
-        </div> <br /> <br /> <br />
-        <?php
-    } else{
-        ?>
-        <div class="receiver_message_color">
-            <?php echo $select_all_message['msg']; ?>
-        </div>  <br /> <br /> <br />
-        <?php
-    }
-}
+    <div class="chat-content">
+    <?php
+    while($select_all_message=mysqli_fetch_assoc($message_sql)){
 
-?>
+        $q = "SELECT * FROM users WHERE u_id=" . $select_all_message['sender'];
+        $current = mysqli_fetch_assoc($conn->query($q));
 
+        if($select_all_message['sender'] == $sender_uid){
+            ?>
+        <div class="chat-sender">
+            <a href="<?php echo PAGES['profile'].'?user_id='.$current['u_id']; ?>"> <?php echo $current['f_name']." ".$current['l_name']; ?></a>
+            <div class="chat-sender-style">
+                <?php echo $select_all_message['msg']; ?>
+            </div>
+        </div>
+            <?php
+        } else{
+            ?>
+        <div class="chat-receiver">
+            <a href="<?php echo PAGES['profile'].'?user_id='.$current['u_id']; ?>"> <?php echo $current['f_name']." ".$current['l_name']; ?></a>
+            <div class="chat-receiver-style">
+                <?php echo $select_all_message['msg']; ?>
+            </div>
+        </div>
+    <?php } } ?>
+    </div>
+</div>
 
 </body>
 
