@@ -11,6 +11,7 @@
     {
         //echo "Send Massage";
         $upload_lmsg = add_post($conn, $_POST,$user_data);
+        header("Location: " . PAGES['home']);
     }
     $posts = desplay_my_data($conn,$user_data);
 
@@ -160,7 +161,7 @@
             </div>
             <div class="post-btn-container">
                 <form action="" method="post">
-                <a class="post-dl-btn" href="post/file/<?php echo $post['file_link']; ?>">Download</a>
+                <a class="post-dl-btn" href="uploads/files/<?php echo $post['file_link']; ?>">Download</a>
                 <!-- <a class="post-cm-btn" onclick="toggleVisibility('comment-post-popup')" >Comment</a> -->
                     <input type="hidden" name="id" value="<?php echo $post['p_id']; ?>">
 
