@@ -1,4 +1,4 @@
 @ECHO OFF
 TITLE Build TaildWind CSS
-npm run build:stats
+yarn run build:stats
 PAUSE
