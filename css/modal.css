@@ -11,7 +11,7 @@
   visibility: hidden;
   overflow: hidden;
   opacity: 0;
-  transition:visibility 0.3s linear, display 0.3s linear, opacity 0.3s linear;
+  transition: visibility 0.3s linear, display 0.3s linear, opacity 0.3s linear;
 }
 
 .show {
@@ -29,13 +29,13 @@
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
-  background-color: rgb(0,0,0);
+  background-color: rgb(0, 0, 0);
   /* Fallback color */
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   /* Black w/ opacity */
   visibility: visible;
   opacity: 1;
-  transition:visibility 0.3s linear, display 0.3s linear, opacity 0.3s linear;
+  transition: visibility 0.3s linear, display 0.3s linear, opacity 0.3s linear;
 }
 
 .modal-content {

@@ -1,59 +1,59 @@
 /* Profile */
 .profile-container {
-    @apply w-full h-64 bg-sky-500 flex-col shadow-2xl flex;
+  @apply flex h-64 w-full flex-col bg-sky-500 shadow-2xl;
 }
 
 .profile-top-btn-container {
-    @apply h-4 text-white pr-2;
+  @apply h-4 pr-2 text-white;
 }
 
 .profile-top-btn-style {
-    @apply inline float-right text-xs mt-4;
+  @apply float-right mt-4 inline text-xs;
 }
 
 .profile-top-btn {
-    @apply hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full;
+  @apply rounded-full py-2 px-4 font-bold text-white hover:bg-green-900;
 }
 
 .profile-info-container {
-    @apply h-32 mb-4;
+  @apply mb-4 h-32;
 }
 
 .profile-info-content {
-    @apply flex-col items-center;
+  @apply flex-col items-center;
 }
 
 .profile-avatar {
-    @apply h-16 w-16 rounded-full bg-white mx-auto;
+  @apply mx-auto h-16 w-16 rounded-full bg-white;
 }
 
 .profile-avatar-style {
-    @apply rounded-full;
+  @apply rounded-full;
 }
 
 .profile-info-title {
-    @apply text-white font-semibold text-2xl mt-1 content-center text-center;
+  @apply mt-1 content-center text-center text-2xl font-semibold text-white;
 }
 
 .profile-info-other {
-    @apply text-white text-center text-gray-100;
+  @apply text-center text-white text-gray-100;
 }
 
 .profile-contact-container {
-    @apply h-24 mx-auto relative shadow-lg bg-white rounded-lg p-2 flex w-3/12;
+  @apply relative mx-auto flex h-24 w-3/12 rounded-lg bg-white p-2 shadow-lg;
 }
 
 .profile-contact-first-of-two {
-    @apply w-1/2 ml-2 flex my-auto;
+  @apply my-auto ml-2 flex w-1/2;
 }
 
 .profile-contact-second-of-two {
-    @apply w-1/2 flex my-auto pl-5 border-l-2 border-gray-300 object-right;
+  @apply my-auto flex w-1/2 border-l-2 border-gray-300 object-right pl-5;
 }
 .profile-btn-contact {
-    @apply bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full ml-3;
+  @apply ml-3 rounded-full bg-green-700 py-2 px-4 font-bold text-white hover:bg-green-900;
 }
 
 .profile-top-gap {
-    @apply h-6 mt-8;
+  @apply mt-8 h-6;
 }

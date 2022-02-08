@@ -1,51 +1,51 @@
 .post-container {
-    @apply min-h-screen bg-gray-200;
+  @apply min-h-screen bg-gray-200;
 }
 
 .post-card {
-    @apply mr-8 ml-8 mt-3 h-full flex bg-white hover:bg-amber-50 hover:transition hover:duration-300 rounded-3xl p-8 md:p-0 shadow-md;
+  @apply mr-8 ml-8 mt-3 flex h-full rounded-3xl bg-white p-8 shadow-md hover:bg-amber-50 hover:transition hover:duration-300 md:p-0;
 }
 
 .post-img {
-    @apply w-24 h-24 md:w-48 md:h-auto md:rounded-3xl rounded-full mx-0 shadow-md;
+  @apply mx-0 h-24 w-24 rounded-full shadow-md md:h-auto md:w-48 md:rounded-3xl;
 }
 
 .post-text-container {
-    @apply pt-6 md:p-8 text-center md:text-left space-y-4;
+  @apply space-y-4 pt-6 text-center md:p-8 md:text-left;
 }
 
 .post-text-style {
-    @apply text-lg font-medium;
+  @apply text-lg font-medium;
 }
 
 .post-title-style {
-    @apply text-2xl font-semibold text-emerald-600;
+  @apply text-2xl font-semibold text-emerald-600;
 }
 
 .post-author {
-    @apply font-medium text-gray-700 dark:text-gray-500;
+  @apply font-medium text-gray-700 dark:text-gray-500;
 }
 
 .post-tag {
-    @apply font-medium inline-block px-1.5 py-1 bg-gray-200 rounded-2xl font-semibold text-gray-700 mt-1.5;
+  @apply mt-1.5 inline-block rounded-2xl bg-gray-200 px-1.5 py-1 font-medium font-semibold text-gray-700;
 }
 
 .post-btn-container {
-    @apply mt-auto ml-auto;
+  @apply mt-auto ml-auto;
 }
 
 .post-dl-btn {
-    @apply bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 hover:transition hover:duration-300 rounded;
+  @apply rounded border-b-4 border-blue-700 bg-blue-500 py-2 px-4 font-bold text-white hover:border-blue-500 hover:bg-blue-400 hover:transition hover:duration-300;
 }
 
 .post-cm-btn {
-    @apply bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-2 px-4 border-b-4 border-emerald-700 hover:border-emerald-500 hover:transition hover:duration-300 rounded;;
+  @apply rounded border-b-4 border-emerald-700 bg-emerald-500 py-2 px-4 font-bold text-white hover:border-emerald-500 hover:bg-emerald-400 hover:transition hover:duration-300;
 }
 
 .new-post-btn {
-    @apply w-1/5 m-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full;
+  @apply m-6 w-1/5 rounded-full bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700;
 }
 
 .move-center {
-    @apply content-center relative items-center justify-center;
+  @apply relative content-center items-center justify-center;
 }

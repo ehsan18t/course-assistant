@@ -1,74 +1,70 @@
 /* Chat Styles */
 .chat-container {
-    @apply min-h-screen bg-gray-100 p-8;
+  @apply min-h-screen bg-gray-100 p-8;
 }
 
 .chat-content {
-    @apply max-w-4xl mx-auto space-y-12 grid grid-cols-1;
+  @apply mx-auto grid max-w-4xl grid-cols-1 space-y-12;
 }
 
 .chat-sender {
-    @apply place-self-end text-right;
+  @apply place-self-end text-right;
 }
 
 .chat-sender-style {
-    @apply bg-blue-400 border-y-green-500 text-white p-5 rounded-2xl rounded-tr-none;
+  @apply rounded-2xl rounded-tr-none border-y-green-500 bg-blue-400 p-5 text-white;
 }
 
 .chat-receiver {
-    @apply place-self-start;
+  @apply place-self-start;
 }
 
 .chat-receiver-style {
-    @apply bg-gray-400 p-5 rounded-2xl rounded-tl-none;
+  @apply rounded-2xl rounded-tl-none bg-gray-400 p-5;
 }
 
 /* Input Section */
 .chat-input-form {
-    @apply w-full;
+  @apply w-full;
 }
 
 .chat-input-area {
-    @apply flex items-center border-b border-teal-500 py-2 mb-4;
+  @apply mb-4 flex items-center border-b border-teal-500 py-2;
 }
 
 .chat-input {
-    @apply appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none;
+  @apply mr-3 w-full appearance-none border-none bg-transparent py-1 px-2 leading-tight text-gray-700 focus:outline-none;
 }
 
 .chat-send-btn {
-    @apply w-60 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded;
+  @apply w-60 rounded border-4 border-teal-500 bg-teal-500 py-1 px-2 text-sm text-white hover:border-teal-700 hover:bg-teal-700;
 }
-
 
 /* People Name */
 .chat-people-container {
-    @apply mt-1.5 ml-8 flex sm:items-center justify-between py-3 border-b-2 border-gray-200;
+  @apply mt-1.5 ml-8 flex justify-between border-b-2 border-gray-200 py-3 sm:items-center;
 }
 
 .chat-people-img {
-    @apply flex items-center space-x-4;
+  @apply flex items-center space-x-4;
 }
 
 .chat-people-img-style {
-    @apply w-10 sm:w-16 h-10 sm:h-16 rounded-full;
+  @apply h-10 w-10 rounded-full sm:h-16 sm:w-16;
 }
 
 .chat-people-name-container {
-    @apply flex flex-col leading-tight;
+  @apply flex flex-col leading-tight;
 }
 
 .chat-people-name {
-    @apply text-2xl mt-1 flex items-center;
+  @apply mt-1 flex items-center text-2xl;
 }
 
 .chat-people-name-style {
-    @apply text-gray-700 mr-3;
+  @apply mr-3 text-gray-700;
 }
 
 .chat-people-des-style {
-    @apply text-lg text-gray-600;
+  @apply text-lg text-gray-600;
 }
-
-
-
