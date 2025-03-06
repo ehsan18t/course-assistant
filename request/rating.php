@@ -18,7 +18,7 @@
 <?php require_once INCLUDES['nav-logged-template']; ?>
 
 <div class="post-container">
-        
+
 <?php while($allData=mysqli_fetch_assoc($alldata)){ ?>
 
     <?php
@@ -27,8 +27,7 @@
      $author = mysqli_fetch_assoc($image_link);
     ?>
     <div class="post-card">
-
-        <img class="post-img" src="<?php echo DIR['picture'].$author['profile_pic_url']; ?>">
+        <img class="post-img" src="<?php echo ($author['profile_pic_url'] == NULL ? IMG['avatar'] : DIR['picture'].$author['profile_pic_url']); ?>">
         <div class="post-text-container">
             <div class="post-title-style">
                 <?php echo $allData['points']; ?>

@@ -1,5 +1,5 @@
 <?php
-    function  add_post($conn,$POST,$user_data){
+    function add_post($conn,$POST,$user_data){
      if($_SERVER['REQUEST_METHOD'] == "POST"){
         $course_code = $POST['course_code'];
          $course_name = $POST['course_name'];
@@ -32,13 +32,14 @@
       }
     }
 
-    function desplay_my_data($conn,$user_data){
+    function display_my_data($conn,$user_data){
         $post_admin = $user_data['email'];
         $query = "SELECT * FROM posts WHERE post_admin='$post_admin'";
             if(mysqli_query($conn, $query)){
                 return mysqli_query($conn, $query);
             }
     }
+
     function view_post($conn , $user_data){
         $post_domain = $user_data['domain'];
         $query = "SELECT * FROM posts WHERE domain='$post_domain' ORDER BY date DESC";

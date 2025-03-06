@@ -13,7 +13,7 @@
         $upload_lmsg = add_post($conn, $_POST,$user_data);
         header("Location: " . PAGES['home']);
     }
-    $posts = desplay_my_data($conn,$user_data);
+    $posts = display_my_data($conn,$user_data);
 
     // Delete Post
     if(isset($_POST['delete'])){
@@ -131,8 +131,8 @@
 
     <div class="move-center">
         <center>
-            <button type="submit" onclick="toggleVisibility('add-post-popup')" class="new-post-btn"> Create New Post </button>
-            <button type="submit" onclick="window.location.href='<?php echo PAGES['request']; ?>'" class="new-post-btn"> Create New Request </button>
+            <button type="submit" onclick="toggleVisibility('add-post-popup')" class="new-post-btn"> Upload Content </button>
+            <button type="submit" onclick="window.location.href='<?php echo PAGES['request']; ?>'" class="new-post-btn"> Request </button>
         </center>
     </div>
 <?php while($post=mysqli_fetch_assoc($posts)){ ?>

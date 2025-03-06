@@ -66,13 +66,29 @@ function update_course($course_id, $conn) {
         $count = $current['count'];
         $type = $current['type'];
 
-        $marks = mysqli_fetch_assoc($conn->query("SELECT (SUM(total_marks)/$count) AS t_marks  FROM assessments WHERE course_id=$course_id AND type = '$type' ORDER BY obtained_marks DESC LIMIT $count"));
-        $total_marks += $marks['t_marks'];
+        // $marks = mysqli_fetch_assoc($conn->query("SELECT (SUM(total_marks)/$count) AS t_marks  FROM assessments WHERE course_id=$course_id AND type = '$type' LIMIT $count"));
+        $total_marks += $current['total_marks'];
 
-        $marks = mysqli_fetch_assoc($conn->query("SELECT (SUM(expected_marks)/$count) AS e_marks FROM assessments WHERE course_id=$course_id AND type = '$type' ORDER BY obtained_marks DESC LIMIT $count"));
+        $marks = mysqli_fetch_assoc($conn->query("SELECT AVG(expected_marks) AS e_marks
+        FROM (
+          SELECT expected_marks
+          FROM assessments
+          WHERE course_id = $course_id AND type = '$type'
+          ORDER BY expected_marks DESC
+          LIMIT $count
+        ) AS subquery;
+        "));
         $expected_marks += $marks['e_marks'];
 
-        $marks = mysqli_fetch_assoc($conn->query("SELECT (SUM(obtained_marks)/$count) AS o_marks FROM assessments WHERE course_id=$course_id AND type = '$type' ORDER BY obtained_marks DESC LIMIT $count"));
+        $marks = mysqli_fetch_assoc($conn->query("SELECT AVG(obtained_marks) AS o_marks
+        FROM (
+          SELECT obtained_marks
+          FROM assessments
+          WHERE course_id = $course_id AND type = '$type'
+          ORDER BY obtained_marks DESC
+          LIMIT $count
+        ) AS subquery;
+        "));
         $obtained_marks += $marks['o_marks'];
     }
 

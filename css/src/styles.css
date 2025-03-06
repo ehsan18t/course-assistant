@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 /* Custom Classes */
+body {
+  @apply min-h-[100dhv] bg-gray-200;
+}
+
 .container {
-  @apply flex min-h-screen items-center justify-center bg-gray-200;
+  @apply flex min-w-full items-center justify-center;
 }
 
 .content {

@@ -3,6 +3,7 @@
 <html lang="en">
 <?php
     require_once './header.php';
+    require_once './sendOTP.php';
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
@@ -19,12 +20,24 @@
             {
                 if(mysqli_num_rows($result) > 0)
                 {
-                    $_SESSION['email'] = $email;
-                    header("Location: ". PAGES['home']);
-                    die;
+                    $user = mysqli_fetch_assoc($result);
+                    if ($user['isActive'] == 1) {  
+                        $_SESSION['email'] = $email;
+                        header("Location: ". PAGES['home']);
+                        die;
+                    } else {
+                        // send otp
+                        $uid = $user['u_id'];
+                        if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM otp where uid=$uid")) == 0) {
+                            $otp = rand(100000, 999999);
+                            mysqli_query($conn, "INSERT INTO otp (uid, otp) VALUES ('$uid', '$otp')");
+                            sendOTP($user, $otp);
+                        }
+                        header("Location: ". PAGES['otp'].'?u='.$uid);
+                    }
                 }
             }
-            
+
             echo "wrong username or password!";
         }
         else

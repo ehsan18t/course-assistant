@@ -12,7 +12,7 @@ if(!isset($_GET['course_id']))
     if(isset($_POST['delete'])){
         $conn->query("DELETE FROM assessments WHERE assess_id=".$_POST['assess_id']);
         update_course($_GET['course_id'], $conn);
-        header("Location: " . PAGES['course']);
+        header("Location: " . PAGES['course'].'?course_id='.$_GET['course_id']);
     }
 ?>
 <title>Course Details</title>

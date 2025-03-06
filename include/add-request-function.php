@@ -23,7 +23,7 @@
      }
    }
 
-   function desplay_my_data($conn,$user_data){
+   function display_my_data($conn,$user_data){
       $post_admin = $user_data['email'];
       $query = "SELECT * FROM request WHERE request_admin='$post_admin'";
           if(mysqli_query($conn, $query)){

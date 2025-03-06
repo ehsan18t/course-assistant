@@ -154,10 +154,7 @@
 
 @media (min-width: 640px) {
   .chat-people-img-style {
-    height: 4rem
-  }
-
-  .chat-people-img-style {
+    height: 4rem;
     width: 4rem
   }
 }

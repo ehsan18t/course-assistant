@@ -22,7 +22,7 @@ function is_user_in_group($course_id, $uid, $conn) {
 }
 
 function create_group($course_id, $conn) {
-//    if (is_group_exist($course_id))
+ //   if (is_group_exist($course_id))
     // Getting info
     $course = mysqli_fetch_assoc($conn->query("SELECT * FROM courses WHERE c_id=$course_id"));
     $section = $course['section'];

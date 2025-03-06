@@ -14,7 +14,7 @@
            unset($_POST['add_request']);
            header("Refresh:0");
        }
-          $posts = desplay_my_data($conn,$user_data);
+          $posts = display_my_data($conn,$user_data);
 
        if(isset($_GET['status'])){
         if($_GET['status']='delete'){

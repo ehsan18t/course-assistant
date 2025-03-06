@@ -18,7 +18,7 @@
         header("Location: " . PAGES['trimester']);
     }
 
-    // Create Group
+//    Create Group
     if(isset($_POST['create_group'])){
         create_group($_POST['c_id'], $conn);
         header("Location: " . PAGES['group']);
@@ -133,7 +133,7 @@
                         <form action="" method="post">
                             <input type="hidden" name="c_id" value="<?php echo $select_all_course['c_id']; ?>">
                             <?php
-//                                echo "<input class='post-cm-btn' onclick='toggleVisibility(\"edit-post-popup\")' type='submit' value='Edit'>";
+                                echo "<input class='post-cm-btn' onclick='toggleVisibility(\"edit-post-popup\")' type='submit' value='Edit'>";
                                 echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='return confirm(\"Are you sure you want to delete this item?\")' type='submit' name='delete' value='Delete'>";
                                 if (is_user_in_group($select_all_course['c_id'], $user_id, $conn) == 0)
                                     echo "<input class='post-cm-btn' style='margin-left: 0.25rem' onclick='return confirm(\"Are you sure you want create a group?\")' type='submit' name='create_group' value='Create Group'>";

@@ -30,13 +30,16 @@
         'group-chat' => DOMAIN . '/study-group/group.php',
         'request' => DOMAIN.'/request/all_request.php',
         'add_request' => DOMAIN.'/request/my_request.php',
-        'rating' => DOMAIN.'/request/rating.php'
+        'rating' => DOMAIN.'/request/rating.php',
+        'otp' => DOMAIN.'/otp.php'
     );
 
     // Includes
     const INCLUDES = array(
         'connection' => INC_DOMAIN . '/include/connection.php',
         'main-function' => INC_DOMAIN . '/include/main-function.php',
+        'sendmail-function' => INC_DOMAIN . '/include/sendMail.php',
+        'phpMailer' => INC_DOMAIN . '/PHPMailer',
         'addPost-function' => INC_DOMAIN . '/include/add-post-function.php',
         'addRequest-function' => INC_DOMAIN . '/include/add-request-function.php',// new added
         'view-post-function' => INC_DOMAIN . '/include/view-post-function.php',
@@ -56,7 +59,8 @@
         'post.css' => DOMAIN . '/css/post.css',
         'modal.css' => DOMAIN . '/css/modal.css',
         'stats.css' => DOMAIN . '/css/stats.css',
-        'chat.css' => DOMAIN . '/css/chat.css'
+        'chat.css' => DOMAIN . '/css/chat.css',
+        'otp.css' => DOMAIN . '/css/otp.css'
     );
 
     const JS = array(
